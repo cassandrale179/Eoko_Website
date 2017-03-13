@@ -1,0 +1,2 @@
+# CelebCares
+Website for celebrities

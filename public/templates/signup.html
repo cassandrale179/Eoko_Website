@@ -1,0 +1,23 @@
+<div style="height:100vh;width:100%">
+
+
+<div id="coming-soon" style="top:0;" >
+<img src="img/logo.png" style="height:90%;">
+
+	<div ng-if="errorpopup != '' && thankyou == false " class="button errormessage">{{errorpopup}}</div>
+
+  <form ng-if="thankyou == false">
+    <label for="name">Celebrity Name</label>
+    <input ng-model="info.name" type="text" id="name" name="name" placeholder="Your name..">
+
+    <label for="email">Email</label>
+    <input ng-model="info.email" type="email" id="email" name="email" placeholder="Your email..">
+
+  
+    <button class="button" ng-click="submitInfo()" style="vertical-align:middle;position: absolute;left: 38%;margin-top: 33px;"><span>Sign Up</span></button>
+  </form>
+
+  <p ng-if="thankyou == true">Thank you for signing up!</p>
+</div>
+
+</div>
