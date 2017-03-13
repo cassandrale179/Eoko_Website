@@ -1,0 +1,22 @@
+<br><br><br>
+<img src="img/logo.png" style="height:90%;">
+
+	<div ng-if="errorpopup != '' " class="button errormessage">{{errorpopup}}</div>
+
+  <form style="margin:0 10%">
+
+    <label for="email">Email</label>
+    <input ng-model="info.email" type="email" id="email" name="email" placeholder="Email">
+
+		    
+    <label for="password">Password</label>
+    <input ng-model="info.password" ng-change="checkMatch()" type="password" id="password" name="password" placeholder="Password">
+
+    <div >
+	    <button style="margin: 0 auto;" class="button" ng-click="LogUser()" ><span>Log In</span></button>
+    </div>
+
+  </form>
+
+
+  

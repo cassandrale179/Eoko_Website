@@ -33,9 +33,9 @@ td, th {
     padding: 33px;
 }
 
-h2{
+/*h2{
   margin-bottom: 33px;
-}
+}*/
 
 /* Page Style */
 body{
@@ -160,6 +160,8 @@ div {
     padding: 10px;
     margin: 0 auto;
     background-color: #d95b37;
+    max-width: 61%;
+    width: inherit;
 }
 
 
@@ -181,3 +183,96 @@ div {
     bottom: 45px;
     left: 36px;
 }
+
+.mainLoad{
+  position: absolute;
+  margin-left: 222px;
+    padding: 10px;
+    /*background-color: rgba(255, 255, 255, 0.23);*/
+    height: 500px;
+    width: 75vw;
+    overflow-y: auto;
+
+}
+
+.approveDiv{
+      width: 292px;
+    display: inline-flex;
+    position: absolute;
+    margin-top: -25px;
+}
+
+
+
+
+
+
+
+/*ripped from eoko.app.css*/
+
+
+.eoko-notification-avatar {
+  border-radius: 80px;
+  width: 80px;
+  height: 80px;
+  margin: 0em auto;
+  background-position-x: 50%;
+  background-size: cover;
+  position: absolute;
+  margin-left: -100px;
+  margin-top:16px; }
+
+  .eoko-text-thin, .eoko-text-button-nav {
+  font-family: "San Francisco Display";
+  font-weight: 200;
+  color: #FFFFFF; }
+
+  .eoko-text-ultralight {
+  font-family: "San Francisco Display";
+  font-weight: 100;
+  color: #FFFFFF; }
+
+  .eoko-text-thin, .eoko-text-button-nav {
+  font-family: "San Francisco Display";
+  font-weight: 200;
+  color: #FFFFFF; }
+
+
+  .item-thumbnail-left,
+.item-thumbnail-left .item-content {
+  padding-top: 8px;
+  padding-left: 106px;
+  min-height: 100px; }
+  .item-thumbnail-left > img:first-child,
+  .item-thumbnail-left .item-image,
+  .item-thumbnail-left .item-content > img:first-child,
+  .item-thumbnail-left .item-content .item-image {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    max-width: 80px;
+    max-height: 80px;
+    width: 100%;
+    height: 100%; }
+
+.item-avatar.item-complex,
+.item-avatar-left.item-complex,
+.item-thumbnail-left.item-complex {
+  padding-top: 0;
+  padding-left: 0; }
+
+.eoko-button-action-event-join, .eoko-button-action-event-popup-join {
+  border-color: none;
+  background-color: #F57C00;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 30px;
+  font-size: 20px;
+  float: right;
+  margin:0 5px; }
+  .eoko-button-action-event-join.hover, .hover.eoko-button-action-event-popup-join {
+    background-color: #cc6700;
+    transition: all 0.3s ease; }
+  .eoko-button-action-event-join.active, .active.eoko-button-action-event-popup-join, .eoko-button-action-event-join.activated, .activated.eoko-button-action-event-popup-join {
+    background-color: #763b00; }

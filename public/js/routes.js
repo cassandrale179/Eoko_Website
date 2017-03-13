@@ -18,6 +18,20 @@ angular.module('app.routes', ['ui.router'])
     controller: 'signupPageCtrl'
 })
 
+.state('login',{
+  name: 'Log In',
+  url: '/loginPage',
+    templateUrl: 'templates/login.html',
+    controller: 'loginPageCtrl'
+})
+
+.state('portal',{
+  name: 'Portal',
+  url: '/portalPage',
+    templateUrl: 'templates/portal.html',
+    controller: 'portalPageCtrl'
+})
+
 .state('construction',{
 	name: 'Construction',
 	url: '/constructionPage',

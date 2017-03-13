@@ -1,0 +1,85 @@
+<div>
+    <img src="img/logo.png" style="height:161px;margin:0;">
+
+
+
+      <ul style="width:550px;margin:0 auto;margin-top:-100px">
+        <li><a ng-click="selector(0)">Events</a></li>
+        <li><a ng-click="selector(1)">Surveys</a></li>
+        <li><a ng-click="selector(2)">Comments</a></li>
+      </ul>
+</div>
+
+
+      <ul style="float:left">
+        <li style="display:block;"><a ng-click="selector(3)">Residents</a></li>
+        <li style="display:block;"><a ng-click="selector(4)">Approve</a></li>
+        <li style="display:block;"><a ng-click="selector(5)">Statistics</a></li>
+        <li style="display:block;"><a ng-click="selector(6)">Ranking</a></li>
+      </ul>
+
+ <h2>{{selection.tab}}</h2>
+     <div class="mainLoad">
+
+
+
+
+
+        
+<!--list of Residents-->
+        <div ng-if="selection.tab == 'Residents'">
+          <div ng-if="userData.length == 0" class="eoko-text-button-nav" style="text-align:center;">No Users signed up!</div>
+
+          <div ng-repeat="user in userData" class="item-thumbnail-left"
+                    style="background-color:rgba(0,0,0,0);border:1px solid #aaa3a8;border-radius:33px;margin:33px;display:inline-block;width: 278px;">
+
+            <div class="eoko-notification-avatar" style="background-image: url({{user.avatar}});"></div>
+            <h2 class="eoko-text-thin" style="color: white;font-size: 25px">{{user.name}}</h2>
+            <p class="eoko-text-ultralight" style="color: white;display: inline; font-size: 15px;">
+              {{user.email}}
+              <br>Events created: {{user.eventCount}}
+              <br>Surveys taken: {{user.surveyCount}}
+            </p>
+            <!-- <button ng-click="openPopover($event, user)" class="eoko-button-action-event-join eoko-text-thin">
+              {{user.attend}}
+            </button> -->
+
+            </div>
+        </div>
+
+
+<!--list of Approved-->
+        <div ng-if="selection.tab == 'Approve'">
+          <div ng-if="userData.length == 0" class="eoko-text-button-nav" style="text-align:center;">No Users to Approve/Deny Access!</div>
+
+          <div ng-if="user.adminConfirmed == 'false'" ng-repeat="user in userData" class="item-thumbnail-left"
+                    style="background-color:rgba(0,0,0,0);border:1px solid #aaa3a8;border-radius:33px;margin:33px;">
+
+              <div class="eoko-notification-avatar" style="background-image: url({{user.avatar}});"></div>
+              <h2 class="eoko-text-thin" style="color: white;font-size: 25px">{{user.name}}</h2>
+              <p class="eoko-text-ultralight" style="color: white;display: inline; font-size: 15px;">
+                {{user.email}}
+                <br>Events created: {{user.eventCount}}
+                <br>Surveys taken: {{user.surveyCount}}
+              </p>
+              <div class="approveDiv">
+                  <button ng-click="denyUser(user)" class="eoko-button-action-event-join eoko-text-thin">
+                    Deny
+                  </button>
+                  <button ng-click="approveUser(user)" class="eoko-button-action-event-join eoko-text-thin">
+                    Approve
+                  </button>
+              </div>
+              
+
+            </div>
+        </div>
+
+
+
+
+
+       
+     </div>
+
+  
