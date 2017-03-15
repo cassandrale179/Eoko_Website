@@ -129,11 +129,38 @@ p{
   right: 0;
 }
 
+.buttonAddQuestion {
+    width: 42px;
+    padding: 10px;
+    background-color: steelblue;
+    border: 1px solid rgb(162, 163, 178);
+    display: inline-block;
+}
+
+.buttonAddQuestion:hover {
+  background-color: blue;
+}
+
+.answerHolder{
+  position: relative;
+    left: 85%;
+    display: inline;
+}
+
+.buttonRemove{
+  background-color: #b44646;
+}
+
+.buttonRemove:hover {
+  background-color: red;
+}
 
 input[type=text],
 input[type=email],
 input[type=tel],
 input[type=password],
+input[type=time],
+input[type=date],
  select {
     width: 100%;
     padding: 12px 20px;
@@ -142,6 +169,7 @@ input[type=password],
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
 
@@ -151,7 +179,6 @@ input[type=submit]:hover {
 
 div {
     border-radius: 5px;
-    padding: 20px;
 }
 
 .errormessage {
@@ -202,8 +229,15 @@ div {
     margin-top: -25px;
 }
 
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 
-
+.inputfield{
+  margin-left: 0 10%;
+}
 
 
 
