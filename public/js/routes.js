@@ -39,6 +39,13 @@ angular.module('app.routes', ['ui.router'])
     controller: 'constructionCtrl'
 })
 
+.state('feedback',{
+  name: 'Feedback',
+  url: '/feedbackPage',
+    templateUrl: 'templates/feedback.html',
+    controller: 'feedbackCtrl'
+})
+
  .state('home',{
  	name: 'Home',
  	url: '/homePage',

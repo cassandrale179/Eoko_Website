@@ -321,11 +321,35 @@ $scope.denyUser = function(user)
 };
 
 
+}])
 
 
+.controller('feedbackCtrl', ['$scope','$window',
+    // a verbose line seperator between the top construction section and the function for the controller below
 
+ function($scope,$window) {
+
+ $scope.user = {description:""};
+
+
+ $scope.submitFeeback = function()
+ {
+    if($scope.user.description == "" || $scope.user.description == " ")
+        {
+            $scope.errorpopup = "Please enter some feedback";
+            return;
+        }
+
+    firebase.database().ref("Feedback").push($scope.user.description).then(function(success)
+    {
+
+        $window.history.back();
+    });
+    
+ };
 
 }])
+
 
 
 .controller('constructionCtrl', ['$scope',

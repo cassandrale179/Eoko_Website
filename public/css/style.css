@@ -276,3 +276,20 @@ div {
     transition: all 0.3s ease; }
   .eoko-button-action-event-join.active, .active.eoko-button-action-event-popup-join, .eoko-button-action-event-join.activated, .activated.eoko-button-action-event-popup-join {
     background-color: #763b00; }
+
+    .eoko-text-area {
+  padding: 10px;
+  border-radius: 5px;
+  width: calc(100% - 6em);
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.15);
+  height: 10em;
+  resize: none; }
+
+  .eoko-text-regular, .eoko-button-text-selected, .eoko-text-input-form {
+  font-family: "San Francisco Display";
+  font-weight: 400;
+  color: #FFFFFF; }
+
+  .eoko-text-input-form {
+  padding-bottom: 20px; }
