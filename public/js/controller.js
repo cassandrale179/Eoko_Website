@@ -316,7 +316,7 @@ $scope.userList = [];
 
 
 
-$scope.selection = {tab:"Surveys"};
+$scope.selection = {tab:"Residents"};
 
 $scope.selector = function(num)
 {

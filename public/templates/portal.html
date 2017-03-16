@@ -14,7 +14,7 @@
       <ul style="float:left">
         <li style="display:block;"><a ng-click="selector(3)">Residents</a></li>
         <li style="display:block;"><a ng-click="selector(4)">Approve</a></li>
-        <li style="display:block;"><a ng-click="selector(5)">Statistics</a></li>
+       <!--  <li style="display:block;"><a ng-click="selector(5)">Statistics</a></li> -->
         <li style="display:block;"><a ng-click="selector(6)">Ranking</a></li>
       </ul>
 
@@ -161,6 +161,29 @@
             <button class="button" ng-click="submitSurvey()" style="vertical-align:middle;position: absolute;left: 38%;margin-top: 33px;"><span>Submit</span></button>
           </div>
         </div>
+
+
+<!--Tab for Ranking-->
+        <div ng-if="selection.tab == 'Ranking'">
+          <div ng-if="userData.length == 0" class="eoko-text-button-nav" style="text-align:center;">No Users signed up!</div>
+
+          <div ng-repeat="user in userData | orderBy : '-points' " class="item-thumbnail-left"
+                    style="background-color:rgba(0,0,0,0);border:1px solid #aaa3a8;border-radius:33px;margin:33px;">
+
+              <div class="eoko-notification-avatar" style="background-image: url({{user.avatar}});"></div>
+              <h2 class="eoko-text-thin" style="color: white;font-size: 25px">{{user.name}}</h2>
+              <p class="eoko-text-ultralight" style="color: white;display: inline; font-size: 15px;">
+                {{user.email}}
+                <br><span style="font-weight:bold;font-size:18;">Points: {{user.points}}</span>
+                <br>Events created: {{user.eventCount}}  <span style="margin-left:33px;">Surveys taken: {{user.surveyCount}}</span> 
+              </p>
+            </div>
+        </div>
+
+
+
+
+
        
      </div>
 
