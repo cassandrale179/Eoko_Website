@@ -1,22 +1,40 @@
-<br><br><br>
+<br>
+<!--Eoko logo-->
 <img src="img/logo.png" style="height:90%;">
 
-	<div ng-if="errorpopup != '' " class="button errormessage">{{errorpopup}}</div>
 
-  <form style="margin:0 10%">
+<!--error message when login-->
+<div ng-if="errorpopup != '' " class="eoko-popup-error-message">{{errorpopup}}</div>
 
-    <label for="email">Email</label>
-    <input ng-model="info.email" type="email" id="email" name="email" placeholder="Email">
+<form style="margin: 0 auto; text-align: center">
 
-		    
-    <label for="password">Password</label>
-    <input ng-model="info.password" ng-change="checkMatch()" type="password" id="password" name="password" placeholder="Password">
+    <!--email field-->
+    <label for="email"></label>
+    <input ng-model="info.email" type="email" id="email" name="email" placeholder="Email" required>
 
-    <div >
-	    <button style="margin: 0 auto;" class="button" ng-click="LogUser()" ><span>Log In</span></button>
+    <!--password field-->
+    <label for="password"></label>
+    <input ng-model="info.password" ng-change="checkMatch()" type="password" id="password" name="password"
+           placeholder="Password" required>
+
+    <!--login button-->
+    <button style="margin: 0 auto;" class="eoko-button-log-in" ng-click="LogUser()">Log In</button><br>
+
+    <!--login options-->
+    <div class="eoko-login-options">
+        <label class="eoko-text-field-label eoko-text-field-checkbox">Remember Me
+            <input type="checkbox"/>
+            <div class="eoko-text-field-checkbox-box"></div>
+        </label>
+
+        <div style="float: right">
+            <button class="eoko-button-text">Sign up</button>
+            <label class="">|</label>
+            <button class="eoko-button-text">Forgot your password?</button>
+        </div>
     </div>
 
-  </form>
+</form>
 
 
   

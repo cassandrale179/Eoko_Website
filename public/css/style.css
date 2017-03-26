@@ -1,3 +1,287 @@
+/*-------------------------------------------*/
+/*
+* Defined variables
+*
+*/
+@font-face {
+    font-family: "San Francisco Display Bold";
+    src: url("../fonts/sanfranciscodisplay-bold.woff");
+}
+
+@font-face {
+    font-family: "San Francisco Display Medium";
+    src: url("../fonts/sanfranciscodisplay-medium.woff");
+}
+
+@font-face {
+    font-family: "San Francisco Display Regular";
+    src: url("../fonts/sanfranciscodisplay-regular.woff");
+}
+
+@font-face {
+    font-family: "San Francisco Display Semibold";
+    src: url("../fonts/sanfranciscodisplay-semibold.woff");
+}
+
+@font-face {
+    font-family: "San Francisco Display Thin";
+    src: url("../fonts/sanfranciscodisplay-thin.woff");
+}
+
+@font-face {
+    font-family: "San Francisco Display Ultralight";
+    src: url("../fonts/sanfranciscodisplay-ultralight.woff");
+}
+
+
+
+/*-------------------------------------------*/
+/*
+* Page Setup
+*
+*/
+body {
+    background-image: url(../img/main_background.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.eoko-login-options {
+    display: inline-block;
+    width: 50%;
+    padding-top: 15px;
+    text-align: left;
+    vertical-align: top;
+}
+
+
+
+/*-------------------------------------------*/
+/*
+* Text
+*
+*/
+.eoko-text-input-form{
+
+}
+
+
+
+/*-------------------------------------------*/
+/*
+* Input Text Field
+*
+*/
+::-webkit-input-placeholder { /* WebKit browsers */
+    font-family: "San Francisco Display Thin", serif;
+    color: white;
+    opacity: 1 !important;
+}
+
+input[type=text],
+input[type=email],
+input[type=tel],
+input[type=password],
+input[type=time],
+input[type=date],
+select {
+    font-family: "San Francisco Display Thin", serif;
+    font-size: 25px;
+    letter-spacing: 2.5px;
+    color: white;
+    width: 50%;
+    padding: 17px 40px;
+    margin: 10px auto;
+    display: inline-block;
+    border: none;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.eoko-text-field-label {
+    font-family: "San Francisco Display Ultralight", serif;
+    font-size: 20px;
+    position: relative;
+    display: inline-block;
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+.eoko-text-field-label input {
+    position: absolute;
+    z-index: -1;
+    display: none;
+}
+
+.eoko-text-field-checkbox-box {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    background: #e6e6e6;
+}
+
+/* Checked state */
+.eoko-text-field-label input:checked ~ .eoko-text-field-checkbox-box {
+    background: #F57C00;
+}
+
+/* Check mark */
+.eoko-text-field-checkbox-box:after {
+    position: absolute;
+    display: none;
+    content: '';
+}
+
+/* Show check mark */
+.eoko-text-field-label input:checked ~ .eoko-text-field-checkbox-box:after {
+    display: block;
+}
+
+/* Checkbox tick */
+.eoko-text-field-checkbox .eoko-text-field-checkbox-box:after {
+    top: 2px;
+    left: 10px;
+    width: 5px;
+    height: 15px;
+    transform: rotate(45deg);
+    border: solid #FFFFFF;
+    border-width: 0 2px 2px 0;
+}
+
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+/*-------------------------------------------*/
+/*
+* Buttons
+*
+*/
+
+.eoko-button-log-in{
+    font-family: "San Francisco Display Thin", serif;
+    letter-spacing: 2.5px;
+    font-size: 26px;
+    color: white;
+    width: 50%;
+    padding: 17px 40px;
+    margin: 10px auto;
+    display: inline-block;
+    border: none;
+    border-radius: 25px;
+    background-color: #F57C00;
+}
+
+
+.eoko-button-text{
+    font-family: "San Francisco Display Ultralight", serif;
+    font-family: "San Francisco Display Ultralight", serif;
+    font-size: 20px;
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    color: white;
+}
+
+.eoko-button-text:hover{
+    opacity: 0.6;
+}
+
+
+.button {
+    display: block;
+    border-radius: 4px;
+    background-color: #d9a537;
+    border: none;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    color: white;
+}
+
+.button:disabled {
+    color: grey;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    color: white;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.buttonAddQuestion {
+    width: 42px;
+    padding: 10px;
+    background-color: steelblue;
+    border: 1px solid rgb(162, 163, 178);
+    display: inline-block;
+}
+
+.buttonAddQuestion:hover {
+    background-color: blue;
+}
+
+
+
+/*-------------------------------------------*/
+/*
+* Pop up
+*
+*/
+.eoko-popup-error-message {
+    font-family: "San Francisco Display Ultralight", serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-align: center;
+    color: white;
+    width: 40%;
+    padding: 17px 40px;
+    margin: 10px auto;
+    border: none;
+    border-radius: 25px;
+    background-color: rgba(255,34,36,0.5);
+}
+
+
+
+
+
+
+
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -24,8 +308,8 @@ li a:hover {
     background-color: #d9a537;
 }
 
-html{
-  color: white;
+html {
+    color: white;
 }
 
 td, th {
@@ -37,30 +321,20 @@ td, th {
   margin-bottom: 33px;
 }*/
 
-/* Page Style */
-body{
-  background-image: url(../img/main_background.png);
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 
-	font-size: 14px;
-	font-family: sans-serif;
-	line-height: 20px;
+p {
+    margin-bottom: 0.3em;
 }
 
-p{
-	margin-bottom: 0.3em;
-}
 .center,
 img.center {
-	text-align: center;
-	clear: both;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+    text-align: center;
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 #centered {
     width: 800px;
     height: 280px;
@@ -68,132 +342,46 @@ img.center {
     top: 0%;
     margin: 0 auto;
 }
-h1{
-	text-align: center;
-	font-size: 35px;
+
+h1 {
+    text-align: center;
+    font-size: 35px;
 }
-img{
+
+img {
     clear: both;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
 }
-p{
-	text-align: center;
+
+p {
+    text-align: center;
 }
 
 
-.button {
-  display: block;
-  border-radius: 4px;
-  background-color: #d9a537;
-  border: none;
-  text-align: center;
-  font-size: 28px;
-  padding: 20px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-  color: white;
-}
 
-.button:disabled{
-  color:grey;
-}
-
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-  color: white;
-}
-
-.button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.button:hover span {
-  padding-right: 25px;
-}
-
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-
-.buttonAddQuestion {
-    width: 42px;
-    padding: 10px;
-    background-color: steelblue;
-    border: 1px solid rgb(162, 163, 178);
-    display: inline-block;
-}
-
-.buttonAddQuestion:hover {
-  background-color: blue;
-}
-
-.answerHolder{
-  position: relative;
+.answerHolder {
+    position: relative;
     left: 85%;
     display: inline;
 }
 
-.buttonRemove{
-  background-color: #b44646;
+.buttonRemove {
+    background-color: #b44646;
 }
 
 .buttonRemove:hover {
-  background-color: red;
-}
-
-input[type=text],
-input[type=email],
-input[type=tel],
-input[type=password],
-input[type=time],
-input[type=date],
- select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 0.15);
-}
-
-
-input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: red;
 }
 
 div {
     border-radius: 5px;
 }
 
-.errormessage {
-	font-size: inherit;
-    border-radius: 30px;
-    padding: 10px;
-    margin: 0 auto;
-    background-color: #d95b37;
-    max-width: 61%;
-    width: inherit;
-}
-
-
-.appendTitle{
-  position: relative;
+.appendTitle {
+    position: relative;
     display: inline;
     bottom: 73px;
     float: right;
@@ -201,7 +389,7 @@ div {
     font-size: large;
 }
 
-.passcheck{
+.passcheck {
     float: right;
     position: relative;
     background: green;
@@ -211,9 +399,9 @@ div {
     left: 36px;
 }
 
-.mainLoad{
-  position: absolute;
-  margin-left: 222px;
+.mainLoad {
+    position: absolute;
+    margin-left: 222px;
     padding: 10px;
     /*background-color: rgba(255, 255, 255, 0.23);*/
     height: 500px;
@@ -222,8 +410,8 @@ div {
 
 }
 
-.approveDiv{
-      width: 292px;
+.approveDiv {
+    width: 292px;
     display: inline-flex;
     position: absolute;
     margin-top: -25px;
@@ -235,95 +423,102 @@ footer {
     width: 100%;
 }
 
-.inputfield{
-  margin-left: 0 10%;
+.inputfield {
+    margin-left: 0 10%;
 }
-
-
-
 
 /*ripped from eoko.app.css*/
 
-
 .eoko-notification-avatar {
-  border-radius: 80px;
-  width: 80px;
-  height: 80px;
-  margin: 0em auto;
-  background-position-x: 50%;
-  background-size: cover;
-  position: absolute;
-  margin-left: -100px;
-  margin-top:16px; }
+    border-radius: 80px;
+    width: 80px;
+    height: 80px;
+    margin: 0em auto;
+    background-position-x: 50%;
+    background-size: cover;
+    position: absolute;
+    margin-left: -100px;
+    margin-top: 16px;
+}
 
-  .eoko-text-thin, .eoko-text-button-nav {
-  font-family: "San Francisco Display";
-  font-weight: 200;
-  color: #FFFFFF; }
+.eoko-text-thin, .eoko-text-button-nav {
+    font-family: "San Francisco Display";
+    font-weight: 200;
+    color: #FFFFFF;
+}
 
-  .eoko-text-ultralight {
-  font-family: "San Francisco Display";
-  font-weight: 100;
-  color: #FFFFFF; }
+.eoko-text-ultralight {
+    font-family: "San Francisco Display";
+    font-weight: 100;
+    color: #FFFFFF;
+}
 
-  .eoko-text-thin, .eoko-text-button-nav {
-  font-family: "San Francisco Display";
-  font-weight: 200;
-  color: #FFFFFF; }
+.eoko-text-thin, .eoko-text-button-nav {
+    font-family: "San Francisco Display";
+    font-weight: 200;
+    color: #FFFFFF;
+}
 
-
-  .item-thumbnail-left,
+.item-thumbnail-left,
 .item-thumbnail-left .item-content {
-  padding-top: 8px;
-  padding-left: 106px;
-  min-height: 100px; }
-  .item-thumbnail-left > img:first-child,
-  .item-thumbnail-left .item-image,
-  .item-thumbnail-left .item-content > img:first-child,
-  .item-thumbnail-left .item-content .item-image {
+    padding-top: 8px;
+    padding-left: 106px;
+    min-height: 100px;
+}
+
+.item-thumbnail-left > img:first-child,
+.item-thumbnail-left .item-image,
+.item-thumbnail-left .item-content > img:first-child,
+.item-thumbnail-left .item-content .item-image {
     position: absolute;
     top: 10px;
     left: 10px;
     max-width: 80px;
     max-height: 80px;
     width: 100%;
-    height: 100%; }
+    height: 100%;
+}
 
 .item-avatar.item-complex,
 .item-avatar-left.item-complex,
 .item-thumbnail-left.item-complex {
-  padding-top: 0;
-  padding-left: 0; }
+    padding-top: 0;
+    padding-left: 0;
+}
 
 .eoko-button-action-event-join, .eoko-button-action-event-popup-join {
-  border-color: none;
-  background-color: #F57C00;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 20px;
-  padding: 6px 30px;
-  font-size: 20px;
-  float: right;
-  margin:0 5px; }
-  .eoko-button-action-event-join.hover, .hover.eoko-button-action-event-popup-join {
+    border-color: none;
+    background-color: #F57C00;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 30px;
+    font-size: 20px;
+    float: right;
+    margin: 0 5px;
+}
+
+.eoko-button-action-event-join.hover, .hover.eoko-button-action-event-popup-join {
     background-color: #cc6700;
-    transition: all 0.3s ease; }
-  .eoko-button-action-event-join.active, .active.eoko-button-action-event-popup-join, .eoko-button-action-event-join.activated, .activated.eoko-button-action-event-popup-join {
-    background-color: #763b00; }
+    transition: all 0.3s ease;
+}
 
-    .eoko-text-area {
-  padding: 10px;
-  border-radius: 5px;
-  width: calc(100% - 6em);
-  margin: auto;
-  background-color: rgba(255, 255, 255, 0.15);
-  height: 10em;
-  resize: none; }
+.eoko-button-action-event-join.active, .active.eoko-button-action-event-popup-join, .eoko-button-action-event-join.activated, .activated.eoko-button-action-event-popup-join {
+    background-color: #763b00;
+}
 
-  .eoko-text-regular, .eoko-button-text-selected, .eoko-text-input-form {
-  font-family: "San Francisco Display";
-  font-weight: 400;
-  color: #FFFFFF; }
+.eoko-text-area {
+    padding: 10px;
+    border-radius: 5px;
+    width: calc(100% - 6em);
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.15);
+    height: 10em;
+    resize: none;
+}
 
-  .eoko-text-input-form {
-  padding-bottom: 20px; }
+.eoko-text-regular, .eoko-button-text-selected{
+    font-family: "San Francisco Display";
+    font-weight: 400;
+    color: #FFFFFF;
+}
