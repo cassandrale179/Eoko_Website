@@ -54,7 +54,7 @@ angular.module('app.routes', ['ui.router'])
   })
 
 
-$urlRouterProvider.otherwise('/homePage')
+$urlRouterProvider.otherwise('/loginPage')
 
 
 

@@ -1,102 +1,184 @@
-<br><br><br>
-<img src="img/logo.png" style="height:90%;">
+<br>
+<img src="img/logo.png" style="height: 200px;">
 
-	<div ng-if="errorpopup != '' && thankyou == false " class="button errormessage">{{errorpopup}}</div>
+<div ng-if="errorpopup != '' && thankyou == false " class="eoko-popup-error-message">{{errorpopup}}</div>
 
-	<h1 ng-if="thankyou == true">Your Building Code is {{buildingcode}}. <br><br> Creating Admin Profile</h1>
-	
-  <form ng-if="thankyou == false" style="margin:0 10%">
+<h1 ng-if="thankyou == true">Your Building Code is {{buildingcode}}. <br><br> Creating Admin Profile</h1>
 
-  	<div style="margin:0 23%">
-	  	<h2 style="margin-left: -66px;">Company Information</h2>
-	    <label for="companyName">Company Name*</label>
-	    <input ng-model="info.companyName" type="text" id="companyName" name="companyName" placeholder="The Company's Name..">
 
-	    <label for="buldingName">Building Name</label>
-	    <input ng-model="info.buildingName" type="text" id="buldingName" name="buldingName" placeholder="The Bulding's Name..">
+<!--navigation bar-->
+<div style="margin: 0 auto; text-align: center">
+    <button ng-click="selectCompanyInformation()" id="companyInfo" class="eoko-button-nav-active">Company Information
+        <div id="circle1" class="eoko-element-signup-phase-active">1</div>
+    </button>
 
-	    <label for="address">Address*</label>
-	    <input ng-model="info.address" type="text" id="address" name="address" placeholder="Address">
+    <button ng-click="selectCompanyContact()" id="companyContact" class="eoko-button-nav-nonactive">Company Contact
+        <div id="circle2" class="eoko-element-signup-phase-nonactive">2</div>
+    </button>
 
-	    <label for="address2">Address 2</label>
-	    <input ng-model="info.address2" type="text" id="address2" name="address2" placeholder="Address - Additional">
+    <button ng-click="selectCompanyAccount()" id="companyAccount" class="eoko-button-nav-nonactive">Company Account
+        <div id="circle3" class="eoko-element-signup-phase-nonactive">3</div>
+    </button>
+</div>
 
-	    <label for="city">City*</label>
-	    <input ng-model="info.city" type="text" id="city" name="city" placeholder="City">
 
-	    <label for="state">State*</label>
-	    <input ng-model="info.state" type="text" id="state" name="city" placeholder="State">
+<!--spacer-->
+<div class="spacer" style="height: 10px;"></div>
 
-	    <label for="zip">Zip*</label>
-	    <input ng-model="info.zip" type="text" id="zip" name="zip" placeholder="Zip">
+
+<!--Company Information form-->
+<form ng-if="tabSelected == 'companyInfo'">
+    <table style="text-align: start">
+        <tr>
+            <th>
+                <label for="companyName" class="eoko-label-text-field">Company Name*</label>
+                <br>
+                <input ng-model="info.companyName" style="width: 100%" type="text" id="companyName" name="companyName"
+                       required>
+                <br>
+
+                <label class="eoko-label-text-field" for="buldingName">Building Name*</label>
+                <br>
+                <input ng-model="info.buildingName" style="width: 100%" type="text" id="buldingName" name="buldingName"
+                       required>
+
+                <!--fillers-->
+                <label class="eoko-label-text-field"></label><br>
+                <input style="width: 100%; background-color: transparent" type="text" disabled><br>
+            </th>
+            <th style="width: 40%">
+                <label class="eoko-label-text-field" for="address">Address*</label>
+                <br>
+                <input ng-model="info.address" style="width: 100%" type="text" id="address" name="address" required>
+                <br>
+
+                <label class="eoko-label-text-field" for="address2">Address 2</label>
+                <br>
+                <input ng-model="info.address2" style="width: 100%" type="text" id="address2" name="address2">
+                <br>
+
+                <label class="eoko-label-text-field" for="city">City*</label>
+                <br>
+                <input ng-model="info.city" style="width: 100%" type="text" id="city" name="city" required>
+            </th>
+            <th style="width: 30%; padding-bottom: 0">
+                <!--fillers-->
+                <label class="eoko-label-text-field"></label><br>
+                <input style="width: 100%; background-color: transparent" type="text" disabled><br>
+                <label class="eoko-label-text-field"></label><br>
+                <input style="width: 100%; background-color: transparent" type="text" disabled><br>
+
+                <label class="eoko-label-text-field" style="margin-right: 26px;" for="state">State*</label>
+                <label class="eoko-label-text-field" for="zip">Zip*</label>
+                <br>
+                <input ng-model="info.state" style="float: left; width: 120px; margin-right: 10px;" type="text"
+                       id="state" name="city" required>
+                <input ng-model="info.zip" type="text" id="zip" name="zip" required>
+            </th>
+        </tr>
+    </table>
+
+    <button class="eoko-button-sign-up-next" style="float: right" ng-click="goToCompanyContact()">Next</button>
+</form>
+
+
+<!--Company Contact form-->
+<form ng-if="tabSelected == 'companyContact'">
+    <div style="text-align: center;">
+        <h2 class="eoko-label-header-2-selected" id="primaryContact" ng-click="selectPrimaryContact()">Primary
+            Contact</h2>
+        <h2 class="eoko-label-header-2-not-selected" id="secondaryContact" ng-click="selectSecondaryContact()">Secondary
+            Contact</h2>
     </div>
-    <hr>
 
-    <table>
-	  <tr>
-	    <th>
-	    	<h2 style="margin-left: -33px;">Primary Contact</h2>
-		    <label for="firstname">First Name*</label>
-		    <input ng-model="info.firstname" type="text" id="firstname" name="firstname" placeholder="Your First Name">
+    <!--Primary Contact form-->
+    <table ng-if="contactSelected == 'primaryContact'">
+        <tr>
+            <th style="width: 40%;">
+                <label class="eoko-label-text-field" for="firstname">First Name*</label><br>
+                <input ng-model="info.firstname" style="width: 100%" type="text" id="firstname" name="firstname"
+                       required><br>
 
-		    <label for="lastname">Last Name*</label>
-		    <input ng-model="info.lastname" type="text" id="lastname" name="lastname" placeholder="Your Last Name">
+                <label class="eoko-label-text-field" for="lastname">Last Name*</label><br>
+                <input ng-model="info.lastname" style="width: 100%" type="text" id="lastname" name="lastname"
+                       required><br>
 
-		    <label for="title">Title or Position</label>
-		    <input ng-model="info.title" type="text" id="title" name="title" placeholder="Your Title or Position">
+                <label class="eoko-label-text-field" for="title">Title or Position</label><br>
+                <input ng-model="info.title" style="width: 100%" type="text" id="title" name="title" required><br>
+            </th>
+            <th style="width: 40%;">
+                <label class="eoko-label-text-field" for="email">Email*</label><br>
+                <input ng-model="info.email" style="width: 100%" type="email" id="email" name="email" required><br>
 
-		    <br><br>
+                <label class="eoko-label-text-field" for="phonenumber">Contact Number*</label><br>
+                <input ng-model="info.phonenumber" style="width: 100%" type="tel" id="phonenumber"
+                       name="phonenumber" required><br>
 
-		    <label for="email">Email*</label>
-		    <input ng-model="info.email" type="email" id="email" name="email" placeholder="Your Email">
+                <label class="eoko-label-text-field" for="faxnumber">Fax Number</label><br>
+                <input ng-model="info.faxnumber" style="width: 100%" type="tel" id="faxnumber" name="faxnumber"
+                       required><br>
+            </th>
+            <th style="width: 20%;">
+                <img ng-click="addSecondaryContact()" src="../img/add-secondary-contact.png" style="margin: 0 auto">
+                <label class="eoko-label-text-field" style="padding:0; text-align: center">Add Secondary Contact</label>
+            </th>
+        </tr>
+    </table>
 
-		    <label for="phonenumber">Contact Number*</label>
-		    <input ng-model="info.phonenumber" type="tel" id="phonenumber" name="phonenumber" placeholder="Your Contact Number">
+    <!--Secondary Contact form-->
+    <table ng-if="contactSelected == 'secondaryContact'">
+        <tr>
+            <th style="width: 40%;">
+                <label class="eoko-label-text-field" for="secondaryfirstname">First Name</label><br>
+                <input ng-model="info.secondaryfirstname" style="width: 100%" type="text" id="secondaryfirstname"
+                       name="secondaryfirstname"><br>
 
-		    <label for="faxnumber">Fax Number</label>
-		    <input ng-model="info.faxnumber" type="tel" id="faxnumber" name="faxnumber" placeholder="Your Fax Number">
-	    </th>
-	    <th>
-	    	<h2 style="margin-left: -33px;">Secondary Contact</h2>
-		    <label for="secondaryfirstname">First Name</label>
-		    <input ng-model="info.secondaryfirstname" type="text" id="secondaryfirstname" name="secondaryfirstname" placeholder="First Name">
+                <label class="eoko-label-text-field" for="secondarylastname">Last Name</label><br>
+                <input ng-model="info.secondarylastname" style="width: 100%" type="text" id="secondarylastname"
+                       name="secondarylastname"><br>
 
-		    <label for="secondarylastname">Last Name</label>
-		    <input ng-model="info.secondarylastname" type="text" id="secondarylastname" name="secondarylastname" placeholder="Last Name">
+                <label class="eoko-label-text-field" for="secondarytitle">Title or Position</label><br>
+                <input ng-model="info.secondarytitle" style="width: 100%" type="text" id="secondarytitle"
+                       name="secondarytitle"><br>
+            </th>
+            <th style="width: 40%;">
+                <label class="eoko-label-text-field" for="secondaryemail">Email</label><br>
+                <input ng-model="info.secondaryemail" style="width: 100%" type="email" id="secondaryemail"
+                       name="secondaryemail"><br>
 
-		    <label for="secondarytitle">Title or Position</label>
-		    <input ng-model="info.secondarytitle" type="text" id="secondarytitle" name="secondarytitle" placeholder="Title or Position">
+                <label class="eoko-label-text-field" for="secondaryphonenumber">Contact Number</label><br>
+                <input ng-model="info.secondaryphonenumber" style="width: 100%" type="tel" id="secondaryphonenumber"
+                       name="secondaryphonenumber"><br>
 
-		    <br><br>
+                <label class="eoko-label-text-field" for="secondaryfaxnumber">Fax Number</label><br>
+                <input ng-model="info.secondaryfaxnumber" style="width: 100%" type="tel" id="secondaryfaxnumber"
+                       name="secondaryfaxnumber"><br>
+            </th>
+        </tr>
+    </table>
+    <button class="eoko-button-sign-up-next" style="float: right" ng-click="goToCompanyAccount()">Next</button>
+</form>
 
-		    <label for="secondaryemail">Email</label>
-		    <input ng-model="info.secondaryemail" type="email" id="secondaryemail" name="secondaryemail" placeholder="Email">
 
-		    <label for="secondaryphonenumber">Contact Number</label>
-		    <input ng-model="info.secondaryphonenumber" type="tel" id="secondaryphonenumber" name="secondaryphonenumber" placeholder="Contact Number">
+<!--Company Account form-->
+<form ng-if="tabSelected == 'companyAccount'" style="margin: 0 auto; text-align: center">
+    <label class="eoko-label-text-field" for="password">Password*</label><br>
+    <input ng-model="signed.password" ng-change="checkMatch()" type="password" id="password" name="password" required>
+    <div id="matching_indicator" class="eoko-text-field-not-matching-password"></div>
+    <br>
 
-		    <label for="secondaryfaxnumber">Fax Number</label>
-		    <input ng-model="info.secondaryfaxnumber" type="tel" id="secondaryfaxnumber" name="secondaryfaxnumber" placeholder="Fax Number">
-	    </th>
-	  </tr>
-	</table>
 
-	<hr>
-    
-	<div style="margin:0 23%">
-    <label for="password">Password*</label>
-    <input ng-model="signed.password" ng-change="checkMatch()" type="password" id="password" name="password" placeholder="Password"><span class="passcheck" ng-if="matching">✓</span>
+    <label class="eoko-label-text-field" for="confirmpass">Confirm Password*</label><br>
+    <input ng-model="signed.matching" ng-change="checkMatch()" type="password" id="confirmpass" name="confirmpass"
+           required>
+    <div id="matching_indicator2" class="eoko-text-field-not-matching-password"></div>
+    <br>
 
-    <label for="confirmpass">Confirm Password*</label>
-    <input ng-model="signed.matching" ng-change="checkMatch()" type="password" id="confirmpass" name="confirmpass" placeholder="Confirm Password"><span class="passcheck" ng-if="matching">✓</span>
-    </div>
+    <button class="eoko-button-sign-up-next" ng-disabled="!matching" ng-click="submitInfo()">Sign Up</button>
+</form>
 
-  	<!-- <p style="float:right;">* fields are required</p> -->
-  	<div >
-	    <button style="margin: 0 auto;" class="button" ng-disabled="!matching" ng-click="submitInfo()" ><span>Sign Up</span></button>
-    </div>
-    <br><br><br>
-  </form>
+<form ng-if="thankyou == false" style="margin:0 10%">
+</form>
 
 
   

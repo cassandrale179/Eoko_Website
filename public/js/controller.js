@@ -51,62 +51,180 @@ angular.module('app.controllers', [])
                 return result;
             }
 
-            $scope.checkMatch = function () {
-                if ($scope.signed.password == "" || $scope.signed.password == " ") {
-                    $scope.matching = false;
-                }
-                else {
-                    $scope.matching = angular.equals($scope.signed.password, $scope.signed.matching);
+
+            //keep track of selected tab
+            $scope.tabSelected = "companyInfo";
+            $scope.selectCompanyInformation = function(){
+                $scope.tabSelected = "companyInfo";
+
+                document.getElementById("companyInfo").className = "eoko-button-nav-active";
+                document.getElementById("circle1").className = "eoko-element-signup-phase-active";
+
+                document.getElementById("companyContact").className = "eoko-button-nav-nonactive";
+                document.getElementById("circle2").className = "eoko-element-signup-phase-nonactive";
+
+                document.getElementById("companyAccount").className = "eoko-button-nav-nonactive";
+                document.getElementById("circle3").className = "eoko-element-signup-phase-nonactive";
+            }
+
+            $scope.selectCompanyContact = function(){
+                if(checkValidInputCompanyInfo()){
+                    $scope.tabSelected = "companyContact";
+
+                    document.getElementById("companyInfo").className = "eoko-button-nav-nonactive";
+                    document.getElementById("circle1").className = "eoko-element-signup-phase-nonactive";
+
+                    document.getElementById("companyContact").className = "eoko-button-nav-active";
+                    document.getElementById("circle2").className = "eoko-element-signup-phase-active";
+
+                    document.getElementById("companyAccount").className = "eoko-button-nav-nonactive";
+                    document.getElementById("circle3").className = "eoko-element-signup-phase-nonactive";
+                }else{
+                    $scope.errorpopup = "Please enter Company Information First";
                 }
 
+            }
+
+            $scope.selectCompanyAccount = function(){
+                if(checkValidInputCompanyInfo() && checkValidInputContact()) {
+                    $scope.tabSelected = "companyAccount";
+
+                    document.getElementById("companyInfo").className = "eoko-button-nav-nonactive";
+                    document.getElementById("circle1").className = "eoko-element-signup-phase-nonactive";
+
+                    document.getElementById("companyContact").className = "eoko-button-nav-nonactive";
+                    document.getElementById("circle2").className = "eoko-element-signup-phase-nonactive";
+
+                    document.getElementById("companyAccount").className = "eoko-button-nav-active";
+                    document.getElementById("circle3").className = "eoko-element-signup-phase-active";
+                }
+                else{
+                    $scope.errorpopup = "Please enter Company Information and/or Company Contact First";
+                }
+            }
+
+
+            //Company Information Tab form
+            $scope.goToCompanyContact = function(){
+                if(checkValidInputCompanyInfo())
+                    $scope.selectCompanyContact();
+            }
+            function checkValidInputCompanyInfo(){
+                if ($scope.info.companyName === "" || $scope.info.companyName === " ") {
+                    $scope.errorpopup = "Please enter the Company Name";
+                    return false;
+                }else if ($scope.info.address === "" || $scope.info.address === " ") {
+                    $scope.errorpopup = "Please enter the Company Address";
+                    return false;
+                }else if ($scope.info.city === "" || $scope.info.city === " ") {
+                    $scope.errorpopup = "Please enter the City";
+                    return false;
+                }else if ($scope.info.zip === "" || $scope.info.zip === " ") {
+                    $scope.errorpopup = "Please enter the Zip";
+                    return false;
+                }else if ($scope.info.state === "" || $scope.info.state === " ") {
+                    $scope.errorpopup = "Please enter the State";
+                    return false;
+                }else if ($scope.info.password === "" || $scope.info.password === " ") {
+                    $scope.errorpopup = "Please enter your Password";
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+
+
+            //Company Contact Tab form
+            $scope.addedAnotherContact = false;
+            $scope.contactSelected = 'primaryContact';
+            $scope.selectPrimaryContact = function (){
+                $scope.contactSelected = 'primaryContact';
+                document.getElementById("primaryContact").className = "eoko-label-header-2-selected";
+                document.getElementById("secondaryContact").className = "eoko-label-header-2-not-selected";
+            }
+            $scope.selectSecondaryContact = function (){
+                if($scope.addedAnotherContact){
+                    $scope.errorpopup = "";
+                    $scope.contactSelected = 'secondaryContact';
+                    document.getElementById("primaryContact").className = "eoko-label-header-2-not-selected";
+                    document.getElementById("secondaryContact").className = "eoko-label-header-2-selected";
+                }else{
+                    $scope.errorpopup = "Please enter your Primary Contact first";
+                }
+            }
+            $scope.addSecondaryContact = function(){
+                if(checkValidInputContact()) {
+                    $scope.errorpopup = "";
+                    $scope.contactSelected = 'secondaryContact';
+                    document.getElementById("primaryContact").className = "eoko-label-header-2-not-selected";
+                    document.getElementById("secondaryContact").className = "eoko-label-header-2-selected";
+                    if ($scope.info.secondaryfirstname !== "" ||
+                        $scope.info.secondaryfirstname !== " " ||
+                        $scope.info.secondarylastname !== "" ||
+                        $scope.info.secondarylastname !== " " ||
+                        $scope.info.secondaryemail !== "" ||
+                        $scope.info.secondaryemail !== " " ||
+                        $scope.info.secondaryphonenumber !== "" ||
+                        $scope.info.secondaryphonenumber !== " ") {
+                        $scope.addedAnotherContact = true;
+                    }
+                }else{
+                    $scope.errorpopup = "Please enter your Primary Contact first";
+                }
+            }
+            $scope.goToCompanyAccount = function (){
+                if(checkValidInputContact())
+                    $scope.selectCompanyAccount();
+            }
+            function checkValidInputContact(){
+                if ($scope.info.firstname === "" || $scope.info.firstname === " ") {
+                    $window.scrollTo(0, 0);
+                    $scope.errorpopup = "Please enter your First Name";
+                    return false;
+                }else if ($scope.info.lastname === "" || $scope.info.lastname === " ") {
+                    $window.scrollTo(0, 0);
+                    $scope.errorpopup = "Please enter your Last Name";
+                    return false;
+                }else if ($scope.info.email === "" || $scope.info.email === " ") {
+                    $window.scrollTo(0, 0);
+                    $scope.errorpopup = "Please enter your email";
+                    return false;
+                }else if ($scope.info.phonenumber === "" || $scope.info.phonenumber === " ") {
+                    $window.scrollTo(0, 0);
+                    $scope.errorpopup = "Please enter your Contact Number";
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+
+            //check weather Password nd Confirm Password matches
+            $scope.checkMatch = function () {
+                if ($scope.signed.password === "" || $scope.signed.password === " ") {
+                    $scope.matching = false;
+                    document.getElementById("matching_indicator").className = "eoko-text-field-not-matching-password";
+                    document.getElementById("matching_indicator2").className = "eoko-text-field-not-matching-password";
+                }else if($scope.signed.matching === "" || $scope.signed.matching === " "){
+                    $scope.matching = false;
+                    document.getElementById("matching_indicator").className = "eoko-text-field-not-matching-password";
+                    document.getElementById("matching_indicator2").className = "eoko-text-field-not-matching-password";
+                }else {
+                    if ($scope.signed.password === $scope.signed.matching){
+                        $scope.matching = true;
+                        document.getElementById("matching_indicator").className = "eoko-text-field-matching-password";
+                        document.getElementById("matching_indicator2").className = "eoko-text-field-matching-password";
+
+                    }else{
+                        $scope.matching = false;
+                        document.getElementById("matching_indicator").className = "eoko-text-field-not-matching-password";
+                        document.getElementById("matching_indicator2").className = "eoko-text-field-not-matching-password";
+                    }
+                }
             };
 
 
             $scope.submitInfo = function () {
-                $window.scrollTo(0, 0);
-                if ($scope.info.firstname == "" || $scope.info.firstname == " ") {
-                    $scope.errorpopup = "Please enter your First Name";
-                    return;
-                }
-                if ($scope.info.lastname == "" || $scope.info.lastname == " ") {
-                    $scope.errorpopup = "Please enter your Last Name";
-                    return;
-                }
-                if ($scope.info.email == "" || $scope.info.email == " ") {
-                    $scope.errorpopup = "Please enter your email";
-                    return;
-                }
-                if ($scope.info.phonenumber == "" || $scope.info.phonenumber == " ") {
-                    $scope.errorpopup = "Please enter your Contact Number";
-                    return;
-                }
-                if ($scope.info.companyName == "" || $scope.info.companyName == " ") {
-                    $scope.errorpopup = "Please enter the Company Name";
-                    return;
-                }
-                if ($scope.info.address == "" || $scope.info.address == " ") {
-                    $scope.errorpopup = "Please enter the Company Address";
-                    return;
-                }
-                if ($scope.info.city == "" || $scope.info.city == " ") {
-                    $scope.errorpopup = "Please enter the City";
-                    return;
-                }
-                if ($scope.info.zip == "" || $scope.info.zip == " ") {
-                    $scope.errorpopup = "Please enter the Zip";
-                    return;
-                }
-                if ($scope.info.state == "" || $scope.info.state == " ") {
-                    $scope.errorpopup = "Please enter the State";
-                    return;
-                }
-                if ($scope.info.password == "" || $scope.info.password == " ") {
-                    $scope.errorpopup = "Please enter your Password";
-                    return;
-                }
-
-
-                console.log("button clicked, submitting");
+                console.log("signupPageCtrl: button clicked, submitting");
                 try {
                     $scope.buildingcode = randomString(8, alphanum);
                     firebase.auth().createUserWithEmailAndPassword($scope.info.email, $scope.signed.password)
@@ -115,10 +233,8 @@ angular.module('app.controllers', [])
                             usr.updateProfile({
                                 displayName: $scope.buildingcode
                             })
-
                             firebase.database().ref('Buildings').child($scope.buildingcode).child('Admin/Users').child(usr.uid).set($scope.info).then(function (success) {
-
-                                console.log("thanks!");
+                                console.log("signupPageCtrl: thanks!");
                                 $scope.thankyou = true;
                                 $timeout(function () {
                                     $scope.$apply();
@@ -127,28 +243,23 @@ angular.module('app.controllers', [])
                                     $scope.thankyou = false;
                                     $state.go('home');
                                 }, 6000);
-
                             }, function (fail) {
                                 $scope.errorpopup = "email was typed incorrectly";
-                                console.log("error:", fail);
+                                console.log("signupPageCtrl: error:", fail);
                                 return;
-
                             });
-
                         }, function (fail) {
-                            if (fail.code == "auth/weak-password") {
+                            if (fail.code === "auth/weak-password") {
                                 $scope.errorpopup = "Password should be at least 6 characters";
                                 return;
                             }
                         });
-
                 } catch (err) {
                     $scope.errorpopup = "email was typed incorrectly";
                     //console.log("error:",fail);
                     return;
                 }
             };
-
         }])
 
 
