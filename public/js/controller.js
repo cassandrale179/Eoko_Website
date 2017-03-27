@@ -54,7 +54,7 @@ angular.module('app.controllers', [])
 
             //keep track of selected tab
             $scope.tabSelected = "companyInfo";
-            $scope.selectCompanyInformation = function(){
+            $scope.selectCompanyInformation = function () {
                 $scope.tabSelected = "companyInfo";
 
                 document.getElementById("companyInfo").className = "eoko-button-nav-active";
@@ -67,8 +67,8 @@ angular.module('app.controllers', [])
                 document.getElementById("circle3").className = "eoko-element-signup-phase-nonactive";
             }
 
-            $scope.selectCompanyContact = function(){
-                if(checkValidInputCompanyInfo()){
+            $scope.selectCompanyContact = function () {
+                if (checkValidInputCompanyInfo()) {
                     $scope.tabSelected = "companyContact";
 
                     document.getElementById("companyInfo").className = "eoko-button-nav-nonactive";
@@ -79,14 +79,14 @@ angular.module('app.controllers', [])
 
                     document.getElementById("companyAccount").className = "eoko-button-nav-nonactive";
                     document.getElementById("circle3").className = "eoko-element-signup-phase-nonactive";
-                }else{
+                } else {
                     $scope.errorpopup = "Please enter Company Information First";
                 }
 
             }
 
-            $scope.selectCompanyAccount = function(){
-                if(checkValidInputCompanyInfo() && checkValidInputContact()) {
+            $scope.selectCompanyAccount = function () {
+                if (checkValidInputCompanyInfo() && checkValidInputContact()) {
                     $scope.tabSelected = "companyAccount";
 
                     document.getElementById("companyInfo").className = "eoko-button-nav-nonactive";
@@ -98,37 +98,37 @@ angular.module('app.controllers', [])
                     document.getElementById("companyAccount").className = "eoko-button-nav-active";
                     document.getElementById("circle3").className = "eoko-element-signup-phase-active";
                 }
-                else{
+                else {
                     $scope.errorpopup = "Please enter Company Information and/or Company Contact First";
                 }
             }
 
 
             //Company Information Tab form
-            $scope.goToCompanyContact = function(){
-                if(checkValidInputCompanyInfo())
+            $scope.goToCompanyContact = function () {
+                if (checkValidInputCompanyInfo())
                     $scope.selectCompanyContact();
             }
-            function checkValidInputCompanyInfo(){
+            function checkValidInputCompanyInfo() {
                 if ($scope.info.companyName === "" || $scope.info.companyName === " ") {
                     $scope.errorpopup = "Please enter the Company Name";
                     return false;
-                }else if ($scope.info.address === "" || $scope.info.address === " ") {
+                } else if ($scope.info.address === "" || $scope.info.address === " ") {
                     $scope.errorpopup = "Please enter the Company Address";
                     return false;
-                }else if ($scope.info.city === "" || $scope.info.city === " ") {
+                } else if ($scope.info.city === "" || $scope.info.city === " ") {
                     $scope.errorpopup = "Please enter the City";
                     return false;
-                }else if ($scope.info.zip === "" || $scope.info.zip === " ") {
+                } else if ($scope.info.zip === "" || $scope.info.zip === " ") {
                     $scope.errorpopup = "Please enter the Zip";
                     return false;
-                }else if ($scope.info.state === "" || $scope.info.state === " ") {
+                } else if ($scope.info.state === "" || $scope.info.state === " ") {
                     $scope.errorpopup = "Please enter the State";
                     return false;
-                }else if ($scope.info.password === "" || $scope.info.password === " ") {
+                } else if ($scope.info.password === "" || $scope.info.password === " ") {
                     $scope.errorpopup = "Please enter your Password";
                     return false;
-                }else{
+                } else {
                     return true;
                 }
             }
@@ -137,23 +137,23 @@ angular.module('app.controllers', [])
             //Company Contact Tab form
             $scope.addedAnotherContact = false;
             $scope.contactSelected = 'primaryContact';
-            $scope.selectPrimaryContact = function (){
+            $scope.selectPrimaryContact = function () {
                 $scope.contactSelected = 'primaryContact';
                 document.getElementById("primaryContact").className = "eoko-label-header-2-selected";
                 document.getElementById("secondaryContact").className = "eoko-label-header-2-not-selected";
             }
-            $scope.selectSecondaryContact = function (){
-                if($scope.addedAnotherContact){
+            $scope.selectSecondaryContact = function () {
+                if ($scope.addedAnotherContact) {
                     $scope.errorpopup = "";
                     $scope.contactSelected = 'secondaryContact';
                     document.getElementById("primaryContact").className = "eoko-label-header-2-not-selected";
                     document.getElementById("secondaryContact").className = "eoko-label-header-2-selected";
-                }else{
+                } else {
                     $scope.errorpopup = "Please enter your Primary Contact first";
                 }
             }
-            $scope.addSecondaryContact = function(){
-                if(checkValidInputContact()) {
+            $scope.addSecondaryContact = function () {
+                if (checkValidInputContact()) {
                     $scope.errorpopup = "";
                     $scope.contactSelected = 'secondaryContact';
                     document.getElementById("primaryContact").className = "eoko-label-header-2-not-selected";
@@ -168,32 +168,32 @@ angular.module('app.controllers', [])
                         $scope.info.secondaryphonenumber !== " ") {
                         $scope.addedAnotherContact = true;
                     }
-                }else{
+                } else {
                     $scope.errorpopup = "Please enter your Primary Contact first";
                 }
             }
-            $scope.goToCompanyAccount = function (){
-                if(checkValidInputContact())
+            $scope.goToCompanyAccount = function () {
+                if (checkValidInputContact())
                     $scope.selectCompanyAccount();
             }
-            function checkValidInputContact(){
+            function checkValidInputContact() {
                 if ($scope.info.firstname === "" || $scope.info.firstname === " ") {
                     $window.scrollTo(0, 0);
                     $scope.errorpopup = "Please enter your First Name";
                     return false;
-                }else if ($scope.info.lastname === "" || $scope.info.lastname === " ") {
+                } else if ($scope.info.lastname === "" || $scope.info.lastname === " ") {
                     $window.scrollTo(0, 0);
                     $scope.errorpopup = "Please enter your Last Name";
                     return false;
-                }else if ($scope.info.email === "" || $scope.info.email === " ") {
+                } else if ($scope.info.email === "" || $scope.info.email === " ") {
                     $window.scrollTo(0, 0);
                     $scope.errorpopup = "Please enter your email";
                     return false;
-                }else if ($scope.info.phonenumber === "" || $scope.info.phonenumber === " ") {
+                } else if ($scope.info.phonenumber === "" || $scope.info.phonenumber === " ") {
                     $window.scrollTo(0, 0);
                     $scope.errorpopup = "Please enter your Contact Number";
                     return false;
-                }else{
+                } else {
                     return true;
                 }
             }
@@ -204,17 +204,17 @@ angular.module('app.controllers', [])
                     $scope.matching = false;
                     document.getElementById("matching_indicator").className = "eoko-text-field-not-matching-password";
                     document.getElementById("matching_indicator2").className = "eoko-text-field-not-matching-password";
-                }else if($scope.signed.matching === "" || $scope.signed.matching === " "){
+                } else if ($scope.signed.matching === "" || $scope.signed.matching === " ") {
                     $scope.matching = false;
                     document.getElementById("matching_indicator").className = "eoko-text-field-not-matching-password";
                     document.getElementById("matching_indicator2").className = "eoko-text-field-not-matching-password";
-                }else {
-                    if ($scope.signed.password === $scope.signed.matching){
+                } else {
+                    if ($scope.signed.password === $scope.signed.matching) {
                         $scope.matching = true;
                         document.getElementById("matching_indicator").className = "eoko-text-field-matching-password";
                         document.getElementById("matching_indicator2").className = "eoko-text-field-matching-password";
 
-                    }else{
+                    } else {
                         $scope.matching = false;
                         document.getElementById("matching_indicator").className = "eoko-text-field-not-matching-password";
                         document.getElementById("matching_indicator2").className = "eoko-text-field-not-matching-password";
@@ -283,26 +283,27 @@ angular.module('app.controllers', [])
                 console.log("loginPageCtrl: Logging in");
 
                 firebase.auth().signInWithEmailAndPassword($scope.info.email, $scope.info.password).then(function (resolve) {
-                    console.log("loginPageCtrl: Logged in!");
-                    var usr = firebase.auth().currentUser;
-                    var ref = firebase.database().ref("Buildings").child(usr.displayName).child('Admin');
+                        console.log("loginPageCtrl: Logged in!");
+                        var usr = firebase.auth().currentUser;
+                        var ref = firebase.database().ref("Buildings").child(usr.displayName).child('Admin');
 
-                    //check whether the user is an admin
-                    ref.child(usr.uid).once("value").then(function (snapshot) {
-                        console.log(snapshot.val());
-                        console.log(usr.displayName, usr);
-                        $state.go('portal');
-                        if (snapshot.val() == null) {
-                            $scope.errorpopup = "Only Administrators can use this portal"+
-                                                "If you are an Administrator, please try again.";
-                            return;
-                        }
-                    });},
+                        //check whether the user is an admin
+                        ref.child(usr.uid).once("value").then(function (snapshot) {
+                            console.log(snapshot.val());
+                            console.log(usr.displayName, usr);
+                            $state.go('portal');
+                            if (snapshot.val() == null) {
+                                $scope.errorpopup = "Only Administrators can use this portal" +
+                                    "If you are an Administrator, please try again.";
+                                return;
+                            }
+                        });
+                    },
                     function (error) {
                         console.log(error);
                         $scope.errorpopup = error.message;
                         return;
-                });
+                    });
             };
         }])
 

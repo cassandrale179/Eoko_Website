@@ -1,122 +1,132 @@
 <div>
     <img src="img/logo.png" style="height:161px;margin:0;">
 
-
-
-      <ul style="width:550px;margin:0 auto;margin-top:-100px">
+    <!--top horizontal navigation bar-->
+    <ul style="width:550px;margin:0 auto;margin-top:-100px">
         <li><a ng-click="selector(0)">Events</a></li>
         <li><a ng-click="selector(1)">Surveys</a></li>
         <li><a ng-click="selector(2)">Comments</a></li>
-      </ul>
+    </ul>
 </div>
 
+<!--vertical navigation bar-->
+<ul style="float:left">
+    <li style="display:block;"><a ng-click="selector(3)">Residents</a></li>
+    <li style="display:block;"><a ng-click="selector(4)">Approve</a></li>
+      <li style="display:block;"><a ng-click="selector(5)">Statistics</a></li>
+    <li style="display:block;"><a ng-click="selector(6)">Ranking</a></li>
+</ul>
 
-      <ul style="float:left">
-        <li style="display:block;"><a ng-click="selector(3)">Residents</a></li>
-        <li style="display:block;"><a ng-click="selector(4)">Approve</a></li>
-       <!--  <li style="display:block;"><a ng-click="selector(5)">Statistics</a></li> -->
-        <li style="display:block;"><a ng-click="selector(6)">Ranking</a></li>
-      </ul>
 
- <h2>{{selection.tab}}</h2>
-     <div class="mainLoad">
+<h2>{{selection.tab}}</h2>
 
-        
-<!--Tab for Residents-->
-        <div ng-if="selection.tab == 'Residents'">
-          <div ng-if="userData.length == 0" class="eoko-text-button-nav" style="text-align:center;">No Users signed up!</div>
 
-          <div ng-repeat="user in userData" class="item-thumbnail-left"
-                    style="background-color:rgba(0,0,0,0);border:1px solid #aaa3a8;border-radius:33px;margin:33px;display:inline-block;width: 278px;">
+<div class="mainLoad">
+    <!--Tab for Residents-->
+    <div ng-if="selection.tab == 'Residents'">
+        <div ng-if="userData.length == 0" class="eoko-text-button-nav" style="text-align:center;">No Users signed up!
+        </div>
+
+        <div ng-repeat="user in userData" class="item-thumbnail-left"
+             style="background-color:rgba(0,0,0,0);border:1px solid #aaa3a8;border-radius:33px;margin:33px;display:inline-block;width: 278px;">
 
             <div class="eoko-notification-avatar" style="background-image: url({{user.avatar}});"></div>
             <h2 class="eoko-text-thin" style="color: white;font-size: 25px">{{user.name}}</h2>
             <p class="eoko-text-ultralight" style="color: white;display: inline; font-size: 15px;">
-              {{user.email}}
-              <br>Events created: {{user.eventCount}}
-              <br>Surveys taken: {{user.surveyCount}}
-            </p>
-            </div>
-        </div>
-
-
-<!--Tab for Approved-->
-        <div ng-if="selection.tab == 'Approve'">
-          <div ng-if="userData.length == 0" class="eoko-text-button-nav" style="text-align:center;">No Users to Approve/Deny Access!</div>
-
-          <div ng-if="user.adminConfirmed == 'false'" ng-repeat="user in userData" class="item-thumbnail-left"
-                    style="background-color:rgba(0,0,0,0);border:1px solid #aaa3a8;border-radius:33px;margin:33px;">
-
-              <div class="eoko-notification-avatar" style="background-image: url({{user.avatar}});"></div>
-              <h2 class="eoko-text-thin" style="color: white;font-size: 25px">{{user.name}}</h2>
-              <p class="eoko-text-ultralight" style="color: white;display: inline; font-size: 15px;">
                 {{user.email}}
                 <br>Events created: {{user.eventCount}}
                 <br>Surveys taken: {{user.surveyCount}}
-              </p>
-              <div class="approveDiv">
-                  <button ng-click="denyUser(user)" class="eoko-button-action-event-join eoko-text-thin">
-                    Deny
-                  </button>
-                  <button ng-click="approveUser(user)" class="eoko-button-action-event-join eoko-text-thin">
-                    Approve
-                  </button>
-              </div>
-            </div>
+            </p>
+        </div>
+    </div>
+
+
+    <!--Tab for Approved-->
+    <div ng-if="selection.tab == 'Approve'">
+        <div ng-if="userData.length == 0" class="eoko-text-button-nav" style="text-align:center;">No Users to
+            Approve/Deny Access!
         </div>
 
+        <div ng-if="user.adminConfirmed == 'false'" ng-repeat="user in userData" class="item-thumbnail-left"
+             style="background-color:rgba(0,0,0,0);border:1px solid #aaa3a8;border-radius:33px;margin:33px;">
 
-<!--Tab for Events-->
-        <div ng-if="selection.tab == 'Events'">
+            <div class="eoko-notification-avatar" style="background-image: url({{user.avatar}});"></div>
+            <h2 class="eoko-text-thin" style="color: white;font-size: 25px">{{user.name}}</h2>
+            <p class="eoko-text-ultralight" style="color: white;display: inline; font-size: 15px;">
+                {{user.email}}
+                <br>Events created: {{user.eventCount}}
+                <br>Surveys taken: {{user.surveyCount}}
+            </p>
+            <div class="approveDiv">
+                <button ng-click="denyUser(user)" class="eoko-button-action-event-join eoko-text-thin">
+                    Deny
+                </button>
+                <button ng-click="approveUser(user)" class="eoko-button-action-event-join eoko-text-thin">
+                    Approve
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Tab for Events-->
+    <div ng-if="selection.tab == 'Events'">
 
         <div ng-if="errorpopup != '' && eventsubmitted == false " class="button errormessage">{{errorpopup}}</div>
 
         <p ng-if="eventsubmitted == true">Building Event Submitted!</p>
         <div ng-if="eventsubmitted == false">
             <!--Action Catagory-->
-            <label  name="eventCatagory">
-              <input id="ed_labelCategory" type="text" placeholder="Category" style="font-size: 1.6em"
-                     class="eoko-input eoko-text-thin" ng-model="event.category"
-                     required="">
+            <label name="eventCatagory">
+                <input id="ed_labelCategory" type="text" placeholder="Category" style="font-size: 1.6em"
+                       class="eoko-input eoko-text-thin" ng-model="event.category"
+                       required="">
             </label>
 
             <!--Action title-->
             <label name="eventTitle">
-              <input id="ed_labelTitle" type="text" placeholder="Action Name" style="font-size: 1.6em;"
-                     class="eoko-input eoko-text-thin" ng-model="event.title"
-                     required="">
+                <input id="ed_labelTitle" type="text" placeholder="Action Name" style="font-size: 1.6em;"
+                       class="eoko-input eoko-text-thin" ng-model="event.title"
+                       required="">
             </label>
 
             <!--Action Location-->
             <label name="eventLocation">
-              <input id="ed_labelLocation" type="text" placeholder="Location" style="font-size: 1.6em"
-                     class="eoko-input eoko-text-thin" ng-model="event.location"
-                     required="">
+                <input id="ed_labelLocation" type="text" placeholder="Location" style="font-size: 1.6em"
+                       class="eoko-input eoko-text-thin" ng-model="event.location"
+                       required="">
             </label>
 
             <!--Action Date/Time-->
             <label name="eventDateTime">
-              <table>
-                <tr>
-                  <th style="padding:5px;"><input id="ed_labelD" type="date" placeholder="Date" style="font-size: 1.1em;"
-                       class="eoko-input eoko-text-thin" ng-model="event.date" required=""></th>
-                  <th style="padding:5px;"><input id="ed_labelT" type="time" placeholder="Time" style="font-size: 1.1em;"
-                       class="eoko-input eoko-text-thin" ng-model="event.time" required=""></th>
-                </tr>
-              </table>
+                <table>
+                    <tr>
+                        <th style="padding:5px;"><input id="ed_labelD" type="date" placeholder="Date"
+                                                        style="font-size: 1.1em;"
+                                                        class="eoko-input eoko-text-thin" ng-model="event.date"
+                                                        required=""></th>
+                        <th style="padding:5px;"><input id="ed_labelT" type="time" placeholder="Time"
+                                                        style="font-size: 1.1em;"
+                                                        class="eoko-input eoko-text-thin" ng-model="event.time"
+                                                        required=""></th>
+                    </tr>
+                </table>
             </label>
 
             <label name="eventDescription">
-              <textarea placeholder="Description" style="width:100%;" ng-model="event.description" class="eoko-text-area eoko-text-input-form"></textarea>
+                <textarea placeholder="Description" style="width:100%;" ng-model="event.description"
+                          class="eoko-text-area eoko-text-input-form"></textarea>
             </label>
 
-            <button class="button" ng-click="submitEvent()" style="vertical-align:middle;position: absolute;left: 38%;margin-top: 33px;"><span>Submit</span></button>
-          </div>
+            <button class="button" ng-click="submitEvent()"
+                    style="vertical-align:middle;position: absolute;left: 38%;margin-top: 33px;"><span>Submit</span>
+            </button>
         </div>
+    </div>
 
 
-<!--Tab for Surveys-->
-        <div ng-if="selection.tab == 'Surveys'">
+    <!--Tab for Surveys-->
+    <div ng-if="selection.tab == 'Surveys'">
 
         <div ng-if="errorpopup != '' && surveysubmitted == false " class="button errormessage">{{errorpopup}}</div>
 
@@ -125,66 +135,67 @@
 
             <!--Survey title-->
             <label name="surveyTitle">
-              <input id="sur_labelTitle" type="text" placeholder="Survey Title" style="font-size: 1.6em;"
-                     class="eoko-input eoko-text-thin" ng-model="survey.title"
-                     required="">
+                <input id="sur_labelTitle" type="text" placeholder="Survey Title" style="font-size: 1.6em;"
+                       class="eoko-input eoko-text-thin" ng-model="survey.title"
+                       required="">
             </label>
 
             <label name="eventDescription">
-              <textarea placeholder="Optional survey Description" style="width:100%;" ng-model="survey.description" class="eoko-text-area eoko-text-input-form"></textarea>
+                <textarea placeholder="Optional survey Description" style="width:100%;" ng-model="survey.description"
+                          class="eoko-text-area eoko-text-input-form"></textarea>
             </label>
 
             <div ng-repeat="question in survey.questions track by $index">
-            <hr>
+                <hr>
                 <h3>Question {{$index + 1}}</h3>
-                <input type="text" placeholder="Question" 
-                  style="font-size: 1.6em;" class="eoko-input eoko-text-thin" 
-                  ng-model="question.title" >
+                <input type="text" placeholder="Question"
+                       style="font-size: 1.6em;" class="eoko-input eoko-text-thin"
+                       ng-model="question.title">
 
-                  <div ng-repeat="choice in question.choices track by $index">
-                    <input type="text" placeholder="Answer" class="eoko-input eoko-text-thin"  style="margin-left:33%;width:67%" ng-model="choice.answer">
-                  </div>
+                <div ng-repeat="choice in question.choices track by $index">
+                    <input type="text" placeholder="Answer" class="eoko-input eoko-text-thin"
+                           style="margin-left:33%;width:67%" ng-model="choice.answer">
+                </div>
 
-                  <div class="answerHolder">
-                    <button class="button buttonAddQuestion" ng-click="addCheckbox($index)" >+</button>
+                <div class="answerHolder">
+                    <button class="button buttonAddQuestion" ng-click="addCheckbox($index)">+</button>
 
-                    <button class="button buttonAddQuestion buttonRemove" ng-click="removeCheckbox($index)" >-</button>
-                  </div>
+                    <button class="button buttonAddQuestion buttonRemove" ng-click="removeCheckbox($index)">-</button>
+                </div>
             </div>
 
             <div class="answerHolder" style="left:0">
-                <button class="button buttonAddQuestion" ng-click="addQuestion()" >+</button>
+                <button class="button buttonAddQuestion" ng-click="addQuestion()">+</button>
 
-                <button class="button buttonAddQuestion buttonRemove" ng-click="removeQuestion()" >-</button>
+                <button class="button buttonAddQuestion buttonRemove" ng-click="removeQuestion()">-</button>
             </div>
 
-            <button class="button" ng-click="submitSurvey()" style="vertical-align:middle;position: absolute;left: 38%;margin-top: 33px;"><span>Submit</span></button>
-          </div>
+            <button class="button" ng-click="submitSurvey()"
+                    style="vertical-align:middle;position: absolute;left: 38%;margin-top: 33px;"><span>Submit</span>
+            </button>
+        </div>
+    </div>
+
+
+    <!--Tab for Ranking-->
+    <div ng-if="selection.tab == 'Ranking'">
+        <div ng-if="userData.length == 0" class="eoko-text-button-nav" style="text-align:center;">No Users signed up!
         </div>
 
+        <div ng-repeat="user in userData | orderBy : '-points' " class="item-thumbnail-left"
+             style="background-color:rgba(0,0,0,0);border:1px solid #aaa3a8;border-radius:33px;margin:33px;">
 
-<!--Tab for Ranking-->
-        <div ng-if="selection.tab == 'Ranking'">
-          <div ng-if="userData.length == 0" class="eoko-text-button-nav" style="text-align:center;">No Users signed up!</div>
-
-          <div ng-repeat="user in userData | orderBy : '-points' " class="item-thumbnail-left"
-                    style="background-color:rgba(0,0,0,0);border:1px solid #aaa3a8;border-radius:33px;margin:33px;">
-
-              <div class="eoko-notification-avatar" style="background-image: url({{user.avatar}});"></div>
-              <h2 class="eoko-text-thin" style="color: white;font-size: 25px">{{user.name}}</h2>
-              <p class="eoko-text-ultralight" style="color: white;display: inline; font-size: 15px;">
+            <div class="eoko-notification-avatar" style="background-image: url({{user.avatar}});"></div>
+            <h2 class="eoko-text-thin" style="color: white;font-size: 25px">{{user.name}}</h2>
+            <p class="eoko-text-ultralight" style="color: white;display: inline; font-size: 15px;">
                 {{user.email}}
                 <br><span style="font-weight:bold;font-size:18;">Points: {{user.points}}</span>
-                <br>Events created: {{user.eventCount}}  <span style="margin-left:33px;">Surveys taken: {{user.surveyCount}}</span> 
-              </p>
-            </div>
+                <br>Events created: {{user.eventCount}} <span style="margin-left:33px;">Surveys taken: {{user.surveyCount}}</span>
+            </p>
         </div>
+    </div>
 
 
-
-
-
-       
-     </div>
+</div>
 
   
