@@ -292,7 +292,7 @@ angular.module('app.controllers', [])
                             console.log(snapshot.val());
                             console.log(usr.displayName, usr);
                             $state.go('portal');
-                            if (snapshot.val() == null) {
+                            if (snapshot.val() === null) {
                                 $scope.errorpopup = "Only Administrators can use this portal" +
                                     "If you are an Administrator, please try again.";
                                 return;
@@ -317,7 +317,7 @@ angular.module('app.controllers', [])
             $scope.thankyou = false;
 
             $scope.submitFeeback = function () {
-                if ($scope.user.description == "" || $scope.user.description == " ") {
+                if ($scope.user.description === "" || $scope.user.description === " ") {
                     $scope.errorpopup = "Please enter some feedback";
                     return;
                 }
@@ -390,31 +390,55 @@ angular.module('app.controllers', [])
 
             $scope.userList = [];
 
-
             $scope.selection = {tab: "Residents"};
+
+            var previousSelectedTab = "residentsTab";
+            document.getElementById("residentsTab").className =  "eoko-nav-selected";
 
             $scope.selector = function (num) {
                 switch (num) {
                     case 0:
                         $scope.selection.tab = 'Events';
+                        document.getElementById(previousSelectedTab).className =  "";
+                        document.getElementById("eventsTab").className =  "eoko-nav-selected";
+                        previousSelectedTab = "eventsTab";
                         break;
                     case 1:
                         $scope.selection.tab = 'Surveys';
+                        document.getElementById(previousSelectedTab).className =  "";
+                        document.getElementById("surveysTab").className =  "eoko-nav-selected";
+                        previousSelectedTab = "surveysTab";
                         break;
                     case 2:
                         $scope.selection.tab = 'Comments';
+                        document.getElementById(previousSelectedTab).className =  "";
+                        document.getElementById("commentsTab").className =  "eoko-nav-selected";
+                        previousSelectedTab = "commentsTab";
                         break;
                     case 3:
                         $scope.selection.tab = 'Residents';
+                        document.getElementById(previousSelectedTab).className =  "";
+                        document.getElementById("residentsTab").className =  "eoko-nav-selected";
+                        previousSelectedTab = "residentsTab";
                         break;
                     case 4:
                         $scope.selection.tab = 'Approve';
+                        document.getElementById(previousSelectedTab).className =  "";
+                        document.getElementById("approveTab").className =  "eoko-nav-selected";
+                        previousSelectedTab = "approveTab";
                         break;
                     case 5:
                         $scope.selection.tab = 'Statistics';
+                        document.getElementById(previousSelectedTab).className =  "";
+                        document.getElementById("statisticsTab").className =  "eoko-nav-selected";
+                        previousSelectedTab = "statisticsTab";
                         break;
                     case 6:
                         $scope.selection.tab = 'Ranking';
+                        document.getElementById(previousSelectedTab).className =  "";
+                        document.getElementById("rankingTab").className =  "eoko-nav-selected";
+                        previousSelectedTab = "rankingTab";
+                        break;
                 }
                 console.log($scope.selection.tab);
             };
@@ -475,27 +499,27 @@ angular.module('app.controllers', [])
 
             $scope.submitEvent = function () {
                 console.log("event submit begin");
-                if ($scope.event.category == "" || $scope.event.category == " ") {
+                if ($scope.event.category === "" || $scope.event.category === " ") {
                     $scope.errorpopup = "Please enter at least one category";
                     return;
                 }
-                if ($scope.event.date == "" || $scope.event.date == " ") {
+                if ($scope.event.date === "" || $scope.event.date === " ") {
                     $scope.errorpopup = "Please enter the event date";
                     return;
                 }
-                if ($scope.event.location == "" || $scope.event.location == " ") {
+                if ($scope.event.location === "" || $scope.event.location === " ") {
                     $scope.errorpopup = "Please enter the event location";
                     return;
                 }
-                if ($scope.event.time == "" || $scope.event.time == " ") {
+                if ($scope.event.time === "" || $scope.event.time === " ") {
                     $scope.errorpopup = "Please enter the event time";
                     return;
                 }
-                if ($scope.event.description == "" || $scope.event.description == " ") {
+                if ($scope.event.description === "" || $scope.event.description === " ") {
                     $scope.errorpopup = "Please enter a description";
                     return;
                 }
-                if ($scope.event.title == "" || $scope.event.title == " ") {
+                if ($scope.event.title === "" || $scope.event.title === " ") {
                     $scope.errorpopup = "Please enter a title";
                     return;
                 }
@@ -582,21 +606,21 @@ angular.module('app.controllers', [])
             $scope.submitSurvey = function () {
                 console.log("survey submit begin");
 
-                if ($scope.survey.title == "" || $scope.survey.title == " ") {
+                if ($scope.survey.title === "" || $scope.survey.title === " ") {
                     $scope.errorpopup = "Please enter a title";
                     return;
                 }
-                if ($scope.survey.description == "" || $scope.survey.description == " ") {
+                if ($scope.survey.description === "" || $scope.survey.description === " ") {
                     $scope.errorpopup = "Please enter a description";
                     return;
                 }
-                if ($scope.survey.questions.length == 0) {
+                if ($scope.survey.questions.length === 0) {
                     $scope.errorpopup = "You must have at least 1 question to submit";
                     return;
                 }
 
                 for (var i in $scope.survey.questions) {
-                    if ($scope.survey.questions[i].title == "" || $scope.survey.questions[i].title == " ") {
+                    if ($scope.survey.questions[i].title === "" || $scope.survey.questions[i].title === " ") {
                         $scope.errorpopup = "Please fill out all fields";
                         return;
                     }
@@ -606,8 +630,8 @@ angular.module('app.controllers', [])
                     }
                     else {
                         for (var j in $scope.survey.questions[i].choices) {
-                            if ($scope.survey.questions[i].choices[j].answer == ""
-                                || $scope.survey.questions[i].choices[j].answer == " ") {
+                            if ($scope.survey.questions[i].choices[j].answer === ""
+                                || $scope.survey.questions[i].choices[j].answer === " ") {
                                 $scope.errorpopup = "Please fill out all fields";
                                 return;
                             }
@@ -654,5 +678,5 @@ angular.module('app.controllers', [])
             };
 
 
-        }])
+        }]);
 
