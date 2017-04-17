@@ -810,3 +810,35 @@ img.center {
     font-weight: 400;
     color: #FFFFFF;
 }
+
+
+
+/*-------SORRY BAO!! :D-----------*/
+
+.androidIcon{
+    background-image: url(../img/android-download.png);
+    width: 300px;
+    height: 100px;
+    display: inline-block;
+    opacity: 0.85;
+    border-radius: 33px;
+}
+
+.androidIcon:hover{
+    opacity: 1;
+    box-shadow:0px 0px 33px #f57c00;
+}
+
+.iphoneIcon{
+    background-image: url(../img/iphone-download.png);
+    width: 300px;
+    height: 100px;
+    display: inline-block;
+    opacity: 0.85;
+    border-radius: 33px;
+}
+
+.iphoneIcon:hover{
+    opacity: 1;
+    box-shadow:0px 0px 33px #f57c00;
+}
