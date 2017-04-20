@@ -394,7 +394,7 @@ angular.module('app.controllers', [])
             //-----------------------------
             //    NAVIGATION
 
-            $scope.selection = {tab: "Surveys"};
+            $scope.selection = {tab: "Residents"};
 
             var previousSelectedTab = "residentsTab";
             document.getElementById("residentsTab").className =  "eoko-nav-selected";
