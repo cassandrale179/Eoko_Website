@@ -3,6 +3,7 @@
 
     <!--top horizontal navigation bar-->
     <div class="eoko-wrapper-horizontal-nav">
+        <!--Eoko logo-->
         <div class="logo" ng-include src="'templates/icons/logo.html'"></div>
 
         <nav class="eoko-horizontal-nav">
@@ -93,12 +94,10 @@
             <!--Error Message-->
             <div ng-if="errorpopup != '' && eventsubmitted == false " class="eoko-popup-error-message">{{errorpopup}}</div>
 
-
-            <p ng-if="eventsubmitted == true">Building Event Submitted!</p>
+            <p ng-if="eventsubmitted == true" class="eoko-label-text-field">Building Event Submitted!</p>
             <div ng-if="eventsubmitted == false">
 
-                <div class="eoko-events-info-wrapper-1">
-
+                <div class="eoko-events-info-wrapper">
                     <!--Label wrapper-->
                     <div class="eoko-events-label-wrapper">
                         <!--Event Type-->
@@ -150,7 +149,7 @@
                         <input id="ed_labelLocation" type="text" style="width: 100%" class="eoko-text-thin" ng-model="event.location" required>
                         <!--Event Date/Time-->
                         <input id="ed_labelD" type="date" style="width: 60%;" class="eoko-text-thin" ng-model="event.date" required></th>
-                        <input id="ed_labelT" type="time" style="width: 40%;" class="eoko-text-thin" ng-model="event.time" required></th>
+                        <input id="ed_labelT" type="time" style="width: 50%;" class="eoko-text-thin" ng-model="event.time" required></th>
                     </div>
 
                     <!--Description wrapper-->
@@ -168,7 +167,8 @@
         <!--Tab for Surveys-->
         <div ng-if="selection.tab == 'Surveys'">
 
-            <div ng-if="errorpopup != '' && surveysubmitted == false " class="button errormessage">{{errorpopup}}</div>
+            <!--Error Message-->
+            <div ng-if="errorpopup != '' && surveysubmitted == false " class="eoko-popup-error-message">{{errorpopup}}</div>
 
             <p ng-if="surveysubmitted == true">Survey Submitted!</p>
             <div ng-if="surveysubmitted == false">

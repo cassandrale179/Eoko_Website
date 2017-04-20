@@ -105,28 +105,36 @@ footer {
     vertical-align: top;
 }
 
-
-
-
-
-
-/*-------------------------------------------
- *
- * SIGNUP.HTML
- *
-/*------------------------------------------*/
-
-/*-------------------------------------------*/
-/*
-* Input Text Field
-*
-*/
 ::-webkit-input-placeholder { /* WebKit browsers */
     font-family: "San Francisco Display Thin", serif;
     color: white;
     opacity: 1 !important;
 }
 
+.eoko-login-logo{
+    margin: 0 auto 30px auto;
+    height: 10%;
+    width: 30%;
+}
+
+.eoko-signup-logo{
+    margin: 0 auto 30px auto;
+    height: 10%;
+    width: 15%;
+}
+
+
+
+
+/*-------------------------------------------
+ *
+ * SIGN UP.HTML
+ *
+/*------------------------------------------*/
+
+/*-------------------------
+        Input Field
+ --------------------------*/
 input[type=text],
 input[type=email],
 input[type=tel],
@@ -153,6 +161,9 @@ select {
     display: none;
 }
 
+/*-------------------------
+        Check box
+ --------------------------*/
 .eoko-text-field-checkbox-box {
     position: absolute;
     top: 2px;
@@ -190,11 +201,16 @@ select {
     border-width: 0 2px 2px 0;
 }
 
-
+/*-------------------------
+        Submit button
+ --------------------------*/
 input[type=submit]:hover {
     background-color: #45a049;
 }
 
+/*-------------------------
+     Password Checking
+ --------------------------*/
 .eoko-text-field-matching-password{
     display: inline-block;
     width: 30px;
@@ -455,7 +471,7 @@ nav a:hover{
       Events Tab
  --------------------------*/
 
-.eoko-events-info-wrapper-1{
+.eoko-events-info-wrapper{
 
 }
 
