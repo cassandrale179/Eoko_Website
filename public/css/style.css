@@ -109,6 +109,114 @@ footer {
 
 
 
+
+/*-------------------------------------------
+ *
+ * SIGNUP.HTML
+ *
+/*------------------------------------------*/
+
+/*-------------------------------------------*/
+/*
+* Input Text Field
+*
+*/
+::-webkit-input-placeholder { /* WebKit browsers */
+    font-family: "San Francisco Display Thin", serif;
+    color: white;
+    opacity: 1 !important;
+}
+
+input[type=text],
+input[type=email],
+input[type=tel],
+input[type=password],
+input[type=time],
+input[type=date],
+select {
+    font-family: "San Francisco Display Thin", serif;
+    font-size: 25px;
+    letter-spacing: 2.5px;
+    color: white;
+    width: 50%;
+    padding: 17px 40px;
+    margin: 10px auto;
+    display: inline-block;
+    border: none;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.eoko-label-text-field input {
+    position: absolute;
+    z-index: -1;
+    display: none;
+}
+
+.eoko-text-field-checkbox-box {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    background: #e6e6e6;
+}
+
+/* Checked state */
+.eoko-label-text-field input:checked ~ .eoko-text-field-checkbox-box {
+    background: #F57C00;
+}
+
+/* Check mark */
+.eoko-text-field-checkbox-box:after {
+    position: absolute;
+    display: none;
+    content: '';
+}
+
+/* Show check mark */
+.eoko-label-text-field input:checked ~ .eoko-text-field-checkbox-box:after {
+    display: block;
+}
+
+/* Checkbox tick */
+.eoko-text-field-checkbox .eoko-text-field-checkbox-box:after {
+    top: 2px;
+    left: 10px;
+    width: 5px;
+    height: 15px;
+    transform: rotate(45deg);
+    border: solid #FFFFFF;
+    border-width: 0 2px 2px 0;
+}
+
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.eoko-text-field-matching-password{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: greenyellow;
+    border-radius: 30px;
+}
+
+.eoko-text-field-not-matching-password{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border-radius: 30px;
+}
+
+
+
+
+
+
+
 /*-------------------------------------------
  *
  * PORTAL.HTML
@@ -343,25 +451,159 @@ nav a:hover{
 }
 
 
+/*-------------------------
+      Events Tab
+ --------------------------*/
 
-
-
-
-
-
-
-
-
-
-
-/*-------------------------------------------*/
-/*
-* Text
-*
-*/
-.eoko-text-input-form{
+.eoko-events-info-wrapper-1{
 
 }
+
+.eoko-events-label-wrapper{
+    float: left;
+    width: 200px;
+    margin-right: 40px;
+}
+
+.eoko-events-input-wrapper{
+    float: left;
+    width: 500px;
+    margin-right: 40px;
+}
+
+.eoko-events-desc-wrapper{
+    float: left;
+    width: 300px;
+}
+
+.eoko-events-type-checkbox-wrapper{
+    margin-bottom: 20px;
+}
+
+.eoko-events-label{
+    float: right;
+    font-family: "San Francisco Display Medium", serif;
+    font-size: 30px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 27px;
+}
+
+.eoko-events-type-label{
+    font-family: "San Francisco Display Thin", serif;
+    font-size: 30px;
+    position: relative;
+    display: inline-block;
+    padding-left: 40px;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.eoko-events-desc-label{
+    float: left;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    font-family: "San Francisco Display Medium", serif;
+    font-size: 30px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/*for check box*/
+.eoko-events-type-label input{
+    position: absolute;
+    z-index: -1;
+    display: none;
+}
+
+.eoko-events-type-label-checkbox-box {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 35px;
+    height: 35px;
+    background: transparent;
+    border: 1px solid white;
+}
+
+/* Checked state */
+.eoko-events-type-label input:checked ~ .eoko-events-type-label-checkbox-box {
+    background: #F57C00;
+}
+
+/* Check mark */
+.eoko-events-type-label-checkbox-box:after {
+    position: absolute;
+    display: none;
+    content: '';
+}
+
+/* Show check mark */
+.eoko-events-type-label input:checked ~ .eoko-events-type-label-checkbox-box:after {
+    display: block;
+}
+
+/* Checkbox tick */
+.eoko-events-type-label-checkbox .eoko-events-type-label-checkbox-box:after {
+    top: 1px;
+    left: 10px;
+    width: 15px;
+    height: 25px;
+    transform: rotate(45deg);
+    border: solid #FFFFFF;
+    border-width: 0 2px 2px 0;
+}
+
+.eoko-text-area {
+    padding: 10px;
+    border-radius: 20px;
+    border: transparent;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.4);
+    height: 300px;
+    resize: none;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+/*category scroll*/
+.eoko-horizontal-scroll {
+    overflow-x: auto;
+    white-space: nowrap;
+    margin: 40px 0 20px 0;
+}
+
+.eoko-horizontal-scroll-button{
+    background: transparent;
+    border: 1px solid #F57C00;
+    border-radius: 25px;
+    width: 120px;
+    padding: 8px;
+    margin-left: 1px;
+    margin-right: 1px;
+    font-size: 20px;
+    color: #F57C00;
+}
+
+.eoko-horizontal-scroll-button-selected{
+    border: 1px solid #F57C00;
+    background: #F57C00;
+    border-radius: 25px;
+    margin-left: 1px;
+    margin-right: 1px;
+    width: 120px;
+    padding: 8px;
+    font-size: 20px;
+    color: white;
+}
+
+
+
+
+
 
 
 
@@ -403,100 +645,7 @@ nav a:hover{
 
 
 
-/*-------------------------------------------*/
-/*
-* Input Text Field
-*
-*/
-::-webkit-input-placeholder { /* WebKit browsers */
-    font-family: "San Francisco Display Thin", serif;
-    color: white;
-    opacity: 1 !important;
-}
 
-input[type=text],
-input[type=email],
-input[type=tel],
-input[type=password],
-input[type=time],
-input[type=date],
-select {
-    font-family: "San Francisco Display Thin", serif;
-    font-size: 25px;
-    letter-spacing: 2.5px;
-    color: white;
-    width: 50%;
-    padding: 17px 40px;
-    margin: 10px auto;
-    display: inline-block;
-    border: none;
-    border-radius: 25px;
-    background-color: rgba(255, 255, 255, 0.4);
-}
-
-.eoko-label-text-field input {
-    position: absolute;
-    z-index: -1;
-    display: none;
-}
-
-.eoko-text-field-checkbox-box {
-    position: absolute;
-    top: 2px;
-    left: 0;
-    width: 25px;
-    height: 25px;
-    background: #e6e6e6;
-}
-
-/* Checked state */
-.eoko-label-text-field input:checked ~ .eoko-text-field-checkbox-box {
-    background: #F57C00;
-}
-
-/* Check mark */
-.eoko-text-field-checkbox-box:after {
-    position: absolute;
-    display: none;
-    content: '';
-}
-
-/* Show check mark */
-.eoko-label-text-field input:checked ~ .eoko-text-field-checkbox-box:after {
-    display: block;
-}
-
-/* Checkbox tick */
-.eoko-text-field-checkbox .eoko-text-field-checkbox-box:after {
-    top: 2px;
-    left: 10px;
-    width: 5px;
-    height: 15px;
-    transform: rotate(45deg);
-    border: solid #FFFFFF;
-    border-width: 0 2px 2px 0;
-}
-
-
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-
-.eoko-text-field-matching-password{
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background-color: greenyellow;
-    border-radius: 30px;
-}
-
-.eoko-text-field-not-matching-password{
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background-color: red;
-    border-radius: 30px;
-}
 
 
 
@@ -582,16 +731,16 @@ input[type=submit]:hover {
 
 .button {
     display: block;
-    border-radius: 4px;
-    background-color: #d9a537;
+    border-radius: 50px;
+    background-color: #F57C00;
     border: none;
     text-align: center;
     font-size: 28px;
-    padding: 20px;
+    padding: 10px;
     width: 200px;
     transition: all 0.5s;
     cursor: pointer;
-    margin: 5px;
+    margin: 0 auto;
     color: white;
 }
 
@@ -714,12 +863,6 @@ input[type=submit]:hover {
 
 
 
-/*h2{
-  margin-bottom: 33px;
-}*/
-
-
-
 .center,
 img.center {
     text-align: center;
@@ -795,16 +938,6 @@ img.center {
 .item-thumbnail-left.item-complex {
     padding-top: 0;
     padding-left: 0;
-}
-
-.eoko-text-area {
-    padding: 10px;
-    border-radius: 5px;
-    width: calc(100% - 6em);
-    margin: auto;
-    background-color: rgba(255, 255, 255, 0.15);
-    height: 10em;
-    resize: none;
 }
 
 .eoko-text-regular, .eoko-button-text-selected{

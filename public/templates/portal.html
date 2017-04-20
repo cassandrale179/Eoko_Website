@@ -86,58 +86,81 @@
             </div>
         </div>
 
+
         <!--Tab for Events-->
         <div ng-if="selection.tab == 'Events'">
 
-            <div ng-if="errorpopup != '' && eventsubmitted == false " class="button errormessage">{{errorpopup}}</div>
+            <!--Error Message-->
+            <div ng-if="errorpopup != '' && eventsubmitted == false " class="eoko-popup-error-message">{{errorpopup}}</div>
+
 
             <p ng-if="eventsubmitted == true">Building Event Submitted!</p>
             <div ng-if="eventsubmitted == false">
-                <!--Action Catagory-->
-                <label name="eventCatagory">
-                    <input id="ed_labelCategory" type="text" placeholder="Category" style="font-size: 1.6em"
-                           class="eoko-input eoko-text-thin" ng-model="event.category"
-                           required="">
-                </label>
 
-                <!--Action title-->
-                <label name="eventTitle">
-                    <input id="ed_labelTitle" type="text" placeholder="Action Name" style="font-size: 1.6em;"
-                           class="eoko-input eoko-text-thin" ng-model="event.title"
-                           required="">
-                </label>
+                <div class="eoko-events-info-wrapper-1">
 
-                <!--Action Location-->
-                <label name="eventLocation">
-                    <input id="ed_labelLocation" type="text" placeholder="Location" style="font-size: 1.6em"
-                           class="eoko-input eoko-text-thin" ng-model="event.location"
-                           required="">
-                </label>
+                    <!--Label wrapper-->
+                    <div class="eoko-events-label-wrapper">
+                        <!--Event Type-->
+                        <label name="eventType" class="eoko-events-label" style="margin: 0 0 20px 0;">Event Type</label>
+                        <!--Event Catagory-->
+                        <label name="eventCatagory" class="eoko-events-label">Category</label>
+                        <!--Event title-->
+                        <label name="eventTitle" class="eoko-events-label">Event Name</label>
+                        <!--Event Location-->
+                        <label name="eventLocation" class="eoko-events-label">Location</label>
+                        <!--Event Date/Time-->
+                        <label name="eventDateTime" class="eoko-events-label">Date/Time</label>
+                    </div>
 
-                <!--Action Date/Time-->
-                <label name="eventDateTime">
-                    <table>
-                        <tr>
-                            <th style="padding:5px;"><input id="ed_labelD" type="date" placeholder="Date"
-                                                            style="font-size: 1.1em;"
-                                                            class="eoko-input eoko-text-thin" ng-model="event.date"
-                                                            required=""></th>
-                            <th style="padding:5px;"><input id="ed_labelT" type="time" placeholder="Time"
-                                                            style="font-size: 1.1em;"
-                                                            class="eoko-input eoko-text-thin" ng-model="event.time"
-                                                            required=""></th>
-                        </tr>
-                    </table>
-                </label>
 
-                <label name="eventDescription">
-                <textarea placeholder="Description" style="width:100%;" ng-model="event.description"
-                          class="eoko-text-area eoko-text-input-form"></textarea>
-                </label>
+                    <!--Input field wrapper-->
+                    <div class="eoko-events-input-wrapper">
+                        <div class="eoko-events-type-checkbox-wrapper">
+                            <label class="eoko-events-type-label eoko-events-type-label-checkbox">Public
+                                <input type="checkbox"/>
+                                <div class="eoko-events-type-label-checkbox-box"></div>
+                            </label>
+                            <label class="eoko-events-type-label eoko-events-type-label-checkbox">Private
+                                <input type="checkbox"/>
+                                <div class="eoko-events-type-label-checkbox-box"></div>
+                            </label>
+                        </div>
+                        <!--Event Category-->
+                        <div id="ed_labelCategory" class="eoko-horizontal-scroll">
+                            <button ng-click="selectCategory('fitness')" id="fitness" class="eoko-horizontal-scroll-button eoko-text-thin">
+                                Fitness
+                            </button>
+                            <button ng-click="selectCategory('food')" id="food" class="eoko-horizontal-scroll-button eoko-text-thin">
+                                Food
+                            </button>
+                            <button ng-click="selectCategory('meetup')" id="meetup" class="eoko-horizontal-scroll-button eoko-text-thin">
+                                Meet Up
+                            </button>
+                            <button ng-click="selectCategory('game')" id="game" class="eoko-horizontal-scroll-button eoko-text-thin">
+                                Game
+                            </button>
+                            <button ng-click="selectCategory('party')" id="party" class="eoko-horizontal-scroll-button eoko-text-thin">
+                                Party
+                            </button>
+                        </div>
+                        <!--Event title-->
+                        <input id="ed_labelTitle" type="text" style="width: 100%" class="eoko-text-thin" ng-model="event.title" required>
+                        <!--Event Location-->
+                        <input id="ed_labelLocation" type="text" style="width: 100%" class="eoko-text-thin" ng-model="event.location" required>
+                        <!--Event Date/Time-->
+                        <input id="ed_labelD" type="date" style="width: 60%;" class="eoko-text-thin" ng-model="event.date" required></th>
+                        <input id="ed_labelT" type="time" style="width: 40%;" class="eoko-text-thin" ng-model="event.time" required></th>
+                    </div>
 
-                <button class="button" ng-click="submitEvent()"
-                        style="vertical-align:middle;position: absolute;left: 38%;margin-top: 33px;"><span>Submit</span>
-                </button>
+                    <!--Description wrapper-->
+                    <div class="eoko-events-desc-wrapper">
+                        <label name="eventDescription" class="eoko-events-desc-label">Description</label>
+                        <textarea ng-model="event.description" class="eoko-text-area eoko-text-thin"></textarea>
+                        <!--Submit button-->
+                        <button class="button eoko-text-regular" ng-click="submitEvent()"><span>Create</span></button>
+                    </div>
+                </div>
             </div>
         </div>
 

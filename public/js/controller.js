@@ -390,6 +390,10 @@ angular.module('app.controllers', [])
 
             $scope.userList = [];
 
+
+            //-----------------------------
+            //    NAVIGATION
+
             $scope.selection = {tab: "Residents"};
 
             var previousSelectedTab = "residentsTab";
@@ -443,6 +447,10 @@ angular.module('app.controllers', [])
                 console.log($scope.selection.tab);
             };
 
+
+            //-----------------------------
+            //    APPROVE TAB
+
             $scope.approveUser = function (user) {
                 console.log("approve");
                 userRef.child(user.$id).update({adminConfirmed: 'true'}).then(function (success) {
@@ -452,7 +460,7 @@ angular.module('app.controllers', [])
 
             $scope.denyUser = function (user) {
                 var r = confirm("Are you sure you want to deny user access?");
-                if (r == true) {
+                if (r === true) {
                     $scope.userData.$remove(user).then(function (done) {
                         console.log("user is denied access and removed");
                     });
@@ -460,6 +468,10 @@ angular.module('app.controllers', [])
                     return;
                 }
             };
+
+
+            //-----------------------------
+            //    EVENT TAB
 
             var weekday = new Array();
             weekday[0] = "Sunday";
@@ -486,7 +498,7 @@ angular.module('app.controllers', [])
 
 
             $scope.event = {
-                category: "",
+                category: [],
                 date: new Date(),
                 location: "",
                 time: "",
@@ -497,9 +509,28 @@ angular.module('app.controllers', [])
             $scope.surveysubmitted = false;
 
 
+            //Category
+            $scope.selectCategory = function (elementId){
+                var elementClass = document.getElementById(elementId).className;
+                if(elementClass === "eoko-horizontal-scroll-button eoko-text-thin"){
+                    document.getElementById(elementId).className = "eoko-horizontal-scroll-button-selected eoko-text-thin";
+                    $scope.event.category.push(elementId);
+                }else{
+                    document.getElementById(elementId).className = "eoko-horizontal-scroll-button eoko-text-thin";
+                    for(var i in $scope.event.category)
+                    {
+                        if($scope.event.category[i] === elementId)
+                        {
+                            $scope.event.category.splice(i, 1);
+                        }
+                    }
+                }
+            };
+
+
             $scope.submitEvent = function () {
-                console.log("event submit begin");
-                if ($scope.event.category === "" || $scope.event.category === " ") {
+                console.log("Event submit begin");
+                if ($scope.event.category.length === 0 || $scope.event.category.length === 0) {
                     $scope.errorpopup = "Please enter at least one category";
                     return;
                 }
@@ -524,7 +555,6 @@ angular.module('app.controllers', [])
                     return;
                 }
 
-
                 var postedEvent = {
                     title: $scope.event.title,
                     location: $scope.event.location,
@@ -544,7 +574,7 @@ angular.module('app.controllers', [])
 
                 adminRef.child('buildingEvents').push(postedEvent).then(function (success) {
                     $scope.event = {
-                        category: "",
+                        category: [],
                         date: "",
                         location: "",
                         time: "",
