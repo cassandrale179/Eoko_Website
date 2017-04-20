@@ -103,7 +103,7 @@
                         <!--Event Type-->
                         <label name="eventType" class="eoko-events-label" style="margin: 0 0 20px 0;">Event Type</label>
                         <!--Event Catagory-->
-                        <label name="eventCatagory" class="eoko-events-label">Category</label>
+                        <label name="eventCategory" class="eoko-events-label">Category</label>
                         <!--Event title-->
                         <label name="eventTitle" class="eoko-events-label">Event Name</label>
                         <!--Event Location-->
@@ -127,19 +127,19 @@
                         </div>
                         <!--Event Category-->
                         <div id="ed_labelCategory" class="eoko-horizontal-scroll">
-                            <button ng-click="selectCategory('fitness')" id="fitness" class="eoko-horizontal-scroll-button eoko-text-thin">
+                            <button ng-click="selectEventsCategory('fitness')" id="fitness" class="eoko-horizontal-scroll-button eoko-text-thin">
                                 Fitness
                             </button>
-                            <button ng-click="selectCategory('food')" id="food" class="eoko-horizontal-scroll-button eoko-text-thin">
+                            <button ng-click="selectEventsCategory('food')" id="food" class="eoko-horizontal-scroll-button eoko-text-thin">
                                 Food
                             </button>
-                            <button ng-click="selectCategory('meetup')" id="meetup" class="eoko-horizontal-scroll-button eoko-text-thin">
+                            <button ng-click="selectEventsCategory('meetup')" id="meetup" class="eoko-horizontal-scroll-button eoko-text-thin">
                                 Meet Up
                             </button>
-                            <button ng-click="selectCategory('game')" id="game" class="eoko-horizontal-scroll-button eoko-text-thin">
+                            <button ng-click="selectEventsCategory('game')" id="game" class="eoko-horizontal-scroll-button eoko-text-thin">
                                 Game
                             </button>
-                            <button ng-click="selectCategory('party')" id="party" class="eoko-horizontal-scroll-button eoko-text-thin">
+                            <button ng-click="selectEventsCategory('party')" id="party" class="eoko-horizontal-scroll-button eoko-text-thin">
                                 Party
                             </button>
                         </div>
@@ -173,17 +173,68 @@
             <p ng-if="surveysubmitted == true">Survey Submitted!</p>
             <div ng-if="surveysubmitted == false">
 
-                <!--Survey title-->
-                <label name="surveyTitle">
-                    <input id="sur_labelTitle" type="text" placeholder="Survey Title" style="font-size: 1.6em;"
-                           class="eoko-input eoko-text-thin" ng-model="survey.title"
-                           required="">
-                </label>
 
-                <label name="eventDescription">
-                <textarea placeholder="Optional survey Description" style="width:100%;" ng-model="survey.description"
-                          class="eoko-text-area eoko-text-input-form"></textarea>
-                </label>
+                <div class="eoko-events-info-wrapper">
+                    <!--Label wrapper-->
+                    <div class="eoko-events-label-wrapper">
+                        <!--Survey Type-->
+                        <label name="surveyType" class="eoko-events-label" style="margin: 0 0 20px 0;">Survey Type</label>
+                        <!--Survey Catagory-->
+                        <label name="surveyCategory" class="eoko-events-label">Category</label>
+                        <!--Survey title-->
+                        <label name="surveyTitle" class="eoko-events-label">Survey Name</label>
+                        <!--Survey Description-->
+                        <label name="surveyDescription" class="eoko-events-label">Description</label>
+                    </div>
+
+
+                    <!--Input field wrapper-->
+                    <div class="eoko-events-input-wrapper">
+                        <div class="eoko-events-type-checkbox-wrapper">
+                            <label class="eoko-events-type-label eoko-events-type-label-checkbox">Public
+                                <input type="checkbox"/>
+                                <div class="eoko-events-type-label-checkbox-box"></div>
+                            </label>
+                            <label class="eoko-events-type-label eoko-events-type-label-checkbox">Private
+                                <input type="checkbox"/>
+                                <div class="eoko-events-type-label-checkbox-box"></div>
+                            </label>
+                        </div>
+                        <!--Event Category-->
+                        <div id="sur_labelCategory" class="eoko-horizontal-scroll">
+                            <button ng-click="selectSurveysCategory('fitness')" id="fitness" class="eoko-horizontal-scroll-button eoko-text-thin">
+                                Fitness
+                            </button>
+                            <button ng-click="selectSurveysCategory('food')" id="food" class="eoko-horizontal-scroll-button eoko-text-thin">
+                                Food
+                            </button>
+                            <button ng-click="selectSurveysCategory('meetup')" id="meetup" class="eoko-horizontal-scroll-button eoko-text-thin">
+                                Meet Up
+                            </button>
+                            <button ng-click="selectSurveysCategory('game')" id="game" class="eoko-horizontal-scroll-button eoko-text-thin">
+                                Game
+                            </button>
+                            <button ng-click="selectSurveysCategory('party')" id="party" class="eoko-horizontal-scroll-button eoko-text-thin">
+                                Party
+                            </button>
+                        </div>
+                        <!--Event title-->
+                        <input id="sur_labelTitle" type="text" style="width: 100%" class="eoko-text-thin" ng-model="survey.title" required>
+
+                        <textarea ng-model="survey.description" class="eoko-text-area eoko-text-thin"></textarea>
+                    </div>
+
+                    <!--Description wrapper-->
+                    <div class="eoko-events-desc-wrapper">
+                        <!--Next button-->
+                        <button class="button eoko-text-regular" ng-click="nextToQuestion()"><span>Next</span></button>
+                    </div>
+                </div>
+
+
+
+
+
 
                 <div ng-repeat="question in survey.questions track by $index">
                     <hr>

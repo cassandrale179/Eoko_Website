@@ -394,7 +394,7 @@ angular.module('app.controllers', [])
             //-----------------------------
             //    NAVIGATION
 
-            $scope.selection = {tab: "Residents"};
+            $scope.selection = {tab: "Surveys"};
 
             var previousSelectedTab = "residentsTab";
             document.getElementById("residentsTab").className =  "eoko-nav-selected";
@@ -470,6 +470,7 @@ angular.module('app.controllers', [])
             };
 
 
+
             //-----------------------------
             //    EVENT TAB
 
@@ -496,8 +497,10 @@ angular.module('app.controllers', [])
             month[10] = "November";
             month[11] = "December";
 
+            $scope.eventsubmitted = false;
 
             $scope.event = {
+                type: "",    //public or private
                 category: [],
                 date: new Date(),
                 location: "",
@@ -505,12 +508,14 @@ angular.module('app.controllers', [])
                 description: "",
                 title: ""
             };
-            $scope.eventsubmitted = false;
-            $scope.surveysubmitted = false;
 
+            //Set event type
+            $scope.setEventType = function (eventType){
+                $scope.event.type = eventType;
+            };
 
-            //Category
-            $scope.selectCategory = function (elementId){
+            //Set event category
+            $scope.selectEventsCategory = function (elementId){
                 var elementClass = document.getElementById(elementId).className;
                 if(elementClass === "eoko-horizontal-scroll-button eoko-text-thin"){
                     document.getElementById(elementId).className = "eoko-horizontal-scroll-button-selected eoko-text-thin";
@@ -527,7 +532,7 @@ angular.module('app.controllers', [])
                 }
             };
 
-
+            //Submit event
             $scope.submitEvent = function () {
                 console.log("Event submit begin");
                 if ($scope.event.category.length === 0 || $scope.event.category.length === 0) {
@@ -574,6 +579,7 @@ angular.module('app.controllers', [])
 
                 adminRef.child('buildingEvents').push(postedEvent).then(function (success) {
                     $scope.event = {
+                        type: "",
                         category: [],
                         date: "",
                         location: "",
@@ -591,19 +597,52 @@ angular.module('app.controllers', [])
                         $scope.$apply();
                     }, 3000);
                 })
-
             };
 
-            function question(title, choices) {
-                this.title = title;
-                this.choices = choices;
-            }
+
+
+
+            //-----------------------------
+            //    SURVEY TABS
+
+            $scope.surveysubmitted = false;
 
             $scope.survey = {
+                type: "",    //public or private
+                category: [],
                 title: "",
                 description: "",
                 questions: []
             };
+
+            //Set survey Type
+            $scope.setSurveyType = function (surveyType){
+                $scope.survey.type = surveyType;
+            };
+
+            //Set survey Category
+            $scope.selectSurveysCategory = function (elementId){
+                var elementClass = document.getElementById(elementId).className;
+                if(elementClass === "eoko-horizontal-scroll-button eoko-text-thin"){
+                    document.getElementById(elementId).className = "eoko-horizontal-scroll-button-selected eoko-text-thin";
+                    $scope.survey.category.push(elementId);
+                }else{
+                    document.getElementById(elementId).className = "eoko-horizontal-scroll-button eoko-text-thin";
+                    for(var i in $scope.survey.category)
+                    {
+                        if($scope.survey.category[i] === elementId)
+                        {
+                            $scope.survey.category.splice(i, 1);
+                        }
+                    }
+                }
+            };
+
+            //Adding survey questions
+            function question(title, choices) {
+                this.title = title;
+                this.choices = choices;
+            }
 
             function answer(text) {
                 this.answer = text;
@@ -633,9 +672,13 @@ angular.module('app.controllers', [])
 
             };
 
+            //Submit Survey
             $scope.submitSurvey = function () {
                 console.log("survey submit begin");
-
+                if ($scope.survey.category.length === 0 || $scope.survey.category.length === 0) {
+                    $scope.errorpopup = "Please enter at least one category";
+                    return;
+                }
                 if ($scope.survey.title === "" || $scope.survey.title === " ") {
                     $scope.errorpopup = "Please enter a title";
                     return;
@@ -690,6 +733,8 @@ angular.module('app.controllers', [])
                  */
                 adminRef.child('Surveys').push($scope.survey).then(function (success) {
                     $scope.survey = {
+                        type: "",
+                        category: [],
                         title: "",
                         description: "",
                         questions: []
@@ -704,9 +749,6 @@ angular.module('app.controllers', [])
                         $scope.$apply();
                     }, 3000);
                 })
-
             };
-
-
         }]);
 
