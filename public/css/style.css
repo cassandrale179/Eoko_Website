@@ -180,7 +180,8 @@ nav a:hover{
     margin-top: 50px;
     margin-left: 280px;
     height: 600px;
-    width: 70vw;
+    width: 1263px;
+    min-width: 1263px;
     overflow-y: auto;
 }
 
@@ -245,7 +246,8 @@ nav a:hover{
     border-radius: 33px;
     margin: 0 33px 33px 33px;
     display: block;
-    width: 50vw;
+    width: 983px;
+    min-width: 983px;
     height: 165px;
     position: relative;
 }
@@ -310,7 +312,7 @@ nav a:hover{
     /*margin: 0 33px 33px 33px;*/
     margin: 0 auto 15px auto;
     display: block;
-    width: 30vw;
+    width: 428px;
     height: 210px;
     position: relative;
 }
