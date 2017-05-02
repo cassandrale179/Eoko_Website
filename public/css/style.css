@@ -623,6 +623,65 @@ nav a:hover{
 
 /*Note: most of the classes are reused from EVENTS TAB*/
 
+.eoko-surveys-label-wrapper{
+    float: left;
+    width: 200px;
+    margin-right: 40px;
+}
+
+.eoko-surveys-input-wrapper{
+    float: left;
+    width: 500px;
+    margin-right: 40px;
+}
+
+.eoko-surveys-questions-wrapper{
+    float: left;
+    width: 100%;
+}
+
+.eoko-surveys-label{
+    float: left;
+    font-family: "San Francisco Display Medium", serif;
+    font-size: 35px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 25px;
+}
+
+.eoko-surveys-add-button{
+    width: 25%;
+}
+
+.eoko-surveys-remove-button{
+    float: right;
+    margin-right: 15px;
+    width: 2%;
+}
+
+.eoko-surveys-remove-button .cls-1{
+    fill: #000;
+    opacity: 0.5;
+}
+
+.answerHolder {
+    /*position: relative;*/
+    left: 85%;
+    display: inline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -797,18 +856,6 @@ nav a:hover{
     right: 0;
 }
 
-.buttonAddQuestion {
-    width: 42px;
-    padding: 10px;
-    background-color: steelblue;
-    border: 1px solid rgb(162, 163, 178);
-    display: inline-block;
-}
-
-.buttonAddQuestion:hover {
-    background-color: blue;
-}
-
 
 
 /*-------------------------------------------*/
@@ -901,22 +948,6 @@ img.center {
     position: relative;
     top: 0%;
     margin: 0 auto;
-}
-
-
-
-.answerHolder {
-    position: relative;
-    left: 85%;
-    display: inline;
-}
-
-.buttonRemove {
-    background-color: #b44646;
-}
-
-.buttonRemove:hover {
-    background-color: red;
 }
 
 

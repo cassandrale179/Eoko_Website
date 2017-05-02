@@ -651,7 +651,10 @@ angular.module('app.controllers', [])
             $scope.addQuestion = function () {
                 $scope.survey.questions.push(new question("", []));
                 console.log($scope.survey);
-
+                //scroll to the bottom
+                var mainContentDiv = document.getElementById("mainContent");
+                console.log(mainContentDiv.scrollHeight);
+                mainContentDiv.scrollTop = mainContentDiv.scrollHeight;
             };
 
             $scope.removeQuestion = function () {
@@ -669,7 +672,6 @@ angular.module('app.controllers', [])
             $scope.removeCheckbox = function (index) {
                 $scope.survey.questions[index].choices.pop();
                 console.log($scope.survey);
-
             };
 
             //Submit Survey

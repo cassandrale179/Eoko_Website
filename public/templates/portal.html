@@ -25,7 +25,8 @@
 
 
     <!--main content-->
-    <div class="eoko-portal-content-wrapper">
+    <div id="mainContent" class="eoko-portal-content-wrapper">
+
         <!--Tab for Residents-->
         <div ng-if="selection.tab == 'Residents'">
             <div ng-if="userData.length == 0" class="eoko-portal-no-user">
@@ -175,8 +176,9 @@
 
 
                 <div class="eoko-events-info-wrapper">
+
                     <!--Label wrapper-->
-                    <div class="eoko-events-label-wrapper">
+                    <div class="eoko-surveys-label-wrapper">
                         <!--Survey Type-->
                         <label name="surveyType" class="eoko-events-label" style="margin: 0 0 20px 0;">Survey Type</label>
                         <!--Survey Catagory-->
@@ -189,7 +191,7 @@
 
 
                     <!--Input field wrapper-->
-                    <div class="eoko-events-input-wrapper">
+                    <div class="eoko-surveys-input-wrapper">
                         <div class="eoko-events-type-checkbox-wrapper">
                             <label class="eoko-events-type-label eoko-events-type-label-checkbox">Public
                                 <input type="checkbox"/>
@@ -200,7 +202,7 @@
                                 <div class="eoko-events-type-label-checkbox-box"></div>
                             </label>
                         </div>
-                        <!--Event Category-->
+                        <!--Survey Category-->
                         <div id="sur_labelCategory" class="eoko-horizontal-scroll">
                             <button ng-click="selectSurveysCategory('fitness')" id="fitness" class="eoko-horizontal-scroll-button eoko-text-thin">
                                 Fitness
@@ -218,53 +220,76 @@
                                 Party
                             </button>
                         </div>
-                        <!--Event title-->
+                        <!--Survey title-->
                         <input id="sur_labelTitle" type="text" style="width: 100%" class="eoko-text-thin" ng-model="survey.title" required>
 
-                        <textarea ng-model="survey.description" class="eoko-text-area eoko-text-thin"></textarea>
+                        <!--Survey Description-->
+                        <textarea ng-model="survey.description" class="eoko-text-area eoko-text-thin" style="margin-bottom: 0"></textarea>
                     </div>
 
-                    <!--Description wrapper-->
-                    <div class="eoko-events-desc-wrapper">
-                        <!--Next button-->
-                        <button class="button eoko-text-regular" ng-click="nextToQuestion()"><span>Next</span></button>
+
+                    <!--Adding/Remove Survey Questions wrapper-->
+                    <div class="eoko-surveys-questions-wrapper">
+
+                        <hr>
+
+                        <div ng-repeat="question in survey.questions track by $index">
+
+                            <!--Remove Question-->
+                            <div class="eoko-surveys-remove-button"  ng-include src="'templates/icons/TrashIcon.html'" ng-click="removeQuestion()"></div>
+                            <!--Question Number-->
+                            <label class="eoko-surveys-label">{{$index + 1}}.</label>
+
+                            <!--Question Type-->
+                            <div class="eoko-events-type-checkbox-wrapper">
+                                <label class="eoko-events-type-label eoko-events-type-label-checkbox">True/False
+                                    <input type="checkbox"/>
+                                    <div class="eoko-events-type-label-checkbox-box"></div>
+                                </label>
+                                <label class="eoko-events-type-label eoko-events-type-label-checkbox">Multiple Choice
+                                    <input type="checkbox"/>
+                                    <div class="eoko-events-type-label-checkbox-box"></div>
+                                </label>
+                                <label class="eoko-events-type-label eoko-events-type-label-checkbox">Short Answer
+                                    <input type="checkbox"/>
+                                    <div class="eoko-events-type-label-checkbox-box"></div>
+                                </label>
+                                <label class="eoko-events-type-label eoko-events-type-label-checkbox">Rating
+                                    <input type="checkbox"/>
+                                    <div class="eoko-events-type-label-checkbox-box"></div>
+                                </label>
+                            </div>
+
+                            <!--Prompt input-->
+                            <input type="text" placeholder="Prompt"
+                                   style="font-size: 1.6em;" class="eoko-input eoko-text-thin"
+                                   ng-model="question.title">
+
+                            <!--Choices input-->
+                            <div ng-repeat="choice in question.choices track by $index">
+                                <input type="text" placeholder="Answer" class="eoko-input eoko-text-thin"
+                                       style="margin-left:33%;width:67%" ng-model="choice.answer">
+                            </div>
+
+                            <!--Add/remove choices-->
+                            <div class="answerHolder">
+                                <div class="eoko-surveys-add-button" ng-include src="'templates/icons/AddNewSurveyQuestionChoicesIcon.html'" ng-click="addCheckbox($index)"></div>
+                                <button class="button buttonRemove" ng-click="removeCheckbox($index)">-</button>
+                            </div>
+                            <hr>
+                        </div>
+
+
+                        <!--Adding Questions-->
+                        <div class="answerHolder" style="left:0">
+                            <div class="eoko-surveys-add-button" ng-include src="'templates/icons/AddNewSurveyQuestionsIcon.html'" ng-click="addQuestion()"></div>
+
+                        </div>
                     </div>
+
+
+                    <button class="button eoko-text-regular" ng-click="submitSurvey()"><span>Submit</span></button>
                 </div>
-
-
-
-
-
-
-                <div ng-repeat="question in survey.questions track by $index">
-                    <hr>
-                    <h3>Question {{$index + 1}}</h3>
-                    <input type="text" placeholder="Question"
-                           style="font-size: 1.6em;" class="eoko-input eoko-text-thin"
-                           ng-model="question.title">
-
-                    <div ng-repeat="choice in question.choices track by $index">
-                        <input type="text" placeholder="Answer" class="eoko-input eoko-text-thin"
-                               style="margin-left:33%;width:67%" ng-model="choice.answer">
-                    </div>
-
-                    <div class="answerHolder">
-                        <button class="button buttonAddQuestion" ng-click="addCheckbox($index)">+</button>
-
-                        <button class="button buttonAddQuestion buttonRemove" ng-click="removeCheckbox($index)">-
-                        </button>
-                    </div>
-                </div>
-
-                <div class="answerHolder" style="left:0">
-                    <button class="button buttonAddQuestion" ng-click="addQuestion()">+</button>
-
-                    <button class="button buttonAddQuestion buttonRemove" ng-click="removeQuestion()">-</button>
-                </div>
-
-                <button class="button" ng-click="submitSurvey()"
-                        style="vertical-align:middle;position: absolute;left: 38%;margin-top: 33px;"><span>Submit</span>
-                </button>
             </div>
         </div>
 
