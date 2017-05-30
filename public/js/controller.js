@@ -414,10 +414,10 @@ angular.module('app.controllers', [])
                         previousSelectedTab = "surveysTab";
                         break;
                     case 2:
-                        $scope.selection.tab = 'Comments';
+                        $scope.selection.tab = 'Eoko';
                         document.getElementById(previousSelectedTab).className =  "";
-                        document.getElementById("commentsTab").className =  "eoko-nav-selected";
-                        previousSelectedTab = "commentsTab";
+                        document.getElementById("eokoTab").className =  "eoko-nav-selected";
+                        previousSelectedTab = "eokoTab";
                         break;
                     case 3:
                         $scope.selection.tab = 'Residents';
@@ -432,12 +432,18 @@ angular.module('app.controllers', [])
                         previousSelectedTab = "approveTab";
                         break;
                     case 5:
-                        $scope.selection.tab = 'Statistics';
+                        $scope.selection.tab = 'My Events';
                         document.getElementById(previousSelectedTab).className =  "";
-                        document.getElementById("statisticsTab").className =  "eoko-nav-selected";
-                        previousSelectedTab = "statisticsTab";
+                        document.getElementById("myEventsTab").className =  "eoko-nav-selected";
+                        previousSelectedTab = "myEventsTab";
                         break;
                     case 6:
+                        $scope.selection.tab = 'Feedback';
+                        document.getElementById(previousSelectedTab).className =  "";
+                        document.getElementById("feedbackTab").className =  "eoko-nav-selected";
+                        previousSelectedTab = "feedbackTab";
+                        break;
+                    case 7:
                         $scope.selection.tab = 'Ranking';
                         document.getElementById(previousSelectedTab).className =  "";
                         document.getElementById("rankingTab").className =  "eoko-nav-selected";

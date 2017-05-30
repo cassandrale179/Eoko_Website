@@ -19,7 +19,7 @@
             <a id="residentsTab" ng-click="selector(3)">Residents</a><br>
             <a id="approveTab" ng-click="selector(4)">Approve</a><br>
             <a id="myEventsTab" ng-click="selector(5)">My Events</a><br>
-            <a id="statisticsTab" ng-click="selector(6)">Feedback</a><br>
+            <a id="feedbackTab" ng-click="selector(6)">Feedback</a><br>
             <a id="rankingTab" ng-click="selector(7)">Ranking</a><br>
         </nav>
     </div>
@@ -30,6 +30,10 @@
 
         <!--Tab for Residents-->
         <div ng-if="selection.tab == 'Residents'">
+		<form>
+                   <input type="text" placeholder="Search..." required>
+                   <input type="button" value="Search">
+		</form>
             <div ng-if="userData.length == 0" class="eoko-portal-no-user">
                 No Users Found!
             </div>
@@ -68,6 +72,20 @@
             </div>
         </div>
 
+	<!--Tab for Eoko-->
+        <div ng-if="selection.tab == 'Eoko'">
+            Eoko Functionality
+        </div>
+
+	<!--Tab for My Events-->
+        <div ng-if="selection.tab == 'My Events'">
+            My Events Functionality
+        </div>
+
+	<!--Tab for Feedback-->
+        <div ng-if="selection.tab == 'Feedback'">
+            Feedback Functionality
+        </div>
 
         <!--Tab for Ranking-->
         <div ng-if="selection.tab == 'Ranking'">

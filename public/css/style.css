@@ -363,16 +363,17 @@ nav a:hover{
 }
 
 
+
 /*-------------------------
       Approve Tab
  --------------------------*/
 .eoko-approve-user-wrapper{
-    border: 2px solid rgba(255,255,255,0.4);
+    border: 2px solid rgba(255,255,255,0.6);
     border-radius: 33px;
     margin: 0 33px 33px 33px;
     display: block;
-    width: 983px;
-    min-width: 983px;
+    width: -moz-min-content;
+    min-width: 378px;
     height: 165px;
     position: relative;
 }
