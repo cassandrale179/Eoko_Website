@@ -7,9 +7,9 @@
         <div class="logo" ng-include src="'templates/icons/logo.html'"></div>
 
         <nav class="eoko-horizontal-nav">
-            <a id="eventsTab" ng-click="selector(0)">Events</a>
-            <a id="surveysTab" ng-click="selector(1)">Surveys</a>
-            <a id="commentsTab" ng-click="selector(2)">Comments</a>
+            <a id="eventsTab" ng-click="selector(0)">Event +</a>
+            <a id="surveysTab" ng-click="selector(1)">Survey +</a>
+            <a id="eokoTab" ng-click="selector(2)">Eoko +</a>
         </nav>
     </div>
 
@@ -19,7 +19,7 @@
             <a id="residentsTab" ng-click="selector(3)">Residents</a><br>
             <a id="approveTab" ng-click="selector(4)">Approve</a><br>
             <a id="myEventsTab" ng-click="selector(5)">My Events</a><br>
-            <a id="statisticsTab" ng-click="selector(6)">Statistics</a><br>
+            <a id="statisticsTab" ng-click="selector(6)">Feedback</a><br>
             <a id="rankingTab" ng-click="selector(7)">Ranking</a><br>
         </nav>
     </div>
@@ -182,10 +182,8 @@
                     <div class="eoko-surveys-label-wrapper">
                         <!--Survey Type-->
                         <label name="surveyType" class="eoko-events-label" style="margin: 0 0 20px 0;">Survey Type</label>
-                        <!--Survey Catagory-->
-                        <label name="surveyCategory" class="eoko-events-label">Category</label>
                         <!--Survey title-->
-                        <label name="surveyTitle" class="eoko-events-label">Survey Name</label>
+                        <label name="surveyTitle" class="eoko-events-label">Survey Title</label>
                         <!--Survey Description-->
                         <label name="surveyDescription" class="eoko-events-label">Description</label>
                     </div>
@@ -203,24 +201,7 @@
                                 <div class="eoko-events-type-label-checkbox-box"></div>
                             </label>
                         </div>
-                        <!--Survey Category-->
-                        <div id="sur_labelCategory" class="eoko-horizontal-scroll">
-                            <button ng-click="selectSurveysCategory('fitness')" id="fitness" class="eoko-horizontal-scroll-button eoko-text-thin">
-                                Fitness
-                            </button>
-                            <button ng-click="selectSurveysCategory('food')" id="food" class="eoko-horizontal-scroll-button eoko-text-thin">
-                                Food
-                            </button>
-                            <button ng-click="selectSurveysCategory('meetup')" id="meetup" class="eoko-horizontal-scroll-button eoko-text-thin">
-                                Meet Up
-                            </button>
-                            <button ng-click="selectSurveysCategory('game')" id="game" class="eoko-horizontal-scroll-button eoko-text-thin">
-                                Game
-                            </button>
-                            <button ng-click="selectSurveysCategory('party')" id="party" class="eoko-horizontal-scroll-button eoko-text-thin">
-                                Party
-                            </button>
-                        </div>
+
                         <!--Survey title-->
                         <input id="sur_labelTitle" type="text" style="width: 100%" class="eoko-text-thin" ng-model="survey.title" required>
 
@@ -286,10 +267,11 @@
                             <div class="eoko-surveys-add-button" ng-include src="'templates/icons/AddNewSurveyQuestionsIcon.html'" ng-click="addQuestion()"></div>
 
                         </div>
+			<button class="button eoko-text-regular" ng-click="submitSurvey()"><span>Submit</span></button>
                     </div>
 
 
-                    <button class="button eoko-text-regular" ng-click="submitSurvey()"><span>Submit</span></button>
+                    
                 </div>
             </div>
         </div>

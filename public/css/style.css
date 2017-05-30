@@ -257,6 +257,7 @@ input[type=submit]:hover {
     font-size: 27px;
     display: block;
     margin-left: 133px;
+    margin-right: 1px;
 }
 
 
@@ -296,7 +297,7 @@ input[type=submit]:hover {
 
 .eoko-horizontal-nav a{
     text-align: center;
-    margin-right: 180px;
+    margin-right: 100px;
     margin-top: 89px;
     font-family: "San Francisco Display Thin", sans-serif;
     font-size: 2.5em;  /*30px/16px=2.5em*/
@@ -343,11 +344,12 @@ nav a:hover{
       Residents Tab
  --------------------------*/
 .eoko-resident-user-wrapper{
-    border: 2px solid rgba(255,255,255,0.4);
+    border: 3px solid rgba(255,255,255,0.6);
     border-radius: 33px;
     margin: 0 33px 33px 33px;
     display: inline-block;
-    width: 378px;
+    width: -moz-min-content;
+    min-width: 378px;
     height: 165px;
     position: relative;
 }
