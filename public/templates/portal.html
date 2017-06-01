@@ -44,6 +44,8 @@
                 <p class="eoko-text-ultralight eoko-resident-user-info">{{user.email}}</p>
                 <p class="eoko-text-ultralight eoko-resident-user-info">Events created: {{user.eventCount}}</p>
                 <p class="eoko-text-ultralight eoko-resident-user-info">Surveys taken: {{user.surveyCount}}</p>
+                <p class="eoko-text-ultralight eoko-resident-user-info">Points given: {{user.points}}</p>
+		<button class="eoko-approve-button-approve eoko-text-ultralight " ng-click="submitEvent()"><span>Give Points</span></button>
             </div>
         </div>
 
@@ -122,10 +124,8 @@
                     <div class="eoko-events-label-wrapper">
                         <!--Event Type-->
                         <label name="eventType" class="eoko-events-label" style="margin: 0 0 20px 0;">Event Type</label>
-                        <!--Event Catagory-->
-                        <label name="eventCategory" class="eoko-events-label">Category</label>
                         <!--Event title-->
-                        <label name="eventTitle" class="eoko-events-label">Event Name</label>
+                        <label name="eventTitle" class="eoko-events-label">Event Title</label>
                         <!--Event Location-->
                         <label name="eventLocation" class="eoko-events-label">Location</label>
                         <!--Event Date/Time-->
@@ -145,24 +145,7 @@
                                 <div class="eoko-events-type-label-checkbox-box"></div>
                             </label>
                         </div>
-                        <!--Event Category-->
-                        <div id="ed_labelCategory" class="eoko-horizontal-scroll">
-                            <button ng-click="selectEventsCategory('fitness')" id="fitness" class="eoko-horizontal-scroll-button eoko-text-thin">
-                                Fitness
-                            </button>
-                            <button ng-click="selectEventsCategory('food')" id="food" class="eoko-horizontal-scroll-button eoko-text-thin">
-                                Food
-                            </button>
-                            <button ng-click="selectEventsCategory('meetup')" id="meetup" class="eoko-horizontal-scroll-button eoko-text-thin">
-                                Meet Up
-                            </button>
-                            <button ng-click="selectEventsCategory('game')" id="game" class="eoko-horizontal-scroll-button eoko-text-thin">
-                                Game
-                            </button>
-                            <button ng-click="selectEventsCategory('party')" id="party" class="eoko-horizontal-scroll-button eoko-text-thin">
-                                Party
-                            </button>
-                        </div>
+                    
                         <!--Event title-->
                         <input id="ed_labelTitle" type="text" style="width: 100%" class="eoko-text-thin" ng-model="event.title" required>
                         <!--Event Location-->
