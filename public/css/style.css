@@ -248,16 +248,17 @@ input[type=submit]:hover {
     display: inline-block;
     position: absolute;
     margin-left: 10px;
-    margin-top: 13px;
+    margin-top: 35px;
 }
 
 .eoko-portal-user-name{
-    position: relative;
+    position: absolute;
     color: white;
     font-size: 27px;
     display: block;
     margin-left: 133px;
     margin-right: 1px;
+    margin-top: 70px;
 }
 
 
@@ -362,7 +363,24 @@ nav a:hover{
     margin-left: 133px;
 }
 
+.eoko-resident-popup {
+	visibility: hidden;
+	width: 160px;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 8px 0;
+	position: absolute;
+ 	z-index: 1;
+	bottom: 125%;
+	left: 50%;
+	margin-left: -80px;
+}
 
+.show {
+	visibility: visible;
+}
 
 /*-------------------------
       Approve Tab
@@ -870,22 +888,6 @@ nav a:hover{
 * Pop up
 *
 */
-
-.eoko-resident-popup {
-	visibility: hidden;
-	width: 160px;
-	background-color: #555;
-	color: #fff;
-	text-align: center;
-	border-radius: 6px;
-	padding: 8px 0;
-	position: absolute;
- 	z-index: 1;
-	bottom: 125%;
-	left: 50%;
-	margin-left: -80px;
-}
-
 .eoko-popup-error-message {
     font-family: "San Francisco Display Ultralight", serif;
     font-size: 16px;

@@ -40,7 +40,7 @@
             <div ng-repeat="user in userData" class="eoko-resident-user-wrapper" ng-click="residentPopup()">
             <div class="eoko-portal-avatar" style="background-image: url({{user.avatar}});"></div>
                 <h2 class="eoko-text-thin eoko-portal-user-name">{{user.name}}</h2>
-            <span class="eoko-resident-popup" >
+            <span class="eoko-resident-popup" id="residentPopup">
                 <p class="eoko-text-ultralight eoko-resident-user-info">{{user.email}}</p>
                 <p class="eoko-text-ultralight eoko-resident-user-info">Events created: {{user.eventCount}}</p>
                 <p class="eoko-text-ultralight eoko-resident-user-info">Surveys taken: {{user.surveyCount}}</p>
