@@ -31,21 +31,23 @@
         <!--Tab for Residents-->
         <div ng-if="selection.tab == 'Residents'">
 		<form>
-                   <input type="text" placeholder="Search..." required>
-                   <input type="button" value="Search">
+                   <input type="text" placeholder="Search..." onKeyDown="Javascript: if (event.keyCode==13) somefunc();" required></input>
 		</form>
             <div ng-if="userData.length == 0" class="eoko-portal-no-user">
                 No Users Found!
             </div>
-
-            <div ng-repeat="user in userData" class="eoko-resident-user-wrapper">
-                <div class="eoko-portal-avatar" style="background-image: url({{user.avatar}});"></div>
+    
+            <div ng-repeat="user in userData" class="eoko-resident-user-wrapper" ng-click="residentPopup()">
+            <div class="eoko-portal-avatar" style="background-image: url({{user.avatar}});"></div>
                 <h2 class="eoko-text-thin eoko-portal-user-name">{{user.name}}</h2>
+            <span class="eoko-resident-popup" >
                 <p class="eoko-text-ultralight eoko-resident-user-info">{{user.email}}</p>
                 <p class="eoko-text-ultralight eoko-resident-user-info">Events created: {{user.eventCount}}</p>
                 <p class="eoko-text-ultralight eoko-resident-user-info">Surveys taken: {{user.surveyCount}}</p>
                 <p class="eoko-text-ultralight eoko-resident-user-info">Points given: {{user.points}}</p>
-		<button class="eoko-approve-button-approve eoko-text-ultralight " ng-click="submitEvent()"><span>Give Points</span></button>
+		<button class="eoko-approve-button-approve eoko-text-ultralight " ng-click="givePoints()"><span>Give Points</span></button>
+                </div>
+                </span>
             </div>
         </div>
 
@@ -76,7 +78,9 @@
 
 	<!--Tab for Eoko-->
         <div ng-if="selection.tab == 'Eoko'">
-            Eoko Functionality
+            <button class="eoko-approve-button-approve eoko-text-ultralight " ng-click="somefunc()"><span>Generate Eoko Code</button>
+            <label name="surveyTitle" class="eoko-events-label" style="float: left">Add Action Tag</label>
+         <input id="sur_labelTitle" type="text" class="eoko-text-thin" ng-model="survey.title" required></input>
         </div>
 
 	<!--Tab for My Events-->

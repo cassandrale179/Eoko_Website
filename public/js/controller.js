@@ -390,6 +390,10 @@ angular.module('app.controllers', [])
 
             $scope.userList = [];
 
+		$scope.somefunc = function(){
+		console.log("BOOP");
+		};
+
 
             //-----------------------------
             //    NAVIGATION
@@ -538,6 +542,15 @@ angular.module('app.controllers', [])
                 }
             };
 
+            //Give Points
+            $scope.givePoints = function () {
+                firebase.database().ref('points/' + user)
+}
+           //Resident Popup
+           $scope.residentPopup = function () {
+               var popup = document.getElementById("residentPopup");
+    popup.classList.toggle("show");
+}
             //Submit event
             $scope.submitEvent = function () {
                 console.log("Event submit begin");
