@@ -364,7 +364,6 @@ nav a:hover{
 }
 
 .eoko-resident-popup {
-	visibility: hidden;
 	width: 160px;
 	background-color: #555;
 	color: #fff;
@@ -373,14 +372,11 @@ nav a:hover{
 	padding: 8px 0;
 	position: absolute;
  	z-index: 1;
-	bottom: 125%;
+	bottom: -20%;
 	left: 50%;
 	margin-left: -80px;
 }
 
-.show {
-	visibility: visible;
-}
 
 /*-------------------------
       Approve Tab
@@ -1045,5 +1041,10 @@ img.center {
 .linkIcon:hover{
     opacity: 1;
     box-shadow:0px 0px 33px #f57c00;
+}
+
+
+.fixLeft{
+    margin-left:20%;
 }
 

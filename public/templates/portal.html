@@ -31,26 +31,28 @@
         <!--Tab for Residents-->
         <div ng-if="selection.tab == 'Residents'">
 		<form>
-                   <input type="text" placeholder="Search..." onKeyDown="Javascript: if (event.keyCode==13) somefunc();" required></input>
+                   <input type="text" placeholder="Search..." ng-model="search.text" required></input>
 		</form>
             <div ng-if="userData.length == 0" class="eoko-portal-no-user">
                 No Users Found!
             </div>
     
-            <div ng-repeat="user in userData" class="eoko-resident-user-wrapper" ng-click="residentPopup()">
+
+            <div ng-repeat="user in userData | orderBy : 'name' | filter: {name: search.text}" class="eoko-resident-user-wrapper" ng-click="residentPopup(user)">
             <div class="eoko-portal-avatar" style="background-image: url({{user.avatar}});"></div>
                 <h2 class="eoko-text-thin eoko-portal-user-name">{{user.name}}</h2>
-            <span class="eoko-resident-popup" id="residentPopup">
-                <p class="eoko-text-ultralight eoko-resident-user-info">{{user.email}}</p>
-                <p class="eoko-text-ultralight eoko-resident-user-info">Events created: {{user.eventCount}}</p>
-                <p class="eoko-text-ultralight eoko-resident-user-info">Surveys taken: {{user.surveyCount}}</p>
-                <p class="eoko-text-ultralight eoko-resident-user-info">Points given: {{user.points}}</p>
-		<button class="eoko-approve-button-approve eoko-text-ultralight " ng-click="givePoints()"><span>Give Points</span></button>
-                </div>
-                </span>
+            
             </div>
         </div>
 
+	<span ng-if="bShow === true" class="eoko-resident-popup" >
+                <p class="eoko-text-ultralight eoko-resident-user-info">{{currentUser.email}}</p>
+                <p class="eoko-text-ultralight eoko-resident-user-info">Events created: {{currentUser.eventCount}}</p>
+                <p class="eoko-text-ultralight eoko-resident-user-info">Surveys taken: {{currentUser.surveyCount}}</p>
+                <p class="eoko-text-ultralight eoko-resident-user-info">Points given: {{currentUser.points}}</p>
+		<button class="eoko-approve-button-approve eoko-text-ultralight " ng-click="givePoints(currentUser)"><span>Give Points</span></button>
+                </div>
+                </span>
 
         <!--Tab for Approved-->
         <div ng-if="selection.tab == 'Approve'">
@@ -78,9 +80,11 @@
 
 	<!--Tab for Eoko-->
         <div ng-if="selection.tab == 'Eoko'">
-            <button class="eoko-approve-button-approve eoko-text-ultralight " ng-click="somefunc()"><span>Generate Eoko Code</button>
             <label name="surveyTitle" class="eoko-events-label" style="float: left">Add Action Tag</label>
-         <input id="sur_labelTitle" type="text" class="eoko-text-thin" ng-model="survey.title" required></input>
+         <input id="label_AddActon" type="text" class="eoko-text-thin" ng-model="survey.title" required></input>
+	<div>
+	<label name="surveyTitle" class="eoko-events-label" style="float: left">Make Eoko Code</label>
+	<input id="label_EokoCode" type="text" class="eoko-text-thin" ng-model="survey.title" required></input></div>
         </div>
 
 	<!--Tab for My Events-->
@@ -218,7 +222,7 @@
                     <!--Adding/Remove Survey Questions wrapper-->
                     <div class="eoko-surveys-questions-wrapper">
 
-                        <hr>
+                        <hr style="margin: 20px 20%;">
 
                         <div ng-repeat="question in survey.questions track by $index">
 
@@ -260,7 +264,7 @@
 
                             <!--Add/remove choices-->
                             <div class="answerHolder">
-                                <div class="eoko-surveys-add-button" ng-include src="'templates/icons/AddNewSurveyQuestionChoicesIcon.html'" ng-click="addCheckbox($index)"></div>
+                                <div class="eoko-surveys-add-button fixLeft" ng-include src="'templates/icons/AddNewSurveyQuestionChoicesIcon.html'" ng-click="addCheckbox($index)"></div>
                                 <button class="button buttonRemove" ng-click="removeCheckbox($index)">-</button>
                             </div>
                             <hr>

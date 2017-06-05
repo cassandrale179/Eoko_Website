@@ -394,6 +394,11 @@ angular.module('app.controllers', [])
 		console.log("BOOP");
 		};
 
+	$scope.search = function(){
+		//if (e.originalEvent.defaultPrevented) return;
+		console.log("searching...");
+		};	
+
 
             //-----------------------------
             //    NAVIGATION
@@ -543,13 +548,13 @@ angular.module('app.controllers', [])
             };
 
             //Give Points
-            $scope.givePoints = function () {
+            $scope.givePoints = function (currentUser) {
                 firebase.database().ref('points/' + user)
 }
            //Resident Popup
-           $scope.residentPopup = function () {
-               var popup = document.getElementById("residentPopup");
-    popup.classList.toggle("show");
+           $scope.residentPopup = function (user) {
+		$scope.currentUser = user;
+		$scope.bShow = true;
 }
             //Submit event
             $scope.submitEvent = function () {
