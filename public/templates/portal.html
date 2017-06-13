@@ -46,11 +46,14 @@
         </div>
 
 	<span ng-if="bShow === true" class="eoko-resident-popup" >
-                <p class="eoko-text-ultralight eoko-resident-user-info">{{currentUser.email}}</p>
-                <p class="eoko-text-ultralight eoko-resident-user-info">Events created: {{currentUser.eventCount}}</p>
-                <p class="eoko-text-ultralight eoko-resident-user-info">Surveys taken: {{currentUser.surveyCount}}</p>
-                <p class="eoko-text-ultralight eoko-resident-user-info">Points given: {{currentUser.points}}</p>
-		<button class="eoko-approve-button-approve eoko-text-ultralight " ng-click="givePoints(currentUser)"><span>Give Points</span></button>
+		<div class="eoko-portal-avatar" style="background-image: url({{currentUser.avatar}});margin-left: -11.5%;margin-top: 20px;"></div>
+                <h2 class="eoko-text-thin eoko-portal-user-name" style="margin-top: 140px;margin-right: unset;">{{currentUser.name}} </h2>
+                <p class="eoko-text-ultralight eoko-resident-user-info" style="display: contents;">{{currentUser.email}}</p>
+                <p class="eoko-text-ultralight eoko-resident-user-info" >Events created: {{currentUser.eventCount}}</p>
+                <p class="eoko-text-ultralight eoko-resident-user-info" >Surveys taken: {{currentUser.surveyCount}}</p>
+                <p class="eoko-text-ultralight eoko-resident-user-info" >Points given: {{currentUser.points}}</p>
+		<button class="eoko-resident-popup-button eoko-text-ultralight " ng-click="givePoints(currentUser)"><span style="color: #F57C00;">Remove</span></button>
+	<button class="eoko-resident-popup-button eoko-text-ultralight " ng-click="givePoints(currentUser)"><span style="color: #F57C00">Give Points</span></button>
                 </div>
                 </span>
 
