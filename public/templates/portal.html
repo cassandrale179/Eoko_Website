@@ -43,15 +43,15 @@
       <div ng-if="selection.tab == 'Residents'">
 
         <!-- SEARCH BAR FOR THE RESIDENTS -->
-        <form>
+        
           <input type="text" placeholder="SEARCH..." ng-model="search.text" required>
-		    </form>
+		    
           <div ng-if="userData.length == 0" class="eoko-portal-no-user">
               No Users Found!</div>
-          <div ng-repeat="user in userData | orderBy : 'name' | filter: {name: search.text}" class="eoko-resident-user-wrapper" ng-click="residentPopup(user)"></div>
+          <div ng-repeat="user in userData | orderBy : 'name' | filter: {name: search.text}" class="eoko-resident-user-wrapper" ng-click="residentPopup(user)">
           <div class="eoko-portal-avatar" style="background-image: url({{user.avatar}});"></div>
           <h2 class="eoko-text-thin eoko-portal-user-name">{{user.name}}</h2>
-
+          </div>
       <!-- PEOPLE AVATAR POPPING UP -->
       <span ng-if="bShow === true" class="eoko-resident-popup">
         <div class="eoko-portal-avatar" style="background-image: url({{currentUser.avatar}});margin-left: -11.5%;margin-top: 20px;"></div>
@@ -64,8 +64,8 @@
           <!-- BUTTON TO GIVE POINTS -->
           <button ng-click="givePoints(currentUser)"><span style="color: #F57C00;">REMOVE</span></button>
 	        <button ng-click="givePoints(currentUser)"><span style="color: #F57C00">GIVE POINTS</span></button>
-      <!--</span>-->
-    </div>
+      </span>
+    
   </div>
 
 

@@ -234,3 +234,15 @@ body {
 #E button{
   margin-top: 50px;
 }
+
+
+/*-----------edits!--------------*/
+
+
+.eoko-resident-user-wrapper{
+    border-radius: 33px;
+    display: inline-block;
+    width: -moz-min-content;
+    min-width: 320px;
+    position: relative;
+}
