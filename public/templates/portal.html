@@ -1,295 +1,152 @@
-<div class="eoko-wrapper-portalPage">
 
+<!DOCTYPE html>
+<body>
 
-    <!--top horizontal navigation bar-->
-    <div class="eoko-wrapper-horizontal-nav">
-        <!--Eoko logo-->
-        <div class="logo" ng-include src="'templates/icons/logo.html'"></div>
-
-        <nav class="eoko-horizontal-nav">
-            <a id="eventsTab" ng-click="selector(0)">Event +</a>
-            <a id="surveysTab" ng-click="selector(1)">Survey +</a>
-            <a id="eokoTab" ng-click="selector(2)">Eoko +</a>
-        </nav>
+  <!-- ________________ VERTICAL NAVIGATION BAR  ________________ -->
+  <div id="A">
+    <div id="A1">
+      <a id="residentsTab" ng-click="selector(3)">RESIDENTS</a><br>
     </div>
-
-    <!--vertical navigation bar-->
-    <div class="eoko-wrapper-vertical-nav">
-        <nav class="eoko-vertical-nav">
-            <a id="residentsTab" ng-click="selector(3)">Residents</a><br>
-            <a id="approveTab" ng-click="selector(4)">Approve</a><br>
-            <a id="myEventsTab" ng-click="selector(5)">My Events</a><br>
-            <a id="feedbackTab" ng-click="selector(6)">Feedback</a><br>
-            <a id="rankingTab" ng-click="selector(7)">Ranking</a><br>
-        </nav>
+    <div id="A2">
+      <a id="approveTab" ng-click="selector(4)">APPROVE</a><br>
     </div>
-
-
-    <!--main content-->
-    <div id="mainContent" class="eoko-portal-content-wrapper">
-
-        <!--Tab for Residents-->
-        <div ng-if="selection.tab == 'Residents'">
-		<form>
-                   <input type="text" placeholder="Search..." ng-model="search.text" required></input>
-		</form>
-            <div ng-if="userData.length == 0" class="eoko-portal-no-user">
-                No Users Found!
-            </div>
-    
-
-            <div ng-repeat="user in userData | orderBy : 'name' | filter: {name: search.text}" class="eoko-resident-user-wrapper" ng-click="residentPopup(user)">
-            <div class="eoko-portal-avatar" style="background-image: url({{user.avatar}});"></div>
-                <h2 class="eoko-text-thin eoko-portal-user-name">{{user.name}}</h2>
-            
-            </div>
-        </div>
-
-	<span ng-if="bShow === true" class="eoko-resident-popup" >
-		<div class="eoko-portal-avatar" style="background-image: url({{currentUser.avatar}});margin-left: -11.5%;margin-top: 20px;"></div>
-                <h2 class="eoko-text-thin eoko-portal-user-name" style="margin-top: 140px;margin-right: unset;">{{currentUser.name}} </h2>
-                <p class="eoko-text-ultralight eoko-resident-user-info" style="display: contents;">{{currentUser.email}}</p>
-                <p class="eoko-text-ultralight eoko-resident-user-info" >Events created: {{currentUser.eventCount}}</p>
-                <p class="eoko-text-ultralight eoko-resident-user-info" >Surveys taken: {{currentUser.surveyCount}}</p>
-                <p class="eoko-text-ultralight eoko-resident-user-info" >Points given: {{currentUser.points}}</p>
-		<button class="eoko-resident-popup-button eoko-text-ultralight " ng-click="givePoints(currentUser)"><span style="color: #F57C00;">Remove</span></button>
-	<button class="eoko-resident-popup-button eoko-text-ultralight " ng-click="givePoints(currentUser)"><span style="color: #F57C00">Give Points</span></button>
-                </div>
-                </span>
-
-        <!--Tab for Approved-->
-        <div ng-if="selection.tab == 'Approve'">
-            <div ng-if="userData.length == 0" class="eoko-portal-no-user">
-                No Users to Approve/Deny Access!
-            </div>
-
-            <div ng-if="user.adminConfirmed == 'false'" ng-repeat="user in userData" class="eoko-approve-user-wrapper">
-                <div class="eoko-portal-avatar" style="background-image: url({{user.avatar}});"></div>
-                <h2 class="eoko-text-thin eoko-portal-user-name">{{user.name}}</h2>
-                <p class="eoko-text-ultralight eoko-approve-user-info">{{user.email}}</p>
-                <p class="eoko-text-ultralight eoko-approve-user-info">Events created: {{user.eventCount}}</p>
-                <p class="eoko-text-ultralight eoko-approve-user-info">Surveys taken: {{user.surveyCount}}</p>
-
-                <div class="eoko-approve-options-wrapper">
-                    <button ng-click="denyUser(user)" class="eoko-approve-button-deny eoko-text-thin">
-                        Deny
-                    </button>
-                    <button ng-click="approveUser(user)" class="eoko-approve-button-approve eoko-text-ultralight">
-                        Approve
-                    </button>
-                </div>
-            </div>
-        </div>
-
-	<!--Tab for Eoko-->
-        <div ng-if="selection.tab == 'Eoko'">
-            <label name="surveyTitle" class="eoko-events-label" style="float: left">Add Action Tag</label>
-         <input id="label_AddActon" type="text" class="eoko-text-thin" ng-model="survey.title" required></input>
-	<div>
-	<label name="surveyTitle" class="eoko-events-label" style="float: left">Make Eoko Code</label>
-	<input id="label_EokoCode" type="text" class="eoko-text-thin" ng-model="survey.title" required></input></div>
-        </div>
-
-	<!--Tab for My Events-->
-        <div ng-if="selection.tab == 'My Events'">
-            My Events Functionality
-        </div>
-
-	<!--Tab for Feedback-->
-        <div ng-if="selection.tab == 'Feedback'">
-            Feedback Functionality
-        </div>
-
-        <!--Tab for Ranking-->
-        <div ng-if="selection.tab == 'Ranking'">
-
-            <div ng-if="userData.length == 0" class="eoko-portal-no-user">
-                No Users Found!
-            </div>
-
-            <div ng-repeat="user in userData | orderBy : '-points' ">
-                <h1 class="eoko-ranking-number">{{$index +1}}.</h1>
-                <div class="eoko-ranking-user-wrapper">
-                    <div class="eoko-portal-avatar" style="background-image: url({{user.avatar}});"></div>
-                    <h2 class="eoko-text-thin eoko-portal-user-name">{{user.name}}</h2>
-                    <p class="eoko-text-ultralight eoko-ranking-user-points">{{user.points}} points</p>
-                    <p class="eoko-text-ultralight eoko-ranking-user-info">{{user.email}}</p>
-                    <p class="eoko-text-ultralight eoko-ranking-user-info">Events created: {{user.eventCount}}</p>
-                    <p class="eoko-text-ultralight eoko-ranking-user-info">Surveys taken: {{user.surveyCount}}</p>
-                </div>
-            </div>
-        </div>
-
-
-        <!--Tab for Events-->
-        <div ng-if="selection.tab == 'Events'">
-
-            <!--Error Message-->
-            <div ng-if="errorpopup != '' && eventsubmitted == false " class="eoko-popup-error-message">{{errorpopup}}</div>
-
-            <p ng-if="eventsubmitted == true" class="eoko-label-text-field">Building Event Submitted!</p>
-            <div ng-if="eventsubmitted == false">
-
-                <div class="eoko-events-info-wrapper">
-                    <!--Label wrapper-->
-                    <div class="eoko-events-label-wrapper">
-                        <!--Event Type-->
-                        <label name="eventType" class="eoko-events-label" style="margin: 0 0 20px 0;">Event Type</label>
-                        <!--Event title-->
-                        <label name="eventTitle" class="eoko-events-label">Event Title</label>
-                        <!--Event Location-->
-                        <label name="eventLocation" class="eoko-events-label">Location</label>
-                        <!--Event Date/Time-->
-                        <label name="eventDateTime" class="eoko-events-label">Date/Time</label>
-                    </div>
-
-
-                    <!--Input field wrapper-->
-                    <div class="eoko-events-input-wrapper">
-                        <div class="eoko-events-type-checkbox-wrapper">
-                            <label class="eoko-events-type-label eoko-events-type-label-checkbox">Public
-                                <input type="checkbox"/>
-                                <div class="eoko-events-type-label-checkbox-box"></div>
-                            </label>
-                            <label class="eoko-events-type-label eoko-events-type-label-checkbox">Private
-                                <input type="checkbox"/>
-                                <div class="eoko-events-type-label-checkbox-box"></div>
-                            </label>
-                        </div>
-                    
-                        <!--Event title-->
-                        <input id="ed_labelTitle" type="text" style="width: 100%" class="eoko-text-thin" ng-model="event.title" required>
-                        <!--Event Location-->
-                        <input id="ed_labelLocation" type="text" style="width: 100%" class="eoko-text-thin" ng-model="event.location" required>
-                        <!--Event Date/Time-->
-                        <input id="ed_labelD" type="date" style="width: 60%;" class="eoko-text-thin" ng-model="event.date" required></th>
-                        <input id="ed_labelT" type="time" style="width: 50%;" class="eoko-text-thin" ng-model="event.time" required></th>
-                    </div>
-
-                    <!--Description wrapper-->
-                    <div class="eoko-events-desc-wrapper">
-                        <label name="eventDescription" class="eoko-events-desc-label">Description</label>
-                        <textarea ng-model="event.description" class="eoko-text-area eoko-text-thin"></textarea>
-                        <!--Submit button-->
-                        <button class="button eoko-text-regular" ng-click="submitEvent()"><span>Create</span></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!--Tab for Surveys-->
-        <div ng-if="selection.tab == 'Surveys'">
-
-            <!--Error Message-->
-            <div ng-if="errorpopup != '' && surveysubmitted == false " class="eoko-popup-error-message">{{errorpopup}}</div>
-
-            <p ng-if="surveysubmitted == true">Survey Submitted!</p>
-            <div ng-if="surveysubmitted == false">
-
-
-                <div class="eoko-events-info-wrapper">
-
-                    <!--Label wrapper-->
-                    <div class="eoko-surveys-label-wrapper">
-                        <!--Survey Type-->
-                        <label name="surveyType" class="eoko-events-label" style="margin: 0 0 20px 0;">Survey Type</label>
-                        <!--Survey title-->
-                        <label name="surveyTitle" class="eoko-events-label">Survey Title</label>
-                        <!--Survey Description-->
-                        <label name="surveyDescription" class="eoko-events-label">Description</label>
-                    </div>
-
-
-                    <!--Input field wrapper-->
-                    <div class="eoko-surveys-input-wrapper">
-                        <div class="eoko-events-type-checkbox-wrapper">
-                            <label class="eoko-events-type-label eoko-events-type-label-checkbox">Public
-                                <input type="checkbox"/>
-                                <div class="eoko-events-type-label-checkbox-box"></div>
-                            </label>
-                            <label class="eoko-events-type-label eoko-events-type-label-checkbox">Private
-                                <input type="checkbox"/>
-                                <div class="eoko-events-type-label-checkbox-box"></div>
-                            </label>
-                        </div>
-
-                        <!--Survey title-->
-                        <input id="sur_labelTitle" type="text" style="width: 100%" class="eoko-text-thin" ng-model="survey.title" required>
-
-                        <!--Survey Description-->
-                        <textarea ng-model="survey.description" class="eoko-text-area eoko-text-thin" style="margin-bottom: 0"></textarea>
-                    </div>
-
-
-                    <!--Adding/Remove Survey Questions wrapper-->
-                    <div class="eoko-surveys-questions-wrapper">
-
-                        <hr style="margin: 20px 20%;">
-
-                        <div ng-repeat="question in survey.questions track by $index">
-
-                            <!--Remove Question-->
-                            <div class="eoko-surveys-remove-button"  ng-include src="'templates/icons/TrashIcon.html'" ng-click="removeQuestion()"></div>
-                            <!--Question Number-->
-                            <label class="eoko-surveys-label">{{$index + 1}}.</label>
-
-                            <!--Question Type-->
-                            <div class="eoko-events-type-checkbox-wrapper">
-                                <label class="eoko-events-type-label eoko-events-type-label-checkbox">True/False
-                                    <input type="checkbox"/>
-                                    <div class="eoko-events-type-label-checkbox-box"></div>
-                                </label>
-                                <label class="eoko-events-type-label eoko-events-type-label-checkbox">Multiple Choice
-                                    <input type="checkbox"/>
-                                    <div class="eoko-events-type-label-checkbox-box"></div>
-                                </label>
-                                <label class="eoko-events-type-label eoko-events-type-label-checkbox">Short Answer
-                                    <input type="checkbox"/>
-                                    <div class="eoko-events-type-label-checkbox-box"></div>
-                                </label>
-                                <label class="eoko-events-type-label eoko-events-type-label-checkbox">Rating
-                                    <input type="checkbox"/>
-                                    <div class="eoko-events-type-label-checkbox-box"></div>
-                                </label>
-                            </div>
-
-                            <!--Prompt input-->
-                            <input type="text" placeholder="Prompt"
-                                   style="font-size: 1.6em;" class="eoko-input eoko-text-thin"
-                                   ng-model="question.title">
-
-                            <!--Choices input-->
-                            <div ng-repeat="choice in question.choices track by $index">
-                                <input type="text" placeholder="Answer" class="eoko-input eoko-text-thin"
-                                       style="margin-left:33%;width:67%" ng-model="choice.answer">
-                            </div>
-
-                            <!--Add/remove choices-->
-                            <div class="answerHolder">
-                                <div class="eoko-surveys-add-button fixLeft" ng-include src="'templates/icons/AddNewSurveyQuestionChoicesIcon.html'" ng-click="addCheckbox($index)"></div>
-                                <button class="button buttonRemove" ng-click="removeCheckbox($index)">-</button>
-                            </div>
-                            <hr>
-                        </div>
-
-
-                        <!--Adding Questions-->
-                        <div class="answerHolder" style="left:0">
-                            <div class="eoko-surveys-add-button" ng-include src="'templates/icons/AddNewSurveyQuestionsIcon.html'" ng-click="addQuestion()"></div>
-
-                        </div>
-			<button class="button eoko-text-regular" ng-click="submitSurvey()"><span>Submit</span></button>
-                    </div>
-
-
-                    
-                </div>
-            </div>
-        </div>
-
-
+    <div id="A3">
+      <a id="myEventsTab" ng-click="selector(5)">MY EVENTS</a><br>
     </div>
+    <div id="A4">
+      <a id="feedbackTab" ng-click="selector(6)">FEEDBACK</a><br>
+    </div>
+    <div id="A5">
+      <a id="rankingTab" ng-click="selector(7)">RANKING</a><br>
+    </div>
+  </div>
+
+  <!--  ________________ HORIZONTAL NAVIGATION BAR  ________________ -->
+  <div id="B">
+    <div id="B1">
+       <a id="eventsTab" ng-click="selector(0)">EVENT +</a>
+    </div>
+    <div id="B2">
+      <a id="surveysTab" ng-click="selector(1)">SURVEY +</a>
+    </div>
+    <div id="B3">
+      <a id="eokoTab" ng-click="selector(2)">EOKO +</a>
+    </div>
+  </div>
+
+
+<!-- ________________________________ MAIN CONTENT_________________________________ -->
+<div id="mainBody">
+
+    <!-- _____________________________ TAB FOR RESIDENTS______________________________ -->
+    <div id="C">
+      <div ng-if="selection.tab == 'Residents'">
+
+        <!-- SEARCH BAR FOR THE RESIDENTS -->
+        <form>
+          <input type="text" placeholder="SEARCH..." ng-model="search.text" required>
+		    </form>
+          <div ng-if="userData.length == 0" class="eoko-portal-no-user">
+              No Users Found!</div>
+          <div ng-repeat="user in userData | orderBy : 'name' | filter: {name: search.text}" class="eoko-resident-user-wrapper" ng-click="residentPopup(user)"></div>
+          <div class="eoko-portal-avatar" style="background-image: url({{user.avatar}});"></div>
+          <h2 class="eoko-text-thin eoko-portal-user-name">{{user.name}}</h2>
+
+      <!-- PEOPLE AVATAR POPPING UP -->
+      <span ng-if="bShow === true" class="eoko-resident-popup">
+        <div class="eoko-portal-avatar" style="background-image: url({{currentUser.avatar}});margin-left: -11.5%;margin-top: 20px;"></div>
+          <h2 class="eoko-text-thin eoko-portal-user-name" style="margin-top: 140px;margin-right: unset;">{{currentUser.name}} </h2>
+          <p class="eoko-text-ultralight eoko-resident-user-info" style="display: contents;">{{currentUser.email}}</p>
+          <p class="eoko-text-ultralight eoko-resident-user-info" >Events created: {{currentUser.eventCount}}</p>
+          <p class="eoko-text-ultralight eoko-resident-user-info" >Surveys taken: {{currentUser.surveyCount}}</p>
+          <p class="eoko-text-ultralight eoko-resident-user-info" >Points given: {{currentUser.points}}</p>
+
+          <!-- BUTTON TO GIVE POINTS -->
+          <button ng-click="givePoints(currentUser)"><span style="color: #F57C00;">REMOVE</span></button>
+	        <button ng-click="givePoints(currentUser)"><span style="color: #F57C00">GIVE POINTS</span></button>
+      <!--</span>-->
+    </div>
+  </div>
+
+
+  <!-- _______________________________TAB FOR EVENTS_________________________________ -->
+  <div id="D">
+    <div ng-if="selection.tab == 'Events'">
+      <!--ERROR MESSAGE AND EVENT SUBMIT-->
+      <div ng-if="errorpopup != '' && eventsubmitted == false " class="eoko-popup-error-message">{{errorpopup}}</div>
+      <p ng-if="eventsubmitted == true" class="eoko-label-text-field">Building Event Submitted!</p>
+      <div ng-if="eventsubmitted == false"></div>
+
+
+      <!-- INPUT FIELD FOR TITLE, LOCATION, DATE/TIME -->
+      <div id="D1">
+        <label for="ed_LabelTitle">EVENT TITLE: </label>
+        <input id="ed_labelTitle" type="text"  ng-model="event.title" required><br>
+        <label for="ed_LabelLocation">LOCATION: </label>
+        <input id="ed_labelLocation" type="text" ng-model="event.location" required><br />
+        <label for="ed_labelD">DATE: </label>
+        <input id="ed_labelD" type="date" ng-model="event.date" required><br />
+        <label for="ed_labelT">TIME: </label>
+        <input id="ed_labelT" type="time" ng-model="event.time" required><br />
+        <label for="ed_Description">DESCRIPTION: </label>
+        <textarea ng-model="event.description"></textarea>
+      </div>
+
+      <!-- CHECKBOX IF EVENT IS PUBLIC OR PRIVATE -->
+      <div id="D2">
+        <label  style="margin-left: 300px;" for="public">PUBLIC EVENT: </label>
+        <input id="public" type="checkbox"/>
+        <label for="private">PRIVATE EVENT: </label>
+        <input id="private" type="checkbox"/>
+      </div>
+
+        <!-- BUTTON TO CREATE EVENT -->
+       <button ng-click="submitEvent()">CREATE</button>
+    </div>
+  </div>
+
+  <!-- _____________________________ TAB FOR SURVEY______________________________ -->
+  <div id="E">
+    <div ng-if="selection.tab == 'Surveys'">
+
+      <!-- ERROR MESSAGE -->
+      <div ng-if="errorpopup != '' && surveysubmitted == false " class="eoko-popup-error-message">{{errorpopup}}</div>
+       <p ng-if="surveysubmitted == true">Survey Submitted!</p>
+       <div ng-if="surveysubmitted == false"></div>
+
+     <!-- LAEBL FOR SURVEY-->
+     <label for="sur_laeblTitle" name="surveyTitle">SURVEY TITLE</label>
+     <input id="sur_labelTitle" type="text" ng-model="survey.title" required><br />
+     <label name="surveyDescription">DESCRIPTION </label>
+     <textarea ng-model="survey.description"></textarea>
+
+      <!-- CHECKBOX FOR SURVEY-->
+     <div id="E2">
+       <label  style="margin-left: 300px;" for="surveypublic">PUBLIC SURVEY: </label>
+       <input id="surveypublic" type="checkbox"/>
+       <label for="suurveyprivate">PRIVATE SURVEY: </label>
+       <input id="surveyprivate" type="checkbox"/>
+     </div>
+
+     <!-- ADDING SURVEY QUESTIONS -->
+     <button> ADD QUESTIONS + </button>
+
+
+
+     <!-- SUBMIT BUTTON
+     <button ng-click="submitSurvey()">SUBMIT</button> -->
+    </div>
+  </div>
+
+
+  <!-- _______________________ TAB FOR EOKO+_______________________ -->
+  <div id="F">
+    <div ng-if="selection.tab == 'Eoko'">
+       <label name="surveyTitle">ADD ACTION TAG</label>
+       <input id="label_AddActon" type="text" ng-model="survey.title" required /><br />
+       <label name="surveyTitle">MAKE EOKO CODE</label>
+       <input id="label_EokoCode" type="text" ng-model="survey.title" required />
+    </div>
+  </div>
 </div>
-
-  
+</body>
