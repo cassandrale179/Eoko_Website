@@ -19,6 +19,9 @@
     <div id="A5">
       <a id="rankingTab" ng-click="selector(7)">RANKING</a><br>
     </div>
+    <div id="A6">
+      <a id="logoutTab"> LOGOUT</a>
+    </div>
   </div>
 
   <!--  ________________ HORIZONTAL NAVIGATION BAR  ________________ -->
@@ -35,10 +38,10 @@
   </div>
 
 
-<!-- ________________________________ MAIN CONTENT_________________________________ -->
+<!-- ________________________ MAIN CONTENT_____________________________ -->
 <div id="mainBody">
 
-    <!-- _____________________________ TAB FOR RESIDENTS______________________________ -->
+    <!-- _________________________ TAB FOR RESIDENTS__________________________ -->
     <div id="C">
       <div ng-if="selection.tab == 'Residents'">
 
@@ -51,7 +54,7 @@
               No Users Found!</div>
           <div ng-repeat="user in userData | orderBy : 'name' | filter: {name: search.text}" class="eoko-resident-user-wrapper" ng-click="residentPopup(user)">
           <div class="avatar" style="background-image: url({{user.avatar}});"></div>
-          <h2 class="eoko-text-thin eoko-portal-user-name">{{user.name}}</h2>
+          <h2>{{user.name}}</h2>
           </div>
       </div>
 
@@ -128,7 +131,8 @@
 
       <!-- CHECKBOX FOR SURVEY-->
      <div id="E2">
-       <label  style="margin-left: 300px;" for="surveypublic">PUBLIC SURVEY: </label>
+       <label  style="margin-left: 10
+       0px;" for="surveypublic">PUBLIC SURVEY: </label>
        <input id="surveypublic" type="checkbox"/>
        <label for="suurveyprivate">PRIVATE SURVEY: </label>
        <input id="surveyprivate" type="checkbox"/>
