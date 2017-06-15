@@ -20,7 +20,7 @@
       <a id="rankingTab" ng-click="selector(7)">RANKING</a><br>
     </div>
     <div id="A6">
-      <a id="logoutTab"> LOGOUT</a>
+      <a id="logoutTab" ng-click="selector(8)"> LOGOUT</a>
     </div>
   </div>
 
@@ -49,19 +49,17 @@
         <input type="text" placeholder="SEARCH..." ng-model="search.text" required>
 
       <!-- A LIST OF USERS WILL APPEAR -->
-      <div id="C1">
+      <div id="C1" style="float: left;">
           <div ng-if="userData.length == 0" class="eoko-portal-no-user">
               No Users Found!</div>
           <div ng-repeat="user in userData | orderBy : 'name' | filter: {name: search.text}" class="eoko-resident-user-wrapper" ng-click="residentPopup(user)">
           <div class="avatar" style="background-image: url({{user.avatar}});"></div>
           <h2>{{user.name}}</h2>
+
           </div>
       </div>
-
-
       <!-- PEOPLE INFORMATION WILL POP UP IF CLICKED -->
-        <span ng-if="bShow === true">
-          <div id="C2">
+          <div id="C2" style="margin-left: 55%;">
           <div class="avatar2" style="background-image: url({{currentUser.avatar}});"></div>
             <h2>{{currentUser.name}} </h2>
             <p style="display: contents;">{{currentUser.email}}</p>
@@ -72,8 +70,7 @@
             <!-- BUTTON TO GIVE POINTS -->
             <button ng-click="givePoints(currentUser)">REMOVE</button>
   	        <button ng-click="givePoints(currentUser)">GIVE POINTS</button>
-          </div>
-        </span>
+          </div> 
 
   </div>
 

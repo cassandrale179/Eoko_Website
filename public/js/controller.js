@@ -554,7 +554,6 @@ angular.module('app.controllers', [])
            //Resident Popup
            $scope.residentPopup = function (user) {
 		$scope.currentUser = user;
-		$scope.bShow = true;
 }
             //Submit event
             $scope.submitEvent = function () {
