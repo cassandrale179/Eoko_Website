@@ -144,6 +144,14 @@ body {
   margin-right: auto;
 }
 
+.eoko-resident-user-wrapper{
+    border-radius: 33px;
+    display: inline-block;
+    width: -moz-min-content;
+    min-width: 200px;
+    position: relative;
+}
+
 /* STYLING WHAT WILL HAPPEN WHEN USERNAME IS CLICKED */
 #C2{
   background-color: rgba(0,0,0,0.3);
@@ -180,7 +188,7 @@ body {
   font-size: 15px;
   background: rgba(0,0,0,0.7);
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 10px;
   color: white;
 }
 
@@ -255,13 +263,25 @@ body {
 }
 
 
-/*-----------edits!--------------*/
+/*STYLING FOR APPROVAL TAB (G) */
+#G h2{
+  color: white;
+  font-family: 'Roboto Condensed', sans-serif;
+}
 
+#G p{
+  color: white;
+  font-family: 'Roboto Condensed', sans-serif;
+  line-height: 15px;
+}
 
-.eoko-resident-user-wrapper{
-    border-radius: 33px;
-    display: inline-block;
-    width: -moz-min-content;
-    min-width: 200px;
-    position: relative;
+#G button{
+  font-family: 'Roboto Condensed', sans-serif;
+  height: 40px;
+  width: 100px;
+  border: none;
+  font-size: 15px;
+  background: rgba(0,0,0,0.7);
+  padding: 10px;
+  color: white;
 }

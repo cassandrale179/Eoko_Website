@@ -77,6 +77,30 @@
 
   </div>
 
+  <!-- _________________________ TAB FOR APPROVE __________________________ -->
+  <div id="G" ng-if="selection.tab == 'Approve'">
+
+    <!-- IF NO USERS, OUTPUT NO USER MESSAGE -->
+    <div ng-if="userData.length == 0" class="eoko-portal-no-user">
+      No Users to Approve/Deny Access!
+    </div>
+
+    <!-- ELSE DISPLAY APPROVED USERS -->
+    <div ng-if="user.adminConfirmed == 'false'" ng-repeat="user in userData">
+      <div class="avatar" style="background-image: url({{user.avatar}});"></div>
+        <h2>{{user.name}}</h2>
+        <p>{{user.email}}</p>
+        <p>Events created: {{user.eventCount}}</p>
+        <p>Surveys taken: {{user.surveyCount}}</p>
+
+      <div class="eoko-approve-options-wrapper">
+        <button ng-click="denyUser(user)">DENY</button>
+        <button ng-click="approveUser(user)">APPROVE</button>
+      </div>
+    </div>
+  </div>
+
+
 
   <!-- __________________________TAB FOR EVENTS______________________________ -->
   <div id="D">
