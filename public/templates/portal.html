@@ -41,7 +41,7 @@
 <!-- ________________________ MAIN CONTENT_____________________________ -->
 <div id="mainBody">
 
-    <!-- _________________________ TAB FOR RESIDENTS__________________________ -->
+<!-- _________________________ TAB FOR RESIDENTS__________________________ -->
     <div id="C">
       <div ng-if="selection.tab == 'Residents'">
 
@@ -74,8 +74,51 @@
 
   </div>
 
+<!-- _________________________ TAB FOR APPROVE __________________________ -->
+  <div id="G" ng-if="selection.tab == 'Approve'">
 
-  <!-- __________________________TAB FOR EVENTS______________________________ -->
+    <!-- IF NO USERS, OUTPUT NO USER MESSAGE -->
+    <div ng-if="userData.length == 0" class="eoko-portal-no-user">
+      No Users to Approve/Deny Access!
+    </div>
+
+    <!-- ELSE DISPLAY APPROVED USERS -->
+    <div ng-if="user.adminConfirmed == 'false'" ng-repeat="user in userData">
+      <div class="avatar" style="background-image: url({{user.avatar}});"></div>
+        <h2>{{user.name}}</h2>
+        <p>{{user.email}}</p>
+        <p>Events created: {{user.eventCount}}</p>
+        <p>Surveys taken: {{user.surveyCount}}</p>
+
+      <div class="eoko-approve-options-wrapper">
+        <button ng-click="denyUser(user)">DENY</button>
+        <button ng-click="approveUser(user)">APPROVE</button>
+      </div>
+    </div>
+  </div>
+
+<!-- _________________________ TAB FOR RANKING __________________________ -->
+  <div id="H" ng-if="selection.tab == 'Ranking'">
+
+    <!-- IF NO USERS, ERROR MESSAGE -->
+    <div ng-if="userData.length == 0" class="eoko-portal-no-user">
+      No Users Found!
+    </div>
+
+    <!-- IF THERE ARE USERS, RANK THEM -->
+    <div id="H1" ng-repeat="user in userData | orderBy : '-points' ">
+      <h1>{{$index +1}}. {{user.name}}</h1>
+        <div>
+          <div class="avatar" style="background-image: url({{user.avatar}});"></div>
+          <p> <b>Points: </b> {{user.points}} points</p>
+          <p><b>Email: </b>{{user.email}}</p>
+          <p><b>Events created: </b> {{user.eventCount}}</p>
+          <p><b>Surveys taken: </b>{{user.surveyCount}}</p>
+        </div>
+    </div>
+  </div>
+
+<!-- __________________________TAB FOR EVENTS______________________________ -->
   <div id="D">
     <div ng-if="selection.tab == 'Events'">
       <!--ERROR MESSAGE AND EVENT SUBMIT-->
@@ -111,7 +154,7 @@
     </div>
   </div>
 
-  <!-- _____________________________ TAB FOR SURVEY______________________________ -->
+  <!-- _____________________________ TAB FOR SURVEY__________________________ -->
   <div id="E">
     <div ng-if="selection.tab == 'Surveys'">
 
