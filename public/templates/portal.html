@@ -41,7 +41,7 @@
 <!-- ________________________ MAIN CONTENT_____________________________ -->
 <div id="mainBody">
 
-    <!-- _________________________ TAB FOR RESIDENTS__________________________ -->
+<!-- _________________________ TAB FOR RESIDENTS__________________________ -->
     <div id="C">
       <div ng-if="selection.tab == 'Residents'">
 
@@ -77,7 +77,7 @@
 
   </div>
 
-  <!-- _________________________ TAB FOR APPROVE __________________________ -->
+<!-- _________________________ TAB FOR APPROVE __________________________ -->
   <div id="G" ng-if="selection.tab == 'Approve'">
 
     <!-- IF NO USERS, OUTPUT NO USER MESSAGE -->
@@ -100,9 +100,28 @@
     </div>
   </div>
 
+<!-- _________________________ TAB FOR RANKING __________________________ -->
+  <div id="H" ng-if="selection.tab == 'Ranking'">
 
+    <!-- IF NO USERS, ERROR MESSAGE -->
+    <div ng-if="userData.length == 0" class="eoko-portal-no-user">
+      No Users Found!
+    </div>
 
-  <!-- __________________________TAB FOR EVENTS______________________________ -->
+    <!-- IF THERE ARE USERS, RANK THEM -->
+    <div id="H1" ng-repeat="user in userData | orderBy : '-points' ">
+      <h1>{{$index +1}}. {{user.name}}</h1>
+        <div>
+          <div class="avatar" style="background-image: url({{user.avatar}});"></div>
+          <p> <b>Points: </b> {{user.points}} points</p>
+          <p><b>Email: </b>{{user.email}}</p>
+          <p><b>Events created: </b> {{user.eventCount}}</p>
+          <p><b>Surveys taken: </b>{{user.surveyCount}}</p>
+        </div>
+    </div>
+  </div>
+
+<!-- __________________________TAB FOR EVENTS______________________________ -->
   <div id="D">
     <div ng-if="selection.tab == 'Events'">
       <!--ERROR MESSAGE AND EVENT SUBMIT-->
@@ -138,7 +157,7 @@
     </div>
   </div>
 
-  <!-- _____________________________ TAB FOR SURVEY______________________________ -->
+  <!-- _____________________________ TAB FOR SURVEY__________________________ -->
   <div id="E">
     <div ng-if="selection.tab == 'Surveys'">
 
