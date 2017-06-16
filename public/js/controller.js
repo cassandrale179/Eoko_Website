@@ -308,6 +308,30 @@ angular.module('app.controllers', [])
         }])
 
 
+    .controller('forgotPasswordCtrl', ['$scope', '$state',
+        function ($scope, $state) {
+
+            $scope.errorpopup = "";
+            $scope.info = {email: ""};
+
+            $scope.resetPassword = function () {
+                if ($scope.info.email.replace(' ', '') == "") {
+                    $scope.errorpopup = "Please enter your email";
+                    return;
+                }
+
+                firebase.auth().sendPasswordResetEmail($scope.info.email).then(
+                    function (data) {
+                        $scope.errorpopup = "";
+                    },
+                    function (error) {
+                        console.log(error);
+                        $scope.errorpopup = error.message;
+                    }
+                );
+            };
+        }])
+
     .controller('feedbackCtrl', ['$scope', '$window', '$timeout',
         // a verbose line seperator between the top construction section and the function for the controller below
 

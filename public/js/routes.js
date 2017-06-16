@@ -25,6 +25,13 @@ angular.module('app.routes', ['ui.router'])
     controller: 'loginPageCtrl'
 })
 
+.state('forgot-password',{
+  name: 'Forgot Password',
+  url: '/forgotPassword',
+    templateUrl: 'templates/forgot-password.html',
+    controller: 'forgotPasswordCtrl'
+})
+
 .state('portal',{
   name: 'Portal',
   url: '/portalPage',
