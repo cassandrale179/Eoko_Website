@@ -307,6 +307,38 @@ angular.module('app.controllers', [])
             };
         }])
 
+    .controller('forgotPasswordCtrl', ['$scope', '$state','$timeout',
+        function ($scope, $state,$timeout) {
+
+            $scope.errorpopup = "";
+            $scope.info = {email: ""};
+
+            $scope.resetPassword = function () {
+                if ($scope.info.email.replace(' ', '') == "") {
+                    $scope.errorpopup = "Please enter your email";
+                    return;
+                }
+
+                firebase.auth().sendPasswordResetEmail($scope.info.email).then(
+                    function (data) {
+                        $scope.errorpopup = "";
+                        $scope.thankyou = true;
+                        $timeout(function () {
+                        $scope.$apply();
+                    });
+                        $timeout(function () {
+                        $scope.thankyou = false;
+                        $state.go('login');
+                    }, 3000);
+                    },
+                    function (error) {
+                        console.log(error);
+                        $scope.errorpopup = error.message;
+                    }
+                );
+            };
+        }])
+
 
     .controller('feedbackCtrl', ['$scope', '$window', '$timeout',
         // a verbose line seperator between the top construction section and the function for the controller below

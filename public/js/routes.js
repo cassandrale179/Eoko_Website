@@ -46,6 +46,13 @@ angular.module('app.routes', ['ui.router'])
     controller: 'feedbackCtrl'
 })
 
+.state('forgotpassword',{
+  name: 'Forgot Password',
+  url: '/forgotPasswordPage',
+    templateUrl: 'templates/forgot-password.html',
+    controller: 'forgotPasswordCtrl'
+})
+
  .state('home',{
  	name: 'Home',
  	url: '/homePage',
