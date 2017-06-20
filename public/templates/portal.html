@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <body>
 
@@ -42,11 +41,11 @@
 <div id="mainBody">
 
 <!-- _________________________ TAB FOR RESIDENTS__________________________ -->
-    <div id="C">
-      <div ng-if="selection.tab == 'Residents'">
+  <div id="C">
+    <div ng-if="selection.tab == 'Residents'">
 
-        <!-- SEARCH BAR FOR THE RESIDENTS -->
-        <input type="text" placeholder="SEARCH..." ng-model="search.text" required>
+      <!-- SEARCH BAR FOR THE RESIDENTS -->
+      <input type="text" placeholder="SEARCH..." ng-model="search.text" required>
 
       <!-- A LIST OF USERS WILL APPEAR -->
       <div id="C1" style="float: left;">
@@ -72,7 +71,7 @@
   	        <button ng-click="givePoints(currentUser)">GIVE POINTS</button>
           </div>
 
-  </div>
+    </div>
 
 <!-- _________________________ TAB FOR APPROVE __________________________ -->
   <div id="G" ng-if="selection.tab == 'Approve'">
@@ -83,18 +82,35 @@
     </div>
 
     <!-- ELSE DISPLAY APPROVED USERS -->
-    <div ng-if="user.adminConfirmed == 'false'" ng-repeat="user in userData">
+    <div id="G1" ng-if="user.adminConfirmed == 'false'" ng-repeat="user in userData">
       <div class="avatar" style="background-image: url({{user.avatar}});"></div>
         <h2>{{user.name}}</h2>
         <p>{{user.email}}</p>
-        <p>Events created: {{user.eventCount}}</p>
-        <p>Surveys taken: {{user.surveyCount}}</p>
 
       <div>
         <button ng-click="denyUser(user)">DENY</button>
         <button ng-click="approveUser(user)">APPROVE</button>
       </div>
     </div>
+  </div>
+
+
+  <!-- _________________________ TAB FOR FEEDBACK __________________________ -->
+  <div id="H" ng-if="selection.tab == 'Feedback'">
+
+  <div style="width: 33vw;background-color: rgba(0, 0, 0, 0.61);padding: 33px;overflow: auto;height: 61vh;">User Comments
+      <!-- IF NO COMMENTS, OUTPUT NO COMMENT MESSAGE -->
+      <div ng-if="commentData.length == 0" class="eoko-portal-no-user">
+        No Comments to display
+      </div>
+
+      <!-- ELSE DISPLAY APPROVED USERS -->
+      <div ng-repeat="comment in commentData" style="display: block;text-align: center;">
+          <div class="avatar" style="background-image: url({{comment.avatar}});"></div>
+          <h2>{{comment.name}}</h2>
+          <p>{{comment.comment}}</p>
+      </div>
+  </div>
   </div>
 
 <!-- _________________________ TAB FOR RANKING __________________________ -->
@@ -131,6 +147,8 @@
       <div id="D1">
         <label for="ed_LabelTitle">EVENT TITLE: </label>
         <input id="ed_labelTitle" type="text"  ng-model="event.title" required><br>
+        <label for="ed_LabelCategory">CATEGORY: </label>
+        <input id="ed_labelCategory" type="text"  ng-model="event.category" required><br>
         <label for="ed_LabelLocation">LOCATION: </label>
         <input id="ed_labelLocation" type="text" ng-model="event.location" required><br />
         <label for="ed_labelD">DATE: </label>
@@ -142,12 +160,12 @@
       </div>
 
       <!-- CHECKBOX IF EVENT IS PUBLIC OR PRIVATE -->
-      <div id="D2">
+      <!-- <div id="D2">
         <label  style="margin-left: 300px;" for="public">PUBLIC EVENT: </label>
         <input id="public" type="checkbox"/>
         <label for="private">PRIVATE EVENT: </label>
         <input id="private" type="checkbox"/>
-      </div>
+      </div> -->
 
         <!-- BUTTON TO CREATE EVENT -->
        <button ng-click="submitEvent()">CREATE</button>
@@ -171,20 +189,41 @@
 
       <!-- CHECKBOX FOR SURVEY-->
      <div id="E2">
-       <label  style="margin-left: 10
+       <!-- <label  style="margin-left: 10
        0px;" for="surveypublic">PUBLIC SURVEY: </label>
        <input id="surveypublic" type="checkbox"/>
        <label for="suurveyprivate">PRIVATE SURVEY: </label>
-       <input id="surveyprivate" type="checkbox"/>
+       <input id="surveyprivate" type="checkbox"/> -->
      </div>
 
-     <!-- ADDING SURVEY QUESTIONS -->
-     <button> ADD QUESTIONS + </button>
+
+      <!-- REPEAT FOR SURVEY QUESTIONS -->
+     <div id="E3" ng-repeat="question in survey.questions track by $index">
+        <hr style="width: 70%">
+        <h3>QUESTION {{$index + 1}}</h3>
+
+          <!-- INPUT FOR QUESTION AND REMOVE QUESTION BUTTON -->
+          <input type="text" placeholder="Question" ng-model="question.title" >
+          <button ng-click="removeQuestion($index)">x</button>
+
+          <!-- REPEAT FOR SURVEY ANSWERS AND REMOVE ANSWER BUTTON -->
+        <div id="E4" ng-repeat="choice in question.choices track by $index">
+          <input type="text" placeholder="Answer" ng-model="choice.answer">
+          <button ng-click="removeCheckbox($parent.$index, $index)" >x</button>
+        </div>
+
+          <!-- ADDING NEW SURVEY ANSWER -->
+          <div id="E5">
+            <button ng-click="addCheckbox($index)" >ADD ANSWER+</button>
+          </div>
+    </div>
 
 
+            <!-- ADDING SURVEY QUESTIONS -->
+     <button ng-click="addQuestion()"> ADD QUESTIONS + </button>
+     <button ng-click="submitSurvey()">SUBMIT</button>
 
-     <!-- SUBMIT BUTTON
-     <button ng-click="submitSurvey()">SUBMIT</button> -->
+
     </div>
   </div>
 

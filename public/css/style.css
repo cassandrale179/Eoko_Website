@@ -190,7 +190,7 @@ body {
 }
 
 
-/* STYLING FOR EVENT TAB & SURVEY */
+/* ------------- STYLING FOR EVENT TAB & SURVEY ----------------  */
 #D1 label, #E label, #F label{
   font-size: 15px;
   color: white;
@@ -245,23 +245,45 @@ body {
   font-size: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-radius: 20px;
   margin-bottom: 20px;
 }
 
 #D button{
   float: right;
   display: block ;
-  margin-right: 30%;
+  margin-right: 31%;
 }
 
+/* THIS PART STYLE THE SURVEY PART WHEN THE USER CLICK ADD QUESTION */
 #E button{
   width: 200px;
   margin-top: 25px;
+  border-radius: 3px;
+}
+
+#E3 h3{
+  color: white;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+#E3 button{
+  width: 50px;
+}
+
+#E4 input{
+  margin-left: 5%;
+  width: 55%;
+}
+
+#E5 button{
+  width: 150px;
 }
 
 
-/*STYLING FOR APPROVAL TAB (G) */
+/* ------------------- STYLING FOR APPROVAL TAB (G) ----------------------- */
+#G{
+  display: flex;
+}
 #G h2{
   color: white;
   font-family: 'Roboto Condensed', sans-serif;
@@ -272,7 +294,7 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
   line-height: 15px;
   text-align: left;
-  margin-bottom: 15px; 
+  margin-bottom: 15px;
 }
 
 #G button{
@@ -286,18 +308,24 @@ body {
   color: white;
 }
 
+#G1{
+  width: 30%;
+}
+
 
 /*STYLING FOR RANKING TAB (H) */
 #H h1{
   font-family: 'Roboto Condensed', sans-serif;
   color: white;
   text-transform: uppercase;
+  text-align: center;
 }
 
 #H p{
   color: white;
   font-family: 'Roboto Condensed', sans-serif;
   line-height: 15px;
+  text-align: center;
 }
 
 #H h2{
