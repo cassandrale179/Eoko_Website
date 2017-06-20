@@ -97,6 +97,25 @@
     </div>
   </div>
 
+
+  <!-- _________________________ TAB FOR FEEDBACK __________________________ -->
+  <div id="H" ng-if="selection.tab == 'Feedback'">
+
+  <div style="width: 33vw;background-color: rgba(0, 0, 0, 0.61);padding: 33px;overflow: auto;height: 61vh;">User Comments
+      <!-- IF NO COMMENTS, OUTPUT NO COMMENT MESSAGE -->
+      <div ng-if="commentData.length == 0" class="eoko-portal-no-user">
+        No Comments to display
+      </div>
+
+      <!-- ELSE DISPLAY APPROVED USERS -->
+      <div ng-repeat="comment in commentData" style="display: block;text-align: center;">
+          <div class="avatar" style="background-image: url({{comment.avatar}});"></div>
+          <h2>{{comment.name}}</h2>
+          <p>{{comment.comment}}</p>
+      </div>
+  </div>
+  </div>
+
 <!-- _________________________ TAB FOR RANKING __________________________ -->
   <div id="H" ng-if="selection.tab == 'Ranking'">
 

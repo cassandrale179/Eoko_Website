@@ -406,6 +406,17 @@ angular.module('app.controllers', [])
                         console.log("Error:", error);
                     });
 
+                $scope.adminData = $firebaseArray(adminRef);
+                $scope.adminData.$loaded().then(function (x) {
+                    console.log("got Admin Data", $scope.adminData)
+
+                    //console.log("TEST: ", $scope.adminData[1]);
+
+                })
+                    .catch(function (error) {
+                        console.log("Error:", error);
+                    });
+
 
                 $scope.eventData = $firebaseArray(eventRef);
                 $scope.eventData.$loaded().then(function (x) {
@@ -483,6 +494,7 @@ angular.module('app.controllers', [])
                         document.getElementById(previousSelectedTab).className =  "";
                         document.getElementById("feedbackTab").className =  "eoko-nav-selected";
                         previousSelectedTab = "feedbackTab";
+                        refreshComments();
                         break;
                     case 7:
                         $scope.selection.tab = 'Ranking';
@@ -493,6 +505,48 @@ angular.module('app.controllers', [])
                 }
                 console.log($scope.selection.tab);
             };
+
+
+            //-----------------------------
+            //    FEEDBACK TAB
+
+            function refreshComments()
+            {
+                $scope.commentData = [];
+
+                for(var i in $scope.adminData[1])
+                {
+                    if($scope.adminData[1][i].id == null)
+                    {
+                       break; 
+                    }
+
+                    if($scope.adminData[1][i].id == "Anonymous")
+                    {
+                        $scope.commentData.push({
+                                avatar: "https://firebasestorage.googleapis.com/v0/b/mycommunity-a33e4.appspot.com/o/default-avatar.png?alt=media&token=39dc28f9-e9c1-404e-98f1-8266dda61bb2",
+                                name: "Anonymous",
+                                comment: $scope.adminData[1][i].text
+                                });
+                    }
+                    else
+                    {
+                        for(var j in $scope.userData)
+                        {
+                            if($scope.adminData[1][i].id == $scope.userData[j].$id)
+                            {
+                                $scope.commentData.push({
+                                    avatar: $scope.userData[j].avatar,
+                                    name: $scope.userData[j].name,
+                                    comment: $scope.adminData[1][i].text
+                                    });
+                                break;
+                            }
+                        }
+                    } 
+                }
+                console.log("comments!:" , $scope.commentData);
+            }
 
 
             //-----------------------------
