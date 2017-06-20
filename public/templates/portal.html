@@ -70,7 +70,7 @@
             <!-- BUTTON TO GIVE POINTS -->
             <button ng-click="givePoints(currentUser)">REMOVE</button>
   	        <button ng-click="givePoints(currentUser)">GIVE POINTS</button>
-          </div> 
+          </div>
 
   </div>
 
@@ -90,7 +90,7 @@
         <p>Events created: {{user.eventCount}}</p>
         <p>Surveys taken: {{user.surveyCount}}</p>
 
-      <div class="eoko-approve-options-wrapper">
+      <div>
         <button ng-click="denyUser(user)">DENY</button>
         <button ng-click="approveUser(user)">APPROVE</button>
       </div>
@@ -109,7 +109,7 @@
     <div id="H1" ng-repeat="user in userData | orderBy : '-points' ">
       <h1>{{$index +1}}. {{user.name}}</h1>
         <div>
-          <div class="avatar" style="background-image: url({{user.avatar}});"></div>
+          <div class="avatar2" style="background-image: url({{user.avatar}});"></div>
           <p> <b>Points: </b> {{user.points}} points</p>
           <p><b>Email: </b>{{user.email}}</p>
           <p><b>Events created: </b> {{user.eventCount}}</p>
