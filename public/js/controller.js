@@ -663,14 +663,12 @@ angular.module('app.controllers', [])
             $scope.surveysubmitted = false;
 
             $scope.survey = {
-                type: "",    //public or private
-                category: [],
                 title: "",
                 description: "",
                 questions: []
             };
 
-            //Set survey Type
+            /*//Set survey Type
             $scope.setSurveyType = function (surveyType){
                 $scope.survey.type = surveyType;
             };
@@ -691,7 +689,7 @@ angular.module('app.controllers', [])
                         }
                     }
                 }
-            };
+            };*/
 
             //Adding survey questions
             function question(title, choices) {
@@ -706,14 +704,11 @@ angular.module('app.controllers', [])
             $scope.addQuestion = function () {
                 $scope.survey.questions.push(new question("", []));
                 console.log($scope.survey);
-                //scroll to the bottom
-                var mainContentDiv = document.getElementById("mainContent");
-                console.log(mainContentDiv.scrollHeight);
-                mainContentDiv.scrollTop = mainContentDiv.scrollHeight;
             };
 
-            $scope.removeQuestion = function () {
-                $scope.survey.questions.pop();
+            $scope.removeQuestion = function (index) {
+                //$scope.survey.questions.pop();
+                $scope.survey.questions.splice(index,1);
                 console.log($scope.survey);
 
             };
@@ -724,18 +719,18 @@ angular.module('app.controllers', [])
 
             };
 
-            $scope.removeCheckbox = function (index) {
-                $scope.survey.questions[index].choices.pop();
+            $scope.removeCheckbox = function (parent,index) {
+                $scope.survey.questions[parent].choices.splice(index,1);
                 console.log($scope.survey);
             };
 
             //Submit Survey
             $scope.submitSurvey = function () {
                 console.log("survey submit begin");
-                if ($scope.survey.category.length === 0 || $scope.survey.category.length === 0) {
+                /*if ($scope.survey.category.length === 0 || $scope.survey.category.length === 0) {
                     $scope.errorpopup = "Please enter at least one category";
                     return;
-                }
+                }*/
                 if ($scope.survey.title === "" || $scope.survey.title === " ") {
                     $scope.errorpopup = "Please enter a title";
                     return;
@@ -790,8 +785,6 @@ angular.module('app.controllers', [])
                  */
                 adminRef.child('Surveys').push($scope.survey).then(function (success) {
                     $scope.survey = {
-                        type: "",
-                        category: [],
                         title: "",
                         description: "",
                         questions: []
