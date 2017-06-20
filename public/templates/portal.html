@@ -196,6 +196,7 @@
        <input id="surveyprivate" type="checkbox"/> -->
      </div>
 
+<<<<<<< HEAD
 
       <!-- REPEAT FOR SURVEY QUESTIONS -->
      <div id="E3" ng-repeat="question in survey.questions track by $index">
@@ -221,6 +222,45 @@
     <!-- ADDING SURVEY QUESTIONS -->
      <button ng-click="addQuestion()"> ADD QUESTIONS + </button>
      <button ng-click="submitSurvey()">SUBMIT</button>
+=======
+
+      <!-- REPEAT FOR SURVEY QUESTIONS -->
+     <div ng-repeat="question in survey.questions track by $index">
+            <hr>
+                <h3>Question {{$index + 1}}</h3>
+
+                 <!-- INPUT FOR QUESTIONS -->
+                <input type="text" placeholder="Question"
+                  style="font-size: 1.6em;" class="eoko-input eoko-text-thin"
+                  ng-model="question.title" >
+                   <button style="display:inline;" ng-click="removeQuestion($index)">X</button>
+
+                    <!-- REPEAT FOR SURVEY ANSWERS -->
+                  <div ng-repeat="choice in question.choices track by $index">
+
+                     <!-- INPUT FOR ANSWERS -->
+                    <input type="text" placeholder="Answer" class="eoko-input eoko-text-thin" ng-model="choice.answer">
+                    <button style="display:inline;" class="button buttonAddQuestion buttonRemove" ng-click="removeCheckbox($parent.$index, $index)" >x</button>
+                  </div>
+
+                   <!-- ADDING NEW SURVEY ANSWER -->
+                  <div class="answerHolder">
+                    <button class="button buttonAddQuestion" ng-click="addCheckbox($index)" >ADD ANSWER</button>
+
+                  </div>
+            </div>
+
+
+            <!-- ADDING SURVEY QUESTIONS -->
+     <button ng-click="addQuestion()"> ADD QUESTIONS + </button>
+
+
+     <div style="text-align: center;">
+    <!-- SUBMIT BUTTON-->
+     <button ng-click="submitSurvey()">SUBMIT</button>
+     </div>
+
+>>>>>>> origin/master
     </div>
   </div>
 

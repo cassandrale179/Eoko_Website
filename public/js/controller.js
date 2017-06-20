@@ -406,6 +406,17 @@ angular.module('app.controllers', [])
                         console.log("Error:", error);
                     });
 
+                $scope.adminData = $firebaseArray(adminRef);
+                $scope.adminData.$loaded().then(function (x) {
+                    console.log("got Admin Data", $scope.adminData)
+
+                    //console.log("TEST: ", $scope.adminData[1]);
+
+                })
+                    .catch(function (error) {
+                        console.log("Error:", error);
+                    });
+
 
                 $scope.eventData = $firebaseArray(eventRef);
                 $scope.eventData.$loaded().then(function (x) {
@@ -483,6 +494,7 @@ angular.module('app.controllers', [])
                         document.getElementById(previousSelectedTab).className =  "";
                         document.getElementById("feedbackTab").className =  "eoko-nav-selected";
                         previousSelectedTab = "feedbackTab";
+                        refreshComments();
                         break;
                     case 7:
                         $scope.selection.tab = 'Ranking';
@@ -493,6 +505,48 @@ angular.module('app.controllers', [])
                 }
                 console.log($scope.selection.tab);
             };
+
+
+            //-----------------------------
+            //    FEEDBACK TAB
+
+            function refreshComments()
+            {
+                $scope.commentData = [];
+
+                for(var i in $scope.adminData[1])
+                {
+                    if($scope.adminData[1][i].id == null)
+                    {
+                       break; 
+                    }
+
+                    if($scope.adminData[1][i].id == "Anonymous")
+                    {
+                        $scope.commentData.push({
+                                avatar: "https://firebasestorage.googleapis.com/v0/b/mycommunity-a33e4.appspot.com/o/default-avatar.png?alt=media&token=39dc28f9-e9c1-404e-98f1-8266dda61bb2",
+                                name: "Anonymous",
+                                comment: $scope.adminData[1][i].text
+                                });
+                    }
+                    else
+                    {
+                        for(var j in $scope.userData)
+                        {
+                            if($scope.adminData[1][i].id == $scope.userData[j].$id)
+                            {
+                                $scope.commentData.push({
+                                    avatar: $scope.userData[j].avatar,
+                                    name: $scope.userData[j].name,
+                                    comment: $scope.adminData[1][i].text
+                                    });
+                                break;
+                            }
+                        }
+                    } 
+                }
+                console.log("comments!:" , $scope.commentData);
+            }
 
 
             //-----------------------------
@@ -663,14 +717,12 @@ angular.module('app.controllers', [])
             $scope.surveysubmitted = false;
 
             $scope.survey = {
-                type: "",    //public or private
-                category: [],
                 title: "",
                 description: "",
                 questions: []
             };
 
-            //Set survey Type
+            /*//Set survey Type
             $scope.setSurveyType = function (surveyType){
                 $scope.survey.type = surveyType;
             };
@@ -691,7 +743,7 @@ angular.module('app.controllers', [])
                         }
                     }
                 }
-            };
+            };*/
 
             //Adding survey questions
             function question(title, choices) {
@@ -706,14 +758,11 @@ angular.module('app.controllers', [])
             $scope.addQuestion = function () {
                 $scope.survey.questions.push(new question("", []));
                 console.log($scope.survey);
-                //scroll to the bottom
-                var mainContentDiv = document.getElementById("mainContent");
-                console.log(mainContentDiv.scrollHeight);
-                mainContentDiv.scrollTop = mainContentDiv.scrollHeight;
             };
 
-            $scope.removeQuestion = function () {
-                $scope.survey.questions.pop();
+            $scope.removeQuestion = function (index) {
+                //$scope.survey.questions.pop();
+                $scope.survey.questions.splice(index,1);
                 console.log($scope.survey);
 
             };
@@ -724,18 +773,18 @@ angular.module('app.controllers', [])
 
             };
 
-            $scope.removeCheckbox = function (index) {
-                $scope.survey.questions[index].choices.pop();
+            $scope.removeCheckbox = function (parent,index) {
+                $scope.survey.questions[parent].choices.splice(index,1);
                 console.log($scope.survey);
             };
 
             //Submit Survey
             $scope.submitSurvey = function () {
                 console.log("survey submit begin");
-                if ($scope.survey.category.length === 0 || $scope.survey.category.length === 0) {
+                /*if ($scope.survey.category.length === 0 || $scope.survey.category.length === 0) {
                     $scope.errorpopup = "Please enter at least one category";
                     return;
-                }
+                }*/
                 if ($scope.survey.title === "" || $scope.survey.title === " ") {
                     $scope.errorpopup = "Please enter a title";
                     return;
@@ -790,8 +839,6 @@ angular.module('app.controllers', [])
                  */
                 adminRef.child('Surveys').push($scope.survey).then(function (success) {
                     $scope.survey = {
-                        type: "",
-                        category: [],
                         title: "",
                         description: "",
                         questions: []
