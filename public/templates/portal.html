@@ -96,19 +96,20 @@
 
 
   <!-- _________________________ TAB FOR FEEDBACK __________________________ -->
-  <div id="H" ng-if="selection.tab == 'Feedback'">
+  <div id="I" ng-if="selection.tab == 'Feedback'">
 
-  <div style="width: 33vw;background-color: rgba(0, 0, 0, 0.61);padding: 33px;overflow: auto;height: 61vh;">User Comments
+  <!--  style="width: 33vw;background-color: rgba(0, 0, 0, 0.61);padding: 33px;overflow: auto;height: 61vh;" -->
+  <div>
       <!-- IF NO COMMENTS, OUTPUT NO COMMENT MESSAGE -->
       <div ng-if="commentData.length == 0" class="eoko-portal-no-user">
         No Comments to display
       </div>
 
       <!-- ELSE DISPLAY APPROVED USERS -->
-      <div ng-repeat="comment in commentData" style="display: block;text-align: center;">
-          <div class="avatar" style="background-image: url({{comment.avatar}});"></div>
+      <div id="I1" ng-repeat="comment in commentData">
+          <div class="avatar2" style="background-image: url({{comment.avatar}});"></div>
           <h2>{{comment.name}}</h2>
-          <p>{{comment.comment}}</p>
+          <p>"{{comment.comment}}"</p>
       </div>
   </div>
   </div>
@@ -196,8 +197,6 @@
        <input id="surveyprivate" type="checkbox"/> -->
      </div>
 
-<<<<<<< HEAD
-
       <!-- REPEAT FOR SURVEY QUESTIONS -->
      <div id="E3" ng-repeat="question in survey.questions track by $index">
         <hr style="width: 70%">
@@ -222,45 +221,6 @@
     <!-- ADDING SURVEY QUESTIONS -->
      <button ng-click="addQuestion()"> ADD QUESTIONS + </button>
      <button ng-click="submitSurvey()">SUBMIT</button>
-=======
-
-      <!-- REPEAT FOR SURVEY QUESTIONS -->
-     <div ng-repeat="question in survey.questions track by $index">
-            <hr>
-                <h3>Question {{$index + 1}}</h3>
-
-                 <!-- INPUT FOR QUESTIONS -->
-                <input type="text" placeholder="Question"
-                  style="font-size: 1.6em;" class="eoko-input eoko-text-thin"
-                  ng-model="question.title" >
-                   <button style="display:inline;" ng-click="removeQuestion($index)">X</button>
-
-                    <!-- REPEAT FOR SURVEY ANSWERS -->
-                  <div ng-repeat="choice in question.choices track by $index">
-
-                     <!-- INPUT FOR ANSWERS -->
-                    <input type="text" placeholder="Answer" class="eoko-input eoko-text-thin" ng-model="choice.answer">
-                    <button style="display:inline;" class="button buttonAddQuestion buttonRemove" ng-click="removeCheckbox($parent.$index, $index)" >x</button>
-                  </div>
-
-                   <!-- ADDING NEW SURVEY ANSWER -->
-                  <div class="answerHolder">
-                    <button class="button buttonAddQuestion" ng-click="addCheckbox($index)" >ADD ANSWER</button>
-
-                  </div>
-            </div>
-
-
-            <!-- ADDING SURVEY QUESTIONS -->
-     <button ng-click="addQuestion()"> ADD QUESTIONS + </button>
-
-
-     <div style="text-align: center;">
-    <!-- SUBMIT BUTTON-->
-     <button ng-click="submitSurvey()">SUBMIT</button>
-     </div>
-
->>>>>>> origin/master
     </div>
   </div>
 
