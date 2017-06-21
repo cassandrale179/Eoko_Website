@@ -1,23 +1,36 @@
-<div style="height:100vh;width:100%">
-<!-- <div>
-    <ul>
-        <li style="display: inline-block;float: right;"><a ui-sref="login">Log In</a></li>
-        <li style="display: inline-block;float: right;"><a ui-sref="signup">Sign Up</a></li>
-    </ul>
-</div> -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Homepage</title>
+</head>
+<body>
+  <!-- QUOTE AREA -->
+  <div id="HomeA">
+    <img src="../img/lightbulb.png" />
+    <p>“This is just some dummy text. Color codes are ways of representing the colors we see everyday in a format that a computer can interpret and display.”</p>
+    <h2> - EOKO QUOTE </h2>
 
-<nav class="eoko-horizontal-nav" >
-    <a style="margin-right:30px;font-size:1.5em;display:initial;float:right;margin-top:5px" ui-sref="login">Log In</a>
-    <a style="margin-right:30px;font-size:1.5em;display:initial;float:right;margin-top:5px" ui-sref="signup">Sign Up</a>
-</nav>
-    <div style="top:20%;">
-        <img src="img/logo.png" style="height:90%;">
-        
+    <!-- APP BUTTON -->
+    <div id="HomeA1">
+      <button><i class="fa fa-android" aria-hidden="true"></i>SOON FOR ANDROID </button>
+      <button><i class="fa fa-apple" aria-hidden="true"></i> SOON FOR IPHONE </button>
     </div>
+  </div>
 
-    <div style="margin: 0 auto;width: 700px;"><h2>Get the App!</h2>
-        <a class="linkIcon">Soon for Android</a>
-        <a class="linkIcon">Soon for iPhone</a>
+  <!--  LOGIN AND SIGNUP SECTION -->
+  <div id="HomeB">
+    <img src="../img/download2.png" />
+    <hr/>
+
+    <!-- EMAIL AND PASSWORD FIELD -->
+    <div id="HomeB1">
+      <label for="email"></label>
+      <input ng-model="info.email" type="email" id="email" name="email" placeholder="EMAIL" required>
+      <label for="password"></label>
+      <input ng-model="info.password" ng-change="checkMatch()" type="password" id="password" name="password" placeholder="PASSWORD" required>
+      <button ng-click="LogUser()">LOGIN</button>
+      <p> Don't have an account? Click <a ui-sref="signup"> HERE </a> to signup!</p>
     </div>
-
-</div>
+  </div>
+</body>
+</html>
