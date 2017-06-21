@@ -1,14 +1,14 @@
 angular.module('app.controllers', [])
 
 
-    .controller('homePageCtrl', ['$scope',
+  /*  .controller('homePageCtrl', ['$scope',
         // a verbose line seperator between the top construction section and the function for the controller below
 
         function ($scope) {
 
 
         }])
-
+*/
 
     .controller('signupPageCtrl', ['$scope', '$timeout', '$state', '$window',
         // a verbose line seperator between the top construction section and the function for the controller below
@@ -101,15 +101,15 @@ angular.module('app.controllers', [])
                 else {
                     $scope.errorpopup = "Please enter Company Information and/or Company Contact First";
                 }
-            }
+            };
 
 
             //Company Information Tab form
             $scope.goToCompanyContact = function () {
                 if (checkValidInputCompanyInfo())
                     $scope.selectCompanyContact();
-            }
-            function checkValidInputCompanyInfo() {
+            };
+           function checkValidInputCompanyInfo() {
                 if ($scope.info.companyName === "" || $scope.info.companyName === " ") {
                     $scope.errorpopup = "Please enter the Company Name";
                     return false;
@@ -263,7 +263,7 @@ angular.module('app.controllers', [])
         }])
 
 
-    .controller('loginPageCtrl', ['$scope', '$state',
+    .controller('homePageCtrl', ['$scope', '$state',
         // a verbose line seperator between the top construction section and the function for the controller below
         function ($scope, $state) {
 
@@ -440,7 +440,7 @@ angular.module('app.controllers', [])
 	$scope.search = function(){
 		//if (e.originalEvent.defaultPrevented) return;
 		console.log("searching...");
-		};	
+		};
 
 
             //-----------------------------
@@ -518,7 +518,7 @@ angular.module('app.controllers', [])
                 {
                     if($scope.adminData[1][i].id == null)
                     {
-                       break; 
+                       break;
                     }
 
                     if($scope.adminData[1][i].id == "Anonymous")
@@ -543,7 +543,7 @@ angular.module('app.controllers', [])
                                 break;
                             }
                         }
-                    } 
+                    }
                 }
                 console.log("comments!:" , $scope.commentData);
             }
@@ -855,4 +855,3 @@ angular.module('app.controllers', [])
                 })
             };
         }]);
-
