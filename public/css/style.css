@@ -150,6 +150,10 @@ i{
 
 /* ------------- STYLING OF THE PORTAL PAGE ---------------------- */
 /* STYLING OF VERTICAL BAR (A)*/
+#A a:hover{
+	border: inset rgba(0,0,0,1);
+}
+
 #A{
   width: 150px;
   position: fixed;

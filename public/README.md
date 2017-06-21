@@ -1,2 +1,2 @@
-# CelebCares
-Website for celebrities
+# EokoWebsite
+Website Admin Portal for Eoko
