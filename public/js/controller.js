@@ -495,6 +495,7 @@ angular.module('app.controllers', [])
                         document.getElementById("feedbackTab").className =  "eoko-nav-selected";
                         previousSelectedTab = "feedbackTab";
                         refreshComments();
+                        refreshStats();
                         break;
                     case 7:
                         $scope.selection.tab = 'Ranking';
@@ -548,6 +549,69 @@ angular.module('app.controllers', [])
                 console.log("comments!:" , $scope.commentData);
             }
 
+            function refreshStats()
+            {
+                $scope.surveyData = [];
+
+                for(var i in $scope.adminData[2])
+                {
+                    if($scope.adminData[2][i].title == undefined) //if null skip (nothing in here)
+                    {
+                       break;
+                    }
+                    //console.log("Survey Is: ",$scope.adminData[2][i].title,  $scope.adminData[2][i]);
+
+                    var questions = $scope.adminData[2][i]['questions'];
+                    //console.log("questions to display", questions);
+                    
+                
+                    for(var j in $scope.adminData[2][i]['answers'])//individual people's answers
+                    {
+                        for(var k in $scope.adminData[2][i]['answers'][j]['answers']) //actual answers per person
+                        {
+                            //console.log("answerlogs",$scope.adminData[2][i]['answers'][j]['answers'][k]); 
+                            var currentAnswer = $scope.adminData[2][i]['answers'][j]['answers'][k];
+                            
+                            for(var l in questions[currentAnswer.index]['choices']) //go over answered questions only
+                            {
+                                if(questions[currentAnswer.index]['choices'][l].count == undefined) //make count indicator
+                                {
+                                    questions[currentAnswer.index]['choices'][l].count = 0;
+                                }
+
+                                if(questions[currentAnswer.index]['choices'][l].answer == currentAnswer.answer) //matching answers
+                                {
+                                    questions[currentAnswer.index]['choices'][l].count += 1;
+                                    break;
+                                }
+                                //questions[currentAnswer.index]['choices'][l].answer;
+                            }
+                            //console.log("theq side: ", questions[currentAnswer.index]['choices']);
+                        } 
+                    }
+                    $scope.surveyData.push({data: questions, title: $scope.adminData[2][i].title});
+                }
+
+                console.log("FINAL RESULT: ", $scope.surveyData);
+            }
+
+            /*
+                            if(answers[$scope.adminData[2][i]['answers'][j]['answers'][k].index] == undefined)
+                            {
+                                answers.push({
+                                    question: $scope.adminData[2][i]['answers'][j]['answers'][k].question,
+                                    answer: $scope.adminData[2][i]['answers'][j]['answers'][k].answer,
+                                    count: 1
+                                    });
+                            }
+                            else
+                            {
+
+                                answers[$scope.adminData[2][i]['answers'][j]['answers'][k].index].count += 1;
+                            }
+
+                        }
+            */
 
             //-----------------------------
             //    APPROVE TAB

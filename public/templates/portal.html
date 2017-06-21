@@ -101,7 +101,7 @@
   <!-- _________________________ TAB FOR FEEDBACK __________________________ -->
   <div id="H" ng-if="selection.tab == 'Feedback'">
 
-  <div style="width: 33vw;background-color: rgba(0, 0, 0, 0.61);padding: 33px;overflow: auto;height: 61vh;">User Comments
+  <div style="width: 33vw;background-color: rgba(0, 0, 0, 0.61);padding: 33px;overflow: auto;height: 61vh;display: inline-block;">User Comments
       <!-- IF NO COMMENTS, OUTPUT NO COMMENT MESSAGE -->
       <div ng-if="commentData.length == 0" class="eoko-portal-no-user">
         No Comments to display
@@ -114,6 +114,21 @@
           <p>{{comment.comment}}</p>
       </div>
   </div>
+
+  <div style="margin-left:33px;width: 33vw;background-color: rgba(0, 0, 0, 0.61);padding: 33px;overflow: auto;height: 61vh;display: inline-block;">Surveys
+      <!-- IF NO COMMENTS, OUTPUT NO COMMENT MESSAGE -->
+      <div ng-if="surveyData.length == 0" class="eoko-portal-no-user">
+        No Comments to display
+      </div>
+
+      <!-- ELSE DISPLAY APPROVED USERS -->
+      <div ng-repeat="survey in surveyData track by $index" style="display: block;text-align: center;">
+          
+      </div>
+  </div>
+
+
+
   </div>
 
 <!-- _________________________ TAB FOR RANKING __________________________ -->
