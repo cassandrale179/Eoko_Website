@@ -196,7 +196,7 @@ i{
 }
 
 /* STYLING FOR THE INPUT FIELD FORM */
-#S2, #S3{
+#S2, #S3, #S4{
   display: block;
   width: 70%;
   margin: auto;
@@ -211,28 +211,28 @@ i{
   width: 140px;
 }
 
-#S2 button, #S3 button{
+#S2 button, #CON2btn{
   background: rgba(0,0,0,0.7);
   border: none;
   color: white;
   padding: 1%;
-  margin-right: 0px;
   float: right;
   border-radius: 3px;
+  margin-bottom: 50px;
 }
 
-#S2 button:hover, #S3 button:hover{
+#S2 button:hover, #CON2btn:hover{
   background: transparent;
   color: #797D7F;
   border: 0.1px solid #797D7F;
 }
 
 
-#S2 i{
+#S2 i, #S3 i{
   margin-left: 10px;
 }
 
-#S2 input, #S2A input, #S3 input{
+#S2 input, #S2A input, #S3 input, #S4 input{
   display: inline-block;
   margin-bottom: 15px;
   width: 65%;
@@ -243,8 +243,8 @@ i{
   margin-right: 30px;
 }
 
-#S2A input, #S3A input, #S4A input{
-  width: 20%;
+#S2A input, #S3A input, #S3C input, #S4 input{
+  width: 40%;
 }
 
 
@@ -253,10 +253,38 @@ i{
   font-family: 'Domine', sans-serif;
   color: #454545;
   display: inline-block;
-  margin-right: 50px;
-  margin-left: 50px;
+  margin-right: 100px;
+  margin-left: 100px;
+  font-size: 20px;
 }
 
+#CON1btn{
+  background: rgba(0,0,0,0.7);
+  border: none;
+  color: white;
+  border-radius: 3px;
+  position: absolute;
+  margin-bottom: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+}
+
+
+/* ---- THIS PART STYLE THE COMPANY ACCOUNT---- */
+#S4 button{
+  background: rgba(0,0,0,0.7);
+  border: none;
+  color: white;
+  border-radius: 3px;
+  padding: 1%;
+  width: 120px;
+}
+
+#S4 label{
+  display: inline-block;
+  width: 150px;
+}
 
 
 

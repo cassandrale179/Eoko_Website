@@ -30,7 +30,7 @@
           <label for="zip">Zip* </label>
           <input ng-model="info.zip" type="text" id="zip" name="zip" required />
         </div>
-        <button ng-click="goToCompanyContact()">NEXT<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+        <button ng-click="goToCompanyContact()">NEXT <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
       </form>
     </div>
 
@@ -45,7 +45,7 @@
         <h2 id="secondaryContact" ng-click="selectSecondaryContact()"> Secondary Contact</h2><br />
 
         <!--LABEL FOR PRIMARY CONTACT -->
-        <div id= "Primary" ng-if="contactSelected == 'primaryContact'">
+        <div id= "CON1" ng-if="contactSelected == 'primaryContact'">
           <label for="firstname">First Name*</label>
           <input ng-model="info.firstname" type="text" id="firstname" name="firstname" required><br>
           <label for="lastname">Last Name*</label>
@@ -60,12 +60,14 @@
             <label for="faxnumber">Fax Number</label>
             <input ng-model="info.faxnumber" type="tel" id="faxnumber" name="faxnumber" required><br>
           </div>
-          <button ng-click="addSecondaryContact()"> ADD SECONDARY CONTACT+ </button>
+          <div id="S3B">
+            <button id="CON1btn" ng-click="addSecondaryContact()">ADD CONTACT<i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+          </div>
         </div>
 
 
-        <!-- _______________________ LABEL FOR SECONDARY CONTACT _______________________-->
-        <div id="Secondary" ng-if="contactSelected == 'secondaryContact'">
+        <!-- _________________________________ LABEL FOR SECONDARY CONTACT _____________________________-->
+        <div id="CON2" ng-if="contactSelected == 'secondaryContact'">
           <label for="secondaryfirstname">First Name</label>
           <input ng-model="info.secondaryfirstname" type="text" id="secondaryfirstname" name="secondaryfirstname"><br>
           <label for="secondarylastname">Last Name</label>
@@ -74,16 +76,32 @@
           <input ng-model="info.secondarytitle" type="text" id="secondarytitle" name="secondarytitle"><br>
           <label for="secondaryemail">Email</label>
           <input ng-model="info.secondaryemail" type="email" id="secondaryemail" name="secondaryemail"><br>
-          <div id="S4A">
+          <div id="S3C">
             <label for="secondaryphonenumber">Phone Number</label>
             <input ng-model="info.secondaryphonenumber" type="tel" id="secondaryphonenumber" name="secondaryphonenumber"><br>
             <label for="secondaryfaxnumber">Fax Number</label>
             <input ng-model="info.secondaryfaxnumber" type="tel" id="secondaryfaxnumber" name="secondaryfaxnumber"><br>
           </div>
         </div>
-
-
+      <button id="CON2btn" ng-click="goToCompanyAccount()">NEXT <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
      </form>
     </div>
+
+
+<!-- _________________________________  COMPANY ACCOUNT FORM _________________________________ -->
+  <div id="S4">
+    <form ng-if="tabSelected == 'companyAccount'">
+      <label for="password">Password*</label>
+      <input ng-model="signed.password" ng-change="checkMatch()" type="password" id="password" name="password" required>
+      <div id="matching_indicator"></div>
+
+
+      <label for="confirmpass">Confirm Password*</label>
+      <input ng-model="signed.matching" ng-change="checkMatch()" type="password" id="confirmpass" name="confirmpass" required>
+      <div id="matching_indicator2"></div>
+      <button ng-disabled="!matching" ng-click="submitInfo()">SIGN UP</button>
+    </form>
   </div>
+  <form ng-if="thankyou == false"></form>
+</div>
 </body>
