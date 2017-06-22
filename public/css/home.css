@@ -81,7 +81,7 @@ i{
   margin-left: 50%;
 }
 
-#HomeB hr{
+#HomeB hr, #FA hr{
   width: 70%;
   display: block;
   margin: auto;
@@ -94,18 +94,23 @@ i{
   margin-top: 50px;
 }
 
+#HomeB1A{
+  width: 70%;
+  display: block;
+  margin: auto;
+}
+
 #HomeB button{
   background-color: rgba(0,0,0,0.7);
   border: none;
   color: white;
   font-family: 'Domine', serif;
-  font-size: 20px;
-  width: 70%;
+  font-size: 18px;
   padding: 1%;
-  margin: auto;
-  display: block;
-  margin-bottom: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   border-radius: 3px;
+  width: 49%;
 }
 
 #HomeB button:hover{
@@ -119,7 +124,7 @@ i{
   margin-top: 50px;
 }
 
-#HomeB1 input{
+#HomeB1 input, #FA input{
   width: 70%;
   display: block;
   margin: auto;
@@ -171,6 +176,10 @@ i{
 
 #error{
   color: #DC7633;
+  font-family: 'Domine', serif;
+  font-size: 13px;
+  font-style: italic;
+  padding-left: 50px;
 }
 
 /* ---- THIS PART STYLE COMPANY INFORMATION ---- */
@@ -221,7 +230,7 @@ i{
   margin-bottom: 50px;
 }
 
-#S2 button:hover, #CON2btn:hover{
+#S2 button:hover, #CON2btn:hover, #FA button:hover{
   background: transparent;
   color: #797D7F;
   border: 0.1px solid #797D7F;
@@ -286,31 +295,49 @@ i{
   width: 150px;
 }
 
+/* ------- STYLING FOR THE FORGOT PASSWORD PAGE ---- */
+#FA img{
+  width: 300px;
+  display: block;
+  margin: auto;
+}
 
 
+#FA h1{
+  font-family: 'Domine', sans-serif;
+  color: #797D7F;
+  text-align: center;
+  margin-top: 30px;
+}
 
+#FA p{
+  font-family: 'Domine', sans-serif;
+  color: #797D7F;
+  text-align: center;
+}
 
+#FA input{
+  width: 40%;
+}
 
+#FA button{
+  background: rgba(0,0,0,0.7);
+  border: none;
+  color: white;
+  border-radius: 3px;
+  padding: 1%;
+  font-family: 'Domine', sans-serif;
+  display: block;
+  margin: auto;
+  width: 40%;
+}
 
+#FA a{
+  color: #DC7633;
+  text-decoration: none;
+  font-size: 20px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*...placehodler....*/
+#FA a:hover, #HomeB a:hover{
+  font-size: 25px;
+}

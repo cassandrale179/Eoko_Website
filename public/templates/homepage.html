@@ -5,7 +5,7 @@
 </head>
 <body>
   <!-- QUOTE AREA -->
-  <div id="HomeA">
+  <div id="HomeA" class="w3-animate-opacity">
     <img src="../img/lightbulb.png" />
     <p>“This is just some dummy text. Color codes are ways of representing the colors we see everyday in a format that a computer can interpret and display.”</p>
     <h2> - EOKO QUOTE </h2>
@@ -18,17 +18,23 @@
   </div>
 
   <!--  LOGIN AND SIGNUP SECTION -->
-  <div id="HomeB">
+  <div id="HomeB" class="w3-animate-opacity">
     <img src="../img/download2.png" />
     <hr/>
 
     <!-- EMAIL AND PASSWORD FIELD -->
     <div id="HomeB1">
-      <label for="email"></label>
-      <input ng-model="info.email" type="email" id="email" name="email" placeholder="EMAIL" required>
-      <label for="password"></label>
-      <input ng-model="info.password" ng-change="checkMatch()" type="password" id="password" name="password" placeholder="PASSWORD" required>
-      <button ng-click="LogUser()">LOGIN</button>
+      <div id="error" ng-if="errorpopup != '' ">{{errorpopup}}</div>
+      <form>
+        <label for="email"></label>
+        <input ng-model="info.email" type="email" id="email" name="email" placeholder="EMAIL" required>
+        <label for="password"></label>
+        <input ng-model="info.password" ng-change="checkMatch()" type="password" id="password" name="password" placeholder="PASSWORD" required>
+        <div id="HomeB1A">
+          <button ng-click="LogUser()">LOGIN</button>
+          <button ui-sref="forgotpassword"> FORGOT PASSWORD </button>
+        </div>
+      </form>
       <p> Don't have an account? Click <a ui-sref="signup"> HERE </a> to signup!</p>
     </div>
   </div>
