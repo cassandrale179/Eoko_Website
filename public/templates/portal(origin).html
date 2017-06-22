@@ -2,37 +2,58 @@
 <body>
 
   <!-- ________________ VERTICAL NAVIGATION BAR  ________________ -->
-  <div id="A" class="w3-animate-opacity">
-      <a id="residentsTab" ng-click="selector(3)"><i class="fa fa-user-o"></i>RESIDENTS</a><br>
-      <a id="approveTab" ng-click="selector(4)"><i class="fa fa-check"></i> APPROVE</a><br>
-      <a id="myEventsTab" ng-click="selector(5)"><i class="fa fa-calendar-check-o"></i>MY EVENTS</a><br>
-      <a id="feedbackTab" ng-click="selector(6)"><i class="fa fa-pie-chart"></i>FEEDBACK</a><br>
-      <a id="rankingTab" ng-click="selector(7)"><i class="fa fa-star-half-o"></i>RANKING</a><br>
-      <a id="logoutTab" ng-click="selector(8)"><i class="fa fa-arrow-right"></i> LOGOUT</a>
+  <div id="A">
+    <div id="A1">
+      <a id="residentsTab" ng-click="selector(3)">RESIDENTS</a><br>
+    </div>
+    <div id="A2">
+      <a id="approveTab" ng-click="selector(4)">APPROVE</a><br>
+    </div>
+    <div id="A3">
+      <a id="myEventsTab" ng-click="selector(5)">MY EVENTS</a><br>
+    </div>
+    <div id="A4">
+      <a id="feedbackTab" ng-click="selector(6)">FEEDBACK</a><br>
+    </div>
+    <div id="A5">
+      <a id="rankingTab" ng-click="selector(7)">RANKING</a><br>
+    </div>
+    <div id="A6">
+      <a id="logoutTab" ng-click="selector(8)"> LOGOUT</a>
+    </div>
   </div>
 
   <!--  ________________ HORIZONTAL NAVIGATION BAR  ________________ -->
   <div id="B">
-      <a id="eventsTab" ng-click="selector(0)">CREATE EVENT<i class="fa fa-calendar" aria-hidden="true"></i></a>
-      <a id="surveysTab" ng-click="selector(1)">CREATE SURVEY<i class="fa fa-bar-chart" aria-hidden="true"></i></a>
-      <a id="eokoTab" ng-click="selector(2)">CREATE EOKO<i class="fa fa-users" aria-hidden="true"></i></a>
+    <div id="B1">
+       <a id="eventsTab" ng-click="selector(0)">EVENT +</a>
+    </div>
+    <div id="B2">
+      <a id="surveysTab" ng-click="selector(1)">SURVEY +</a>
+    </div>
+    <div id="B3">
+      <a id="eokoTab" ng-click="selector(2)">EOKO +</a>
+    </div>
   </div>
 
 
 <!-- ________________________ MAIN CONTENT_____________________________ -->
 <div id="mainBody">
+
 <!-- _________________________ TAB FOR RESIDENTS__________________________ -->
 <div id="C" ng-if="selection.tab == 'Residents'">
   <!-- SEARCH BAR FOR THE RESIDENTS -->
-  <input type="text" placeholder="SEARCH FOR A RESIDENT..." ng-model="search.text" required>
+  <input type="text" placeholder="SEARCH..." ng-model="search.text" required>
 
     <!-- A LIST OF USERS WILL APPEAR -->
-    <div id="C1">
-      <div ng-if="userData.length == 0">No Users Found!</div>
+    <div id="C1" style="float: left;">
+      <div ng-if="userData.length == 0" class="eoko-portal-no-user">
+              No Users Found!</div>
       <div ng-repeat="user in userData | orderBy : 'name' | filter: {name: search.text}" class="eoko-resident-user-wrapper" ng-click="residentPopup(user)">
-      <div class="avatar2" style="background-image: url({{user.avatar}});"></div>
+      <div class="avatar" style="background-image: url({{user.avatar}});"></div>
       <h2>{{user.name}}</h2>
-      </div>
+
+          </div>
     </div>
 
     <!-- PEOPLE INFORMATION WILL POP UP IF CLICKED -->
@@ -44,9 +65,9 @@
         <p><b>Surveys taken: </b> {{currentUser.surveyCount}}</p>
         <p><b>Points given: </b> {{currentUser.points}}</p>
 
-        <!-- BUTTON TO GIVE POINTS -->
-        <button style="margin-left: 25px;" ng-click="givePoints(currentUser)">REMOVE</button>
-  	    <button ng-click="givePoints(currentUser)">GIVE POINTS</button>
+            <!-- BUTTON TO GIVE POINTS -->
+        <button ng-click="givePoints(currentUser)">REMOVE</button>
+  	      <button ng-click="givePoints(currentUser)">GIVE POINTS</button>
     </div>
 </div>
 
@@ -60,7 +81,7 @@
 
     <!-- ELSE DISPLAY APPROVED USERS -->
     <div id="G1" ng-if="user.adminConfirmed == 'false'" ng-repeat="user in userData">
-      <div class="avatar2" style="background-image: url({{user.avatar}});"></div>
+      <div class="avatar" style="background-image: url({{user.avatar}});"></div>
         <h2>{{user.name}}</h2>
         <p>{{user.email}}</p>
 
@@ -191,7 +212,7 @@
 
           <!-- ADDING NEW SURVEY ANSWER -->
           <div id="E5">
-            <button ng-click="addCheckbox($index)" >ADD ANSWER OPTION+</button>
+            <button ng-click="addCheckbox($index)" >ADD ANSWER+</button>
           </div>
     </div>
 

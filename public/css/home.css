@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel|Domine|Gentium+Basic');
 
-body {
-    /*background-image: url(../img/main_background.png); */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 *:focus {
     outline: none;
 }

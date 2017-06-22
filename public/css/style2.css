@@ -1,22 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300');
 @import url('https://fonts.googleapis.com/css?family=Cinzel|Domine|Gentium+Basic');
 
-body {
-    background-image: url(../img/main_background.png);
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 /* ------------- STYLING OF THE PORTAL PAGE ---------------------- */
+
+
 /* STYLING OF VERTICAL BAR (A) */
 #A{
-  width: 150px;
+  width: 220px;
   position: fixed;
   background-color: rgba(0,0,0,0.8);
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.7);
   height: 100%;
+  padding-top: 120px;
+  top: 0;
 }
 
 #A a{
@@ -24,106 +19,74 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 15px;
   display: block;
-  text-align: center;
-  padding-top: 80px;
+  padding-bottom: 10px;
+  padding-left: 20px;
 }
 
 #A a:hover{
-	color: #DC7633;
-}
-
-#A1, #A2, #A3, #A4, #A5, #A6{
-  height: 100px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 35px;
+  color: #DC7633;
 }
 
 
-#A1{
-  background-image: url(img1.png);
-}
-
-#A2{
-  background-image: url(img2.png);
-}
-
-#A3{
-  background-image: url(img3.png);
-}
-
-#A4{
-  background-image: url(img4.png);
-}
-
-#A5{
-  background-image: url(img5.png);
-}
-#A6{
-  background-image: url(img6.png);
-}
-
-
-/* STYLING OF HORIZONTAL BAR (B)*/
+/* STYLING OF THE HORIZONTAL NAVIGATION BAR */
 #B{
-  height: 80px;
-  background-color: rgba(0,0,0,0.5);
+  display: block;
+  width: 100%;
+  height: 100px;
   margin-left: 150px;
-  display:flex;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
-
-#B1, #B2, #B3{
-  width: 33%;
+  padding: 30px;
 }
 
 #B a{
-  font-family: 'Roboto COndensed', sans-serif;
-  color: white;
-  font-size: 25px;
-  display: block;
-  text-align: center;
-  margin-top: 20px;
-
-}
-
-#B a:hover{
+  font-family: 'Roboto Condensed', sans-serif;
   font-size: 30px;
+  color: #DC7633;
+  margin-left: 80px;
+  margin-right: 40px;
 }
+
+#B i{
+  margin-left: 15px;
+}
+
 
 
 /* STYLING OF MAIN CONTENT*/
 #mainBody{
+  margin-left: 220px;
+  padding: 50px;
+  height: 100%;
   width: 100%;
-  position: absolute;
-  margin-left: 150px;
-  padding-top: 50px;
-  padding-left: 100px;
+  position: relative;
+  background-color: #F2F3F4;
+  min-height: 700px;
 
 }
 
 /* STYLING OF MAIN CONTENT*/
 #C input{
-  width: 90%;
+  width: 55%;
   height: 50px;
-  background: rgba(0,0,0,0.2);
   border: none;
-  color: white;
+  color: #17202A  ;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 15px;
-  padding: 20px;
+  padding-left: 20px;
 }
 
 /* STYLING HOW USER AND THEIR AVATAR WILL DISPLAY */
 #C1{
-  width: 65%;
+  width: 55%;
   padding-left: 5%;
+  background-color: white;
+  margin-top: 20px;
 }
 
 #C1 h2{
-  color: white;
+  color: #797D7F;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 15px;
+  text-transform: uppercase;
 }
 
 .avatar, .avatar2{
@@ -131,32 +94,31 @@ body {
   width: 70px;
   height: 70px;
   margin-top: 25px;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 
 .avatar2{
-  display: block;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 .eoko-resident-user-wrapper{
-    border-radius: 33px;
     display: inline-block;
     width: -moz-min-content;
-    min-width: 200px;
+    min-width: 170px;
     position: relative;
+    text-align: center;
+
 }
 
 /* STYLING WHAT WILL HAPPEN WHEN USERNAME IS CLICKED */
 #C2{
-  background-color: rgba(0,0,0,0.3);
-  width: 25%;
+  background-color: rgba(0,0,0,0.8);
   position: absolute;
-  padding: 2%;
-  margin-top: 1%;
-  margin-right: 3%;
+  top: 50px;
+  width: 260px;
+  height: 340px;
 
 }
 
@@ -179,19 +141,21 @@ body {
 #C2 button{
   font-family: 'Roboto Condensed', sans-serif;
   height: 40px;
+  width: 100px;
   border: none;
   font-size: 15px;
-  background: rgba(0,0,0,0.7);
+  background: rgba(220, 118, 51,0.8);
   padding: 10px;
-  border-radius: 10px;
   color: white;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 
 /* ------------- STYLING FOR EVENT TAB & SURVEY ----------------  */
 #D1 label, #E label, #F label{
   font-size: 15px;
-  color: white;
+  color: #797D7F;
   font-family: 'Roboto Condensed', sans-serif;
   display: inline-block;
   width: 100px;
@@ -201,9 +165,9 @@ body {
 #D1 input, #D1 textarea, #E input, #E textarea, #F input{
   width: 60%;
   height: 50px;
-  background: rgba(0,0,0,0.2);
+  background: white;
   border: none;
-  color: white;
+  color: #797D7F;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 15px;
   padding: 20px;
@@ -252,6 +216,8 @@ body {
   margin-right: 31%;
 }
 
+
+
 /* THIS PART STYLE THE SURVEY PART WHEN THE USER CLICK ADD QUESTION */
 #E button{
   width: 200px;
@@ -260,12 +226,14 @@ body {
 }
 
 #E3 h3{
-  color: white;
+  color: #797D7F;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
 #E3 button{
   width: 50px;
+  background: none;
+  padding:0;
 }
 
 #E4 input{
@@ -283,15 +251,14 @@ body {
   display: flex;
 }
 #G h2{
-  color: white;
+  color: #797D7F;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
 #G p{
-  color: white;
+  color: #797D7F;
   font-family: 'Roboto Condensed', sans-serif;
   line-height: 15px;
-  text-align: left;
   margin-bottom: 15px;
 }
 
@@ -308,53 +275,63 @@ body {
 
 #G1{
   width: 30%;
+  background-color: white;
+  padding: 5%;
+  text-align: center;
 }
 
 
 /*STYLING FOR RANKING TAB (H) */
 #H h1{
   font-family: 'Roboto Condensed', sans-serif;
-  color: white;
+  color: #797D7F;
   text-transform: uppercase;
   text-align: center;
 }
 
 #H p{
-  color: white;
+  color: #797D7F;
   font-family: 'Roboto Condensed', sans-serif;
   line-height: 15px;
   text-align: center;
 }
 
 #H h2{
-  color: white;
+  color: #797D7F;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
 #H1{
-  width: 70%;
-  margin-bottom: 30px;
+  width: 60%;
+  margin-bottom: 50px;
   padding: 3%;
-  background-color: rgba(0,0,0,0.3);
+  background-color: white;
+  display: block;
+  margin-left: 140px;
+
 }
 
 
 /*STYLING FOR FEEDBACK TAB (I) */
 #I{
   font-family: 'Roboto Condensed', sans-serif;
-  color: white;
+  color: #797D7F;
 }
 
 
 #I h2{
   font-family: 'Roboto Condensed', sans-serif;
-  color: white;
+  color: #797D7F;
 }
 
 #I1{
-  width: 70%;
-  text-align: center;
-  background-color: rgba(0,0,0,0.3);
+  background: white;
+  width: 300px;
+  min-height: 300px;
   padding: 3%;
   margin-bottom: 50px;
+  text-align: center;
+  display: inline-block;
+  margin-right: 50px;
+
 }
