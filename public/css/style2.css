@@ -55,11 +55,10 @@
 #mainBody{
   margin-left: 220px;
   padding: 50px;
-  height: 100%;
   width: 100%;
   position: relative;
   background-color: #F2F3F4;
-  min-height: 700px;
+  min-height: 800px;
 
 }
 
@@ -331,7 +330,6 @@
   padding: 3%;
   margin-bottom: 50px;
   text-align: center;
-  display: inline-block;
   margin-right: 50px;
 
 }
