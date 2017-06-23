@@ -167,7 +167,7 @@
   width: 100px;
   border: none;
   font-size: 15px;
-  background: rgba(220, 118, 51,0.8);
+  background: #DC7633;
   padding: 10px;
   color: white;
   margin-top: 10px;
@@ -340,23 +340,80 @@
   font-family: 'Roboto Condensed', sans-serif;
   color: #797D7F;
   position: absolute;
-  width: 100%;
-  display: flex;
+  margin-left: 50px;
 }
 
+
+#I0 button{
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  background-color: #DC7633;
+  color: white;
+  font-size: 15px;
+}
 
 #I h2{
   font-family: 'Roboto Condensed', sans-serif;
-  color: #797D7F;
+  color: #DC7633;
+  font-size: 25px;
 }
 
+#I h2:hover{
+  font-size: 30px;
+}
+
+/*THIS PART WILL STYLE THE COMMENT SECTION IN FEEDBACK TAB */
 #I1{
-  width: 50%;
-  padding: 5%;
+  margin-top: 20px;
+  display: flex;
+}
+
+#I1A{
+  width: 300px;
   background: white;
   margin-bottom: 50px;
   text-align: center;
+  margin-top: 25px;
   margin-right: 50px;
-  margin-left: 50px;
+  padding-left: 1%;
+  padding-right: 1%;
+}
 
+/*THIS PART WILL STYLE THE SURVET SECTION IN FEEDBACK TAB */
+#I2{
+  margin-top: 20px;
+}
+
+#I2B{
+  width: 500px;
+  position: absolute;
+  margin-left: 400px;
+  top: 0;
+  background-color: white;
+  padding: 50px;
+  margin-bottom: 50px;
+}
+
+#I2BGraph{
+  display:inline-block;
+  background-color: #DC7633;
+  text-align:center;
+  padding: 2px;
+  color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: 5px;
+
+}
+
+.orange{
+  background-color: #DC7633 !important;
+}
+
+#I2B span{
+  display: inline-block;
+  width: 100px;
 }

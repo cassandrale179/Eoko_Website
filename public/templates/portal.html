@@ -72,66 +72,61 @@
   </div>
 
 
-  <!-- _________________________ TAB FOR FEEDBACK __________________________ -->
+  <!-- ______________________________________ TAB FOR FEEDBACK ________________________________________________ -->
   <div id="I" ng-if="selection.tab == 'Feedback'">
 
-    <button ng-click="feedSelect(0)">Comments</button>
-    <button ng-click="feedSelect(1)">Surveys</button>
+    <div id="I0">
+      <button ng-click="feedSelect(0)">COMMENTS</button>
+      <button ng-click="feedSelect(1)">SURVEYS</button>
+    </div>
 
+    <!-- _____________ THIS PART WILL DISPLAY THE USER'S COMMENT ________________ -->
+    <div id="I1" ng-if="feed.back == 'commentsection'">
 
-    <!--  style="width: 33vw;background-color: rgba(0, 0, 0, 0.61);padding: 33px;overflow: auto;height: 61vh;" -->
-
-    <div ng-if="feed.back == 'commentsection'">
-        <h1>Comments</h1>
         <!-- IF NO COMMENTS, OUTPUT NO COMMENT MESSAGE -->
         <div ng-if="commentData.length == 0" class="eoko-portal-no-user">
           No Comments to display
         </div>
 
         <!-- ELSE DISPLAY APPROVED USERS -->
-        <div id="I1" ng-repeat="comment in commentData">
+        <div id="I1A" ng-repeat="comment in commentData">
             <div class="avatar2" style="background-image: url({{comment.avatar}});"></div>
             <h2>{{comment.name}}</h2>
             <p>"{{comment.comment}}"</p>
         </div>
     </div>
 
-
-    <div ng-if="feed.back == 'surveysection'">
-        <h1>Surveys</h1>
-
-       <div ng-if="surveyData.length == 0" class="eoko-portal-no-user">
+      <!-- _____________ THIS PART WILL DISPLAY THE USER'S SURVEY ________________ -->
+    <div id="I2" ng-if="feed.back == 'surveysection'">
+      <div ng-if="surveyData.length == 0" class="eoko-portal-no-user">
           No Surveys to display
-        </div>
+      </div>
 
         <!-- BUTTONS FOR THE DIFFERENT ACTUAL SURVEYS -->
-        <div>
-            <h2 ng-repeat="survey in surveyData" ng-click="LoadSurveyData(survey.data,survey.totalPeople)">{{survey.title}}</h2>
+        <div id="I2A">
+          <p><i>Click on Survey's Question to see more details. </i></p>
+          <h2 ng-repeat="survey in surveyData" ng-click="LoadSurveyData(survey.data,survey.totalPeople)">
+          <i class="fa fa-caret-right" aria-hidden="true"></i>{{survey.title}}</h2>
         </div>
 
         <!-- THE ANSWER SECTION WITH THE GRAPHS -->
-       <div style="padding:4px;background-color:rgba(128, 128, 128, 0.15);">
+       <div id="I2B">
          <div ng-repeat="info in surveyInfo track by $index">
-           <h3>{{$index + 1}})</h3>
-           <p>{{info.title}}</p>
-              <div style="padding:2px;" ng-repeat="(key,answers) in info.choices">
-                <span>{{key + 1|character}})</span>
+           <h3>{{$index + 1}}) {{info.title}}</h3>
+              <div ng-repeat="(key,answers) in info.choices">
+                <label>{{key + 1|character}})</label>
                 <span>{{answers.answer}}</span>
 
                 <!-- THE "GRAPH" PART -->
-                <div style="
-                  display:inline-block;
-                  background-color: orange;width:calc(100px * {{answers.count/totalCount}});
-                  text-align:center;
-                  padding: 2px;">{{answers.count ? answers.count : 0}}</div>
-
-              </div>
+              <div id="I2BGraph">
+                <div style="width: calc(200px * {{answers.count/totalCount}}); ">{{answers.count ? answers.count : 0}}</div>
+            </div>
          </div>
        </div>
     </div>
   </div>
 
-<!-- _________________________ TAB FOR RANKING __________________________ -->
+<!-- _______________________________________ TAB FOR RANKING _____________________________________ -->
   <div id="H" ng-if="selection.tab == 'Ranking'">
 
     <!-- IF NO USERS, ERROR MESSAGE -->
@@ -152,7 +147,7 @@
     </div>
   </div>
 
-<!-- __________________________TAB FOR EVENTS______________________________ -->
+<!-- ____________________________________________TAB FOR EVENTS____________________________________________ -->
   <div id="D">
     <div ng-if="selection.tab == 'Events'">
       <!--ERROR MESSAGE AND EVENT SUBMIT-->
@@ -190,7 +185,7 @@
     </div>
   </div>
 
-  <!-- _____________________________ TAB FOR SURVEY__________________________ -->
+  <!-- __________________________________________ TAB FOR SURVEY__________________________________________ -->
   <div id="E">
     <div ng-if="selection.tab == 'Surveys'">
 
@@ -242,7 +237,7 @@
   </div>
 
 
-  <!-- _______________________ TAB FOR EOKO+_______________________ -->
+  <!-- ____________________________________ TAB FOR EOKO+_________________________________________ -->
   <div id="F">
     <div ng-if="selection.tab == 'Eoko'">
        <label name="surveyTitle">ADD ACTION TAG</label>
