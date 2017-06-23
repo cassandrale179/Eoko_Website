@@ -3,12 +3,12 @@
 
   <!-- ________________ VERTICAL NAVIGATION BAR  ________________ -->
   <div id="A" class="w3-animate-opacity">
-      <a id="residentsTab" ng-click="selector(3)"><i class="fa fa-user-o"></i>RESIDENTS</a><br>
-      <a id="approveTab" ng-click="selector(4)"><i class="fa fa-check"></i> APPROVE</a><br>
-      <a id="myEventsTab" ng-click="selector(5)"><i class="fa fa-calendar-check-o"></i>MY EVENTS</a><br>
-      <a id="feedbackTab" ng-click="selector(6)"><i class="fa fa-pie-chart"></i>FEEDBACK</a><br>
-      <a id="rankingTab" ng-click="selector(7)"><i class="fa fa-star-half-o"></i>RANKING</a><br>
-      <a id="logoutTab" ng-click="selector(8)"><i class="fa fa-arrow-right"></i> LOGOUT</a>
+    <div id="A1"><a id="residentsTab" ng-click="selector(3)">RESIDENTS</a><br></div>
+    <div id="A2"><a id="approveTab" ng-click="selector(4)">APPROVE</a><br></div>
+    <div id="A3"><a id="myEventsTab" ng-click="selector(5)">MY EVENTS</a><br></div>
+    <div id="A4"><a id="feedbackTab" ng-click="selector(6)">FEEDBACK</a><br></div>
+    <div id="A5"><a id="rankingTab" ng-click="selector(7)">RANKING</a><br></div>
+    <div id="A6"><a id="logoutTab" ng-click="selector(8)"> LOGOUT</a></div>
   </div>
 
   <!--  ________________ HORIZONTAL NAVIGATION BAR  ________________ -->
@@ -89,7 +89,7 @@
         </div>
 
         <!-- ELSE DISPLAY APPROVED USERS -->
-        <div id="I1" class="col-md-3" ng-repeat="comment in commentData">
+        <div id="I1" ng-repeat="comment in commentData">
             <div class="avatar2" style="background-image: url({{comment.avatar}});"></div>
             <h2>{{comment.name}}</h2>
             <p>"{{comment.comment}}"</p>
@@ -105,7 +105,7 @@
         </div>
 
         <!-- BUTTONS FOR THE DIFFERENT ACTUAL SURVEYS -->
-        <div> 
+        <div>
             <h2 ng-repeat="survey in surveyData" ng-click="LoadSurveyData(survey.data,survey.totalPeople)">{{survey.title}}</h2>
         </div>
 
