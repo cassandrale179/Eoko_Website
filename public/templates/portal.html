@@ -75,20 +75,60 @@
   <!-- _________________________ TAB FOR FEEDBACK __________________________ -->
   <div id="I" ng-if="selection.tab == 'Feedback'">
 
-  <!--  style="width: 33vw;background-color: rgba(0, 0, 0, 0.61);padding: 33px;overflow: auto;height: 61vh;" -->
-  <div>
-      <!-- IF NO COMMENTS, OUTPUT NO COMMENT MESSAGE -->
-      <div ng-if="commentData.length == 0" class="eoko-portal-no-user">
-        No Comments to display
-      </div>
+    <button ng-click="feedSelect(0)">Comments</button>
+    <button ng-click="feedSelect(1)">Surveys</button>
 
-      <!-- ELSE DISPLAY APPROVED USERS -->
-      <div id="I1" class="col-md-3" ng-repeat="comment in commentData">
-          <div class="avatar2" style="background-image: url({{comment.avatar}});"></div>
-          <h2>{{comment.name}}</h2>
-          <p>"{{comment.comment}}"</p>
-      </div>
-  </div>
+
+    <!--  style="width: 33vw;background-color: rgba(0, 0, 0, 0.61);padding: 33px;overflow: auto;height: 61vh;" -->
+
+    <div ng-if="feed.back == 'commentsection'">
+        <h1>Comments</h1>
+        <!-- IF NO COMMENTS, OUTPUT NO COMMENT MESSAGE -->
+        <div ng-if="commentData.length == 0" class="eoko-portal-no-user">
+          No Comments to display
+        </div>
+
+        <!-- ELSE DISPLAY APPROVED USERS -->
+        <div id="I1" class="col-md-3" ng-repeat="comment in commentData">
+            <div class="avatar2" style="background-image: url({{comment.avatar}});"></div>
+            <h2>{{comment.name}}</h2>
+            <p>"{{comment.comment}}"</p>
+        </div>
+    </div>
+
+
+    <div ng-if="feed.back == 'surveysection'">
+        <h1>Surveys</h1>
+
+       <div ng-if="surveyData.length == 0" class="eoko-portal-no-user">
+          No Surveys to display
+        </div>
+
+        <!-- BUTTONS FOR THE DIFFERENT ACTUAL SURVEYS -->
+        <div> 
+            <h2 ng-repeat="survey in surveyData" ng-click="LoadSurveyData(survey.data,survey.totalPeople)">{{survey.title}}</h2>
+        </div>
+
+        <!-- THE ANSWER SECTION WITH THE GRAPHS -->
+       <div style="padding:4px;background-color:rgba(128, 128, 128, 0.15);">
+         <div ng-repeat="info in surveyInfo track by $index">
+           <h3>{{$index + 1}})</h3>
+           <p>{{info.title}}</p>
+              <div style="padding:2px;" ng-repeat="(key,answers) in info.choices">
+                <span>{{key + 1|character}})</span>
+                <span>{{answers.answer}}</span>
+
+                <!-- THE "GRAPH" PART -->
+                <div style="
+                  display:inline-block;
+                  background-color: orange;width:calc(100px * {{answers.count/totalCount}});
+                  text-align:center;
+                  padding: 2px;">{{answers.count ? answers.count : 0}}</div>
+
+              </div>
+         </div>
+       </div>
+    </div>
   </div>
 
 <!-- _________________________ TAB FOR RANKING __________________________ -->
