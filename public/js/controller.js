@@ -19,7 +19,6 @@ angular.module('app.controllers', [])
             $scope.matching = false;
             $scope.info = {
                 companyName: "",
-                buildingName: "",
                 address: "",
                 address2: "",
                 city: "",
@@ -260,6 +259,76 @@ angular.module('app.controllers', [])
                     return;
                 }
             };
+
+
+            //autofill data
+
+
+        function initAutocomplete() {
+          $scope.autocomplete = new google.maps.places.Autocomplete(
+              (document.getElementById('autocomplete')),
+              {types: ['geocode','establishment']});
+
+          $scope.autocomplete.addListener('place_changed', fillInAddress);
+        }
+
+        function fillInAddress() {
+          var place = $scope.autocomplete.getPlace();
+
+
+          foundAddress = {
+            street_number:"long_name",
+            route:"long_name",
+            locality: "long_name",
+            administrative_area_level_1: "long_name",
+            postal_code:"long_name"
+          };
+
+          for (var i = 0; i < place.address_components.length; i++) 
+          {
+            var addressType = place.address_components[i].types[0];
+            if (foundAddress[addressType]) 
+            {
+              foundAddress[addressType] = place.address_components[i][foundAddress[addressType]];
+              //document.getElementById(addressType).value = val;
+            }
+
+          }
+          console.log("final address: ",foundAddress );
+
+           document.getElementById('address').value = foundAddress['street_number'] + " " + foundAddress['route'];
+          document.getElementById('city').value = foundAddress['locality'];
+          document.getElementById('state').value = foundAddress['administrative_area_level_1'];
+          document.getElementById('zip').value = foundAddress['postal_code'];
+
+          $scope.info.address = foundAddress['street_number'] + " " + foundAddress['route'];
+          $scope.info.city = foundAddress['locality'];
+          $scope.info.state = foundAddress['administrative_area_level_1'];
+          $scope.info.zip = foundAddress['postal_code'];
+        }
+
+        
+        $scope.geolocate = function() {
+            google.maps.event.addDomListener(window, 'load', initAutocomplete);
+            initAutocomplete();
+            
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+              var geolocation = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              };
+              var circle = new google.maps.Circle({
+                center: geolocation,
+                radius: position.coords.accuracy
+              });
+              $scope.autocomplete.setBounds(circle.getBounds());
+            });
+          }
+        }
+
+
+
         }])
 
 
@@ -392,6 +461,7 @@ angular.module('app.controllers', [])
 
             firebase.auth().onAuthStateChanged(function (user) {
                 var usr = firebase.auth().currentUser;
+                 $scope.eokocode = usr.displayName;
                 console.log("user confirmed", usr);
                 userRef = firebase.database().ref('Buildings').child(usr.displayName).child('Users');
                 eventRef = firebase.database().ref('Buildings').child(usr.displayName).child('UserEvents');
@@ -781,6 +851,69 @@ angular.module('app.controllers', [])
                 })
             };
 
+             //autofill data
+
+
+        function initAutocomplete() {
+          $scope.autocomplete = new google.maps.places.Autocomplete(
+              (document.getElementById('autocomplete')),
+              {types: ['geocode','establishment']});
+
+          $scope.autocomplete.addListener('place_changed', fillInAddress);
+        }
+
+        function fillInAddress() {
+          var place = $scope.autocomplete.getPlace();
+
+
+          foundAddress = {
+            street_number:"long_name",
+            route:"long_name",
+            locality: "long_name",
+            administrative_area_level_1: "short_name",
+            postal_code:"long_name"
+          };
+
+          for (var i = 0; i < place.address_components.length; i++) 
+          {
+            var addressType = place.address_components[i].types[0];
+            if (foundAddress[addressType]) 
+            {
+              foundAddress[addressType] = place.address_components[i][foundAddress[addressType]];
+              //document.getElementById(addressType).value = val;
+            }
+
+          }
+          console.log("final address: ",foundAddress );
+
+          $scope.event.location = foundAddress['street_number'] + " " + foundAddress['route'] + ", " + foundAddress['locality'] + ", " +
+           foundAddress['administrative_area_level_1'] + ", " + foundAddress['postal_code'];
+        }
+
+        
+        $scope.geolocate = function() {
+            google.maps.event.addDomListener(window, 'load', initAutocomplete);
+            initAutocomplete();
+            
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+              var geolocation = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              };
+              var circle = new google.maps.Circle({
+                center: geolocation,
+                radius: position.coords.accuracy
+              });
+              $scope.autocomplete.setBounds(circle.getBounds());
+            });
+          }
+        }
+
+            //-----------------------------
+            //    CREATE EOKO TAB
+
+           
 
 
 

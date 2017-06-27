@@ -16,20 +16,27 @@
       <form ng-if="tabSelected == 'companyInfo'">
         <label for="companyName">Company Name* </label>
         <input ng-model="info.companyName" type="text" id="companyName" name="companyName" required /><br />
-        <label for="buldingName">Building Name* </label>
-        <input ng-model="info.buildingName" type="text" id="buldingName" name="buldingName" required /><br />
-        <label for="address"> Address* </label>
-        <input ng-model="info.address" type="text" id="address" name="address" required /><br />
-        <label id="la2" for="address2"> Address 2 </label>
-        <input ng-model="info.address2" type="text" id="address2" name="address2" /><br />
-        <label for="city">City*</label>
-        <input ng-model="info.city" type="text" id="city" name="city" required />
-        <div id="S2A">
-          <label for="state">State* </label>
-          <input ng-model="info.state" type="text" id="state" name="state" required /><br />
-          <label for="zip">Zip* </label>
-          <input ng-model="info.zip" type="text" id="zip" name="zip" required />
+        <br>
+        <input id="autocomplete" placeholder="Enter your address"
+         ng-click="geolocate()" type="text"></input>
+         
+        <!-- <label for="buldingName">Building Name* </label>
+        <input ng-model="info.buildingName" type="text" id="buldingName" name="buldingName" required /><br /> -->
+        <div style="padding: 5px;border-left: 3px solid #a6acaf;margin: 8px;">
+          <label for="address"> Address* </label>
+          <input ng-model="info.address" type="text" id="address" name="address" required /><br />
+          <label id="la2" for="address2"> Address 2 </label>
+          <input ng-model="info.address2" type="text" id="address2" name="address2" /><br />
+          <label for="city">City*</label>
+          <input ng-model="info.city" type="text" id="city" name="city" required />
+          <div id="S2A">
+            <label for="state">State* </label>
+            <input ng-model="info.state" type="text" id="state" name="state" required /><br />
+            <label for="zip">Zip* </label>
+            <input ng-model="info.zip" type="text" id="zip" name="zip" required />
+          </div>
         </div>
+
         <button ng-click="goToCompanyContact()">NEXT <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
       </form>
     </div>
@@ -104,4 +111,7 @@
   </div>
   <form ng-if="thankyou == false"></form>
 </div>
+
+
+
 </body>

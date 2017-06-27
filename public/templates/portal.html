@@ -164,7 +164,7 @@
         <label for="ed_LabelCategory">CATEGORY: </label>
         <input id="ed_labelCategory" type="text"  ng-model="event.category" required><br>
         <label for="ed_LabelLocation">LOCATION: </label>
-        <input id="ed_labelLocation" type="text" ng-model="event.location" required><br />
+        <input id="autocomplete" placeholder="Enter your address" ng-click="geolocate()" type="text" required></input><br />
         <label for="ed_labelD">DATE: </label>
         <input id="ed_labelD" type="date" ng-model="event.date" required><br />
         <label for="ed_labelT">TIME: </label>
@@ -244,7 +244,7 @@
        <label name="surveyTitle">ADD ACTION TAG</label>
        <input id="label_AddActon" type="text" ng-model="survey.title" required /><br />
        <label name="surveyTitle">MAKE EOKO CODE</label>
-       <input id="label_EokoCode" type="text" ng-model="survey.title" required />
+       <input id="label_EokoCode" type="text" ng-model="eokocode" required />
     </div>
   </div>
 </div>
